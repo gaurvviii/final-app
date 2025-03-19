@@ -1,9 +1,14 @@
 import SwiftUI
 import MapKit
+import UIKit
 
 struct HomeView: View {
     @StateObject private var locationManager = LocationManager()
     @State private var searchText = ""
+    @State private var showLocationPermissionAlert = false
+    
+    // Add access to safePlaces data
+    private let nearbyPlaces = safePlaces
     
     var body: some View {
         ScrollView {
@@ -48,7 +53,7 @@ struct HomeView: View {
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 20) {
-                            ForEach(safePlaces) { place in
+                            ForEach(nearbyPlaces) { place in
                                 SafeLocationCard(place: place)
                             }
                         }
@@ -71,6 +76,9 @@ struct HomeView: View {
                                 icon: "location.fill",
                                 color: AppTheme.deepBlue
                             )
+                            .onTapGesture {
+                                checkLocationPermission()
+                            }
                             
                             SafetyFeatureCard(
                                 title: "SOS Alert",
@@ -90,13 +98,90 @@ struct HomeView: View {
                     }
                 }
                 
-                // Navigation Bar
-                NavigationBar(selectedTab: .constant(0))
-                    .padding(.top)
+                // Location Status Card
+                if let location = locationManager.location {
+                    LocationStatusCard(coordinate: location.coordinate)
+                        .padding(.horizontal)
+                        .padding(.top, 10)
+                }
             }
             .padding(.top, 20)
+            .padding(.bottom, 80) // Add padding at bottom to avoid tab bar overlap
         }
         .background(AppTheme.nightBlack)
+        .alert(isPresented: $showLocationPermissionAlert) {
+            Alert(
+                title: Text("Location Access Needed"),
+                message: Text("Please enable location access in Settings to use all safety features."),
+                primaryButton: .default(Text("Settings"), action: openSettings),
+                secondaryButton: .cancel()
+            )
+        }
+    }
+    
+    private func checkLocationPermission() {
+        if locationManager.authorizationStatus == .denied || 
+           locationManager.authorizationStatus == .restricted {
+            showLocationPermissionAlert = true
+        } else if locationManager.authorizationStatus == .notDetermined {
+            locationManager.requestLocationPermissions()
+        }
+    }
+    
+    private func openSettings() {
+        if let url = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(url)
+        }
+    }
+}
+
+struct LocationStatusCard: View {
+    let coordinate: CLLocationCoordinate2D
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                Image(systemName: "location.fill")
+                    .foregroundColor(.green)
+                Text("Location tracking active")
+                    .font(.subheadline)
+                    .foregroundColor(.white)
+                Spacer()
+                Text("Updated just now")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+            }
+            
+            Divider()
+                .background(Color.gray.opacity(0.3))
+            
+            HStack {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Latitude")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                    Text(String(format: "%.4f", coordinate.latitude))
+                        .font(.caption)
+                        .foregroundColor(.white)
+                }
+                
+                Spacer()
+                
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Longitude")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                    Text(String(format: "%.4f", coordinate.longitude))
+                        .font(.caption)
+                        .foregroundColor(.white)
+                }
+                
+                Spacer()
+            }
+        }
+        .padding()
+        .background(AppTheme.darkGray)
+        .cornerRadius(15)
     }
 }
 
@@ -161,52 +246,6 @@ struct SafetyFeatureCard: View {
         .frame(width: 160, height: 140)
         .background(AppTheme.darkGray)
         .cornerRadius(15)
-    }
-}
-
-struct NavigationBar: View {
-    @Binding var selectedTab: Int
-    
-    var body: some View {
-        HStack {
-            ForEach(0..<4) { index in
-                Spacer()
-                Button(action: { selectedTab = index }) {
-                    VStack(spacing: 4) {
-                        Image(systemName: getIcon(for: index))
-                            .foregroundColor(selectedTab == index ? AppTheme.primaryPurple : .gray)
-                        Text(getTitle(for: index))
-                            .font(.caption2)
-                            .foregroundColor(selectedTab == index ? AppTheme.primaryPurple : .gray)
-                    }
-                }
-                Spacer()
-            }
-        }
-        .padding(.vertical, 8)
-        .background(AppTheme.darkGray)
-        .cornerRadius(25)
-        .padding(.horizontal)
-    }
-    
-    private func getIcon(for index: Int) -> String {
-        switch index {
-        case 0: return "house.fill"
-        case 1: return "map.fill"
-        case 2: return "bell.fill"
-        case 3: return "person.fill"
-        default: return ""
-        }
-    }
-    
-    private func getTitle(for index: Int) -> String {
-        switch index {
-        case 0: return "Home"
-        case 1: return "Map"
-        case 2: return "Alerts"
-        case 3: return "Profile"
-        default: return ""
-        }
     }
 }
 

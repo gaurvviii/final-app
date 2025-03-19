@@ -22,29 +22,25 @@ struct ContentView: View {
             TabView(selection: $selectedTab) {
                 HomeView()
                     .tabItem {
-                        Image(systemName: "house.fill")
-                        Text("Home")
+                        Label("Home", systemImage: "house.fill")
                     }
                     .tag(0)
                 
                 SafetyMapView()
                     .tabItem {
-                        Image(systemName: "map.fill")
-                        Text("Map")
+                        Label("Map", systemImage: "map.fill")
                     }
                     .tag(1)
                 
                 ResourcesView()
                     .tabItem {
-                        Image(systemName: "shield.fill")
-                        Text("Safety")
+                        Label("Safety", systemImage: "shield.fill")
                     }
                     .tag(2)
                 
                 ProfileView()
                     .tabItem {
-                        Image(systemName: "person.fill")
-                        Text("Profile")
+                        Label("Profile", systemImage: "person.fill")
                     }
                     .tag(3)
             }
@@ -52,29 +48,33 @@ struct ContentView: View {
             
             // SOS Button
             VStack {
+                Spacer()
                 HStack {
                     Spacer()
                     SOSButton(isPresented: $showingSOS)
-                        .padding(.top, 60)
-                        .padding(.trailing, 20)
+                        .padding()
                 }
-                Spacer()
             }
         }
-        .preferredColorScheme(.dark)
+        .onAppear {
+            // Request permissions when app launches
+            locationManager.requestLocationPermissions()
+        }
     }
 }
 
-// SOS Button View
 struct SOSButton: View {
     @Binding var isPresented: Bool
     @State private var isPressed = false
     
     var body: some View {
         Button(action: {
-            withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
-                isPressed.toggle()
-            }
+            isPressed = true
+            // Haptic feedback
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.warning)
+            
+            // Delay to show pressed state
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 isPressed = false
                 isPresented.toggle()
@@ -102,6 +102,7 @@ struct SOSButton: View {
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
     @Published var location: CLLocation?
+    @Published var authorizationStatus: CLAuthorizationStatus = .notDetermined
     @Published var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 0, longitude: 0),
         span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
@@ -117,27 +118,44 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = 5 // Update location every 5 meters
         
-        // Request authorization first
-        locationManager.requestWhenInUseAuthorization()
+        // Get current authorization status
+        authorizationStatus = locationManager.authorizationStatus
         
-        // Only enable background updates after authorization is granted
-        if CLLocationManager.locationServicesEnabled() {
-            switch locationManager.authorizationStatus {
-            case .authorizedAlways:
-                enableBackgroundUpdates()
-            case .authorizedWhenInUse:
-                locationManager.requestAlwaysAuthorization()
-            default:
-                break
-            }
+        // Set up based on current authorization
+        configureBasedOnAuthorizationStatus()
+    }
+    
+    func requestLocationPermissions() {
+        // Request authorization
+        locationManager.requestWhenInUseAuthorization()
+    }
+    
+    private func configureBasedOnAuthorizationStatus() {
+        switch authorizationStatus {
+        case .authorizedAlways:
+            setupBackgroundLocationUpdates()
+        case .authorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+        default:
+            break
         }
     }
     
-    private func enableBackgroundUpdates() {
+    private func setupBackgroundLocationUpdates() {
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.pausesLocationUpdatesAutomatically = false
         locationManager.showsBackgroundLocationIndicator = true
         locationManager.startUpdatingLocation()
+    }
+    
+    func enableBackgroundUpdates() {
+        if authorizationStatus == .authorizedWhenInUse {
+            // If we only have "when in use" permission, request "always" permission
+            locationManager.requestAlwaysAuthorization()
+        } else if authorizationStatus == .authorizedAlways {
+            // If we already have "always" permission, start background updates
+            setupBackgroundLocationUpdates()
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -153,9 +171,6 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
                 span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
             )
         }
-        
-        // Log location update for debugging
-        print("Location updated: \(location.coordinate.latitude), \(location.coordinate.longitude)")
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -163,20 +178,11 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        switch manager.authorizationStatus {
-        case .authorizedAlways:
-            enableBackgroundUpdates()
-        case .authorizedWhenInUse:
-            // Request "Always" authorization if we only have "When in Use"
-            manager.requestAlwaysAuthorization()
-        case .notDetermined:
-            manager.requestWhenInUseAuthorization()
-        case .denied, .restricted:
-            // Handle denied access
-            print("Location access denied or restricted")
-        @unknown default:
-            break
+        DispatchQueue.main.async {
+            self.authorizationStatus = manager.authorizationStatus
         }
+        
+        configureBasedOnAuthorizationStatus()
     }
 }
 
