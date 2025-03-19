@@ -1,19 +1,17 @@
 import Foundation
 import SwiftUI
 
-struct EmergencyContact: Identifiable, Hashable {
-    let id = UUID()
+struct EmergencyContact: Identifiable, Codable {
+    let id: UUID
     let name: String
-    let number: String
-    let type: ContactType
-    var relationship: String?
+    let phone: String
+    let relationship: String
     
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-    
-    static func == (lhs: EmergencyContact, rhs: EmergencyContact) -> Bool {
-        lhs.id == rhs.id
+    init(id: UUID = UUID(), name: String, phone: String, relationship: String) {
+        self.id = id
+        self.name = name
+        self.phone = phone
+        self.relationship = relationship
     }
 }
 
