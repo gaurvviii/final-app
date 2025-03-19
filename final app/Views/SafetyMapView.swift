@@ -9,67 +9,139 @@ struct SafetyMapView: View {
     )
     @State private var showingSafetyZones = true
     @State private var selectedPlace: SafePlace?
+    @State private var showingDirections = false
     
     var body: some View {
         ZStack {
+            // Map
             Map(coordinateRegion: $region,
                 showsUserLocation: true,
                 userTrackingMode: .constant(.follow),
                 annotationItems: safePlaces) { place in
                 MapAnnotation(coordinate: place.coordinate) {
-                    VStack {
-                        Image(systemName: "shield.fill")
-                            .foregroundColor(AppTheme.primaryPurple)
-                            .font(.title)
-                        
-                        Text(place.name)
-                            .font(.caption)
-                            .padding(5)
-                            .background(Color.white)
-                            .cornerRadius(5)
-                    }
-                    .onTapGesture {
+                    SafetyMarker(place: place, isSelected: selectedPlace?.id == place.id) {
                         selectedPlace = place
                     }
                 }
             }
             .ignoresSafeArea()
             
+            // Navigation Overlay
             VStack {
-                Spacer()
-                
-                // Safety Zone Controls
-                VStack(spacing: 0) {
-                    if let selected = selectedPlace {
-                        SafePlaceDetailView(place: selected) {
-                            selectedPlace = nil
-                        }
+                // Top Bar
+                HStack {
+                    Button(action: { /* Close action */ }) {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.white)
+                            .padding(12)
+                            .background(AppTheme.darkGray)
+                            .clipShape(Circle())
                     }
                     
-                    HStack {
-                        Button(action: {
-                            if let location = locationManager.location {
-                                region.center = location.coordinate
-                            }
-                        }) {
-                            Image(systemName: "location.fill")
-                                .padding()
-                                .background(Color.white)
-                                .clipShape(Circle())
-                                .shadow(radius: 5)
-                        }
-                        
-                        Spacer()
-                        
-                        Toggle("Safety Zones", isOn: $showingSafetyZones)
-                            .padding()
-                            .background(Color.white)
+                    if let place = selectedPlace {
+                        Text(place.name)
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding(.horizontal)
+                            .padding(.vertical, 8)
+                            .background(AppTheme.darkGray.opacity(0.8))
                             .cornerRadius(20)
                     }
-                    .padding()
+                    
+                    Spacer()
+                }
+                .padding()
+                
+                Spacer()
+                
+                // Navigation Instructions
+                if showingDirections {
+                    NavigationInstructionView()
+                }
+                
+                // Bottom Controls
+                HStack(spacing: 15) {
+                    Button(action: { /* Center on user */ }) {
+                        Image(systemName: "location.fill")
+                            .foregroundColor(.white)
+                            .padding(12)
+                            .background(AppTheme.darkGray)
+                            .clipShape(Circle())
+                    }
+                    
+                    if selectedPlace != nil {
+                        Button(action: { showingDirections.toggle() }) {
+                            HStack {
+                                Image(systemName: "arrow.triangle.turn.up.right.diamond.fill")
+                                Text("Navigate")
+                            }
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 12)
+                            .background(AppTheme.primaryPurple)
+                            .cornerRadius(25)
+                        }
+                    }
+                }
+                .padding()
+            }
+        }
+    }
+}
+
+struct SafetyMarker: View {
+    let place: SafePlace
+    let isSelected: Bool
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            VStack(spacing: 4) {
+                Image(systemName: "shield.fill")
+                    .foregroundColor(isSelected ? AppTheme.primaryPurple : .white)
+                    .font(.system(size: isSelected ? 24 : 20))
+                
+                if isSelected {
+                    Text(place.name)
+                        .font(.caption)
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
+                        .background(AppTheme.darkGray.opacity(0.8))
+                        .cornerRadius(8)
                 }
             }
         }
+    }
+}
+
+struct NavigationInstructionView: View {
+    var body: some View {
+        HStack {
+            Image(systemName: "arrow.left")
+                .font(.title2)
+                .foregroundColor(.white)
+            
+            VStack(alignment: .leading) {
+                Text("Turn left")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                Text("123 m")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+            }
+            
+            Spacer()
+            
+            Button(action: { /* Show on map */ }) {
+                Image(systemName: "map.fill")
+                    .foregroundColor(AppTheme.primaryPurple)
+            }
+        }
+        .padding()
+        .background(AppTheme.darkGray)
+        .cornerRadius(15)
+        .padding(.horizontal)
     }
 }
 

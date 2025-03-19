@@ -3,197 +3,210 @@ import MapKit
 
 struct HomeView: View {
     @StateObject private var locationManager = LocationManager()
-    @State private var showingQuickActions = false
+    @State private var searchText = ""
     
     var body: some View {
-        ZStack {
-            // Background
-            AppTheme.nightBlack.ignoresSafeArea()
-            
-            ScrollView {
-                VStack(spacing: 25) {
-                    // Header
+        ScrollView {
+            VStack(spacing: 25) {
+                // Header
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Explore Safely")
+                        .font(.system(size: 32, weight: .bold))
+                        .foregroundColor(.white)
+                    Text("Navigate with confidence, anytime, anywhere")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
+                
+                // Search Bar
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(.gray)
+                    TextField("Search safe locations...", text: $searchText)
+                        .foregroundColor(.white)
+                }
+                .padding()
+                .background(AppTheme.darkGray)
+                .cornerRadius(15)
+                .padding(.horizontal)
+                
+                // Quick Access Locations
+                VStack(alignment: .leading, spacing: 15) {
                     HStack {
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text("NYX")
-                                .font(.system(size: 32, weight: .bold))
-                                .foregroundColor(.white)
-                            Text("Stay Safe, Stay Connected")
-                                .font(.subheadline)
-                                .foregroundColor(.gray)
-                        }
+                        Text("Safe Locations Nearby")
+                            .font(.headline)
+                            .foregroundColor(.white)
                         Spacer()
-                        
-                        // User Status Indicator
-                        Circle()
-                            .fill(Color.green)
-                            .frame(width: 12, height: 12)
-                            .overlay(
-                                Circle()
-                                    .stroke(Color.white.opacity(0.2), lineWidth: 2)
-                                    .frame(width: 20, height: 20)
-                            )
+                        Button("View All") {
+                            // Action
+                        }
+                        .foregroundColor(AppTheme.primaryPurple)
                     }
                     .padding(.horizontal)
                     
-                    // Safety Status Card
-                    SafetyStatusCard(locationManager: locationManager)
-                    
-                    // Quick Actions
-                    QuickActionsView()
-                    
-                    // Recent Activity
-                    RecentActivityView()
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 20) {
+                            ForEach(safePlaces) { place in
+                                SafeLocationCard(place: place)
+                            }
+                        }
+                        .padding(.horizontal)
+                    }
                 }
-                .padding(.top, 20)
+                
+                // Safety Features
+                VStack(alignment: .leading, spacing: 15) {
+                    Text("Safety Features")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding(.horizontal)
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 15) {
+                            SafetyFeatureCard(
+                                title: "Live Location",
+                                description: "Share your real-time location",
+                                icon: "location.fill",
+                                color: AppTheme.deepBlue
+                            )
+                            
+                            SafetyFeatureCard(
+                                title: "SOS Alert",
+                                description: "Quick emergency assistance",
+                                icon: "bell.fill",
+                                color: AppTheme.safetyRed
+                            )
+                            
+                            SafetyFeatureCard(
+                                title: "Safe Routes",
+                                description: "Navigate through safe paths",
+                                icon: "map.fill",
+                                color: AppTheme.primaryPurple
+                            )
+                        }
+                        .padding(.horizontal)
+                    }
+                }
+                
+                // Navigation Bar
+                NavigationBar(selectedTab: .constant(0))
+                    .padding(.top)
             }
+            .padding(.top, 20)
         }
+        .background(AppTheme.nightBlack)
     }
 }
 
-struct SafetyStatusCard: View {
-    @ObservedObject var locationManager: LocationManager
+struct SafeLocationCard: View {
+    let place: SafePlace
     
     var body: some View {
-        VStack(spacing: 20) {
-            HStack {
-                Text("Safety Status")
+        VStack(alignment: .leading, spacing: 12) {
+            // Image placeholder
+            RoundedRectangle(cornerRadius: 15)
+                .fill(AppTheme.darkGray)
+                .frame(width: 200, height: 120)
+                .overlay(
+                    Image(systemName: "shield.fill")
+                        .foregroundColor(AppTheme.primaryPurple)
+                        .font(.system(size: 30))
+                )
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(place.name)
                     .font(.headline)
                     .foregroundColor(.white)
-                Spacer()
-                Text("Safe Zone")
-                    .font(.subheadline)
-                    .foregroundColor(.green)
+                
+                Text(place.address)
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                    .lineLimit(1)
             }
-            
-            if let location = locationManager.location {
-                // Mini Map
-                Map(coordinateRegion: .constant(MKCoordinateRegion(
-                    center: location.coordinate,
-                    span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-                )))
-                .frame(height: 150)
-                .cornerRadius(15)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 15)
-                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                )
-            }
-            
-            HStack(spacing: 20) {
-                StatusItem(title: "Trusted Contacts", value: "3 Active")
-                StatusItem(title: "Last Check", value: "2m ago")
-            }
+            .padding(.horizontal, 8)
+            .padding(.bottom, 8)
         }
-        .padding()
         .background(AppTheme.darkGray)
-        .cornerRadius(20)
-        .padding(.horizontal)
+        .cornerRadius(15)
+        .frame(width: 200)
     }
 }
 
-struct StatusItem: View {
+struct SafetyFeatureCard: View {
     let title: String
-    let value: String
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 5) {
-            Text(title)
-                .font(.caption)
-                .foregroundColor(.gray)
-            Text(value)
-                .font(.subheadline)
-                .foregroundColor(.white)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-    }
-}
-
-struct QuickActionsView: View {
-    var body: some View {
-        VStack(alignment: .leading, spacing: 15) {
-            Text("Quick Actions")
-                .font(.headline)
-                .foregroundColor(.white)
-                .padding(.horizontal)
-            
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 15) {
-                    QuickActionButton(title: "Fake Call", icon: "phone.fill", color: AppTheme.primaryPurple)
-                    QuickActionButton(title: "Share Location", icon: "location.fill", color: AppTheme.deepBlue)
-                    QuickActionButton(title: "Record", icon: "record.circle", color: AppTheme.safetyRed)
-                }
-                .padding(.horizontal)
-            }
-        }
-    }
-}
-
-struct QuickActionButton: View {
-    let title: String
+    let description: String
     let icon: String
     let color: Color
     
     var body: some View {
-        Button(action: {}) {
-            VStack(spacing: 12) {
-                Image(systemName: icon)
-                    .font(.system(size: 24))
-                Text(title)
-                    .font(.caption)
-            }
-            .foregroundColor(.white)
-            .frame(width: 100, height: 100)
-            .background(color.opacity(0.2))
-            .cornerRadius(15)
-            .overlay(
-                RoundedRectangle(cornerRadius: 15)
-                    .stroke(color.opacity(0.3), lineWidth: 1)
-            )
-        }
-    }
-}
-
-struct RecentActivityView: View {
-    var body: some View {
-        VStack(alignment: .leading, spacing: 15) {
-            Text("Recent Activity")
-                .font(.headline)
-                .foregroundColor(.white)
-            
-            ForEach(0..<3) { _ in
-                ActivityRow()
-            }
-        }
-        .padding(.horizontal)
-    }
-}
-
-struct ActivityRow: View {
-    var body: some View {
-        HStack(spacing: 15) {
-            Circle()
-                .fill(AppTheme.primaryPurple.opacity(0.2))
-                .frame(width: 40, height: 40)
-                .overlay(
-                    Image(systemName: "checkmark")
-                        .foregroundColor(AppTheme.primaryPurple)
-                )
+        VStack(alignment: .leading, spacing: 12) {
+            Image(systemName: icon)
+                .font(.system(size: 24))
+                .foregroundColor(color)
             
             VStack(alignment: .leading, spacing: 4) {
-                Text("Safety Check Completed")
-                    .font(.subheadline)
+                Text(title)
+                    .font(.headline)
                     .foregroundColor(.white)
-                Text("2 minutes ago")
+                
+                Text(description)
                     .font(.caption)
                     .foregroundColor(.gray)
+                    .lineLimit(2)
             }
-            
-            Spacer()
         }
         .padding()
+        .frame(width: 160, height: 140)
         .background(AppTheme.darkGray)
         .cornerRadius(15)
+    }
+}
+
+struct NavigationBar: View {
+    @Binding var selectedTab: Int
+    
+    var body: some View {
+        HStack {
+            ForEach(0..<4) { index in
+                Spacer()
+                Button(action: { selectedTab = index }) {
+                    VStack(spacing: 4) {
+                        Image(systemName: getIcon(for: index))
+                            .foregroundColor(selectedTab == index ? AppTheme.primaryPurple : .gray)
+                        Text(getTitle(for: index))
+                            .font(.caption2)
+                            .foregroundColor(selectedTab == index ? AppTheme.primaryPurple : .gray)
+                    }
+                }
+                Spacer()
+            }
+        }
+        .padding(.vertical, 8)
+        .background(AppTheme.darkGray)
+        .cornerRadius(25)
+        .padding(.horizontal)
+    }
+    
+    private func getIcon(for index: Int) -> String {
+        switch index {
+        case 0: return "house.fill"
+        case 1: return "map.fill"
+        case 2: return "bell.fill"
+        case 3: return "person.fill"
+        default: return ""
+        }
+    }
+    
+    private func getTitle(for index: Int) -> String {
+        switch index {
+        case 0: return "Home"
+        case 1: return "Map"
+        case 2: return "Alerts"
+        case 3: return "Profile"
+        default: return ""
+        }
     }
 }
 
