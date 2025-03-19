@@ -1,46 +1,175 @@
 import SwiftUI
 
 struct SafetyStatsView: View {
+    @StateObject private var crimeDataService = CrimeDataService()
     @State private var selectedCategory = "All"
+    @State private var selectedCity = "Bangalore"
     
     private let categories = ["All", "Travel", "Areas", "Night Safety", "Transportation"]
+    private let availableCities = ["Bangalore", "Delhi", "Mumbai", "Chennai", "Kolkata"]
     
-    // Crime statistics insights from the data
-    private let crimeStats = [
-        CrimeStat(
-            title: "Most Reported Areas",
-            value: "Majestic, K.R. Market, Shivajinagar",
-            icon: "map.fill",
-            color: .red
-        ),
-        CrimeStat(
-            title: "Peak Crime Hours",
-            value: "8PM - 2AM",
-            icon: "clock.fill",
-            color: .orange
-        ),
-        CrimeStat(
-            title: "Safest Public Transport",
-            value: "Metro Stations & Routes",
-            icon: "tram.fill",
-            color: .green
-        ),
-        CrimeStat(
-            title: "Most Common Incidents",
-            value: "Harassment, Theft, Stalking",
-            icon: "exclamationmark.triangle.fill",
-            color: .red
-        )
-    ]
+    // Dynamic crime statistics from the service
+    private var crimeStats: [CrimeStat] {
+        // If data is still loading, show placeholder stats
+        if crimeDataService.isLoading {
+            return [
+                CrimeStat(
+                    title: "Loading Data...",
+                    value: "Please wait",
+                    icon: "ellipsis",
+                    color: .gray
+                )
+            ]
+        }
+        
+        // If there was an error, show error state
+        if let error = crimeDataService.errorMessage {
+            return [
+                CrimeStat(
+                    title: "Data Error",
+                    value: error,
+                    icon: "exclamationmark.triangle",
+                    color: .red
+                )
+            ]
+        }
+        
+        // Filter hotspots for selected city
+        let cityHotspots = crimeDataService.crimeHotspots.filter { $0.city == selectedCity }
+        
+        if cityHotspots.isEmpty {
+            return [
+                CrimeStat(
+                    title: "No Data Available",
+                    value: "No crime data for \(selectedCity)",
+                    icon: "magnifyingglass",
+                    color: .gray
+                )
+            ]
+        }
+        
+        // Most dangerous areas (highest crime count)
+        let dangerousAreas = cityHotspots.sorted { $0.crimeCount > $1.crimeCount }
+            .prefix(3)
+            .map { $0.area }
+            .joined(separator: ", ")
+        
+        // Peak crime hours based on time patterns
+        let timeDistribution = cityHotspots.reduce(into: [TimePattern: Int]()) { result, hotspot in
+            result[hotspot.timePattern, default: 0] += hotspot.crimeCount
+        }
+        
+        let peakTimePeriod = timeDistribution.max { $0.value < $1.value }?.key.rawValue ?? "Unknown"
+        
+        // Most common crime types
+        let crimeCounts = cityHotspots.flatMap { $0.crimeTypes }
+            .reduce(into: [String: Int]()) { result, type in
+                result[type, default: 0] += 1
+            }
+        
+        let commonCrimes = crimeCounts.sorted { $0.value > $1.value }
+            .prefix(3)
+            .map { $0.key }
+            .joined(separator: ", ")
+        
+        // Calculate safest transport based on crime patterns
+        let safeTransport = cityHotspots.filter { $0.timePattern == .night }.count > cityHotspots.filter { $0.timePattern == .day }.count
+            ? "Metro Stations & App-based Cabs"
+            : "Public Buses during Daytime"
+        
+        return [
+            CrimeStat(
+                title: "Most Reported Areas",
+                value: dangerousAreas,
+                icon: "map.fill",
+                color: .red
+            ),
+            CrimeStat(
+                title: "Peak Crime Hours",
+                value: peakTimePeriod,
+                icon: "clock.fill",
+                color: .orange
+            ),
+            CrimeStat(
+                title: "Safest Public Transport",
+                value: safeTransport,
+                icon: "tram.fill",
+                color: .green
+            ),
+            CrimeStat(
+                title: "Most Common Incidents",
+                value: commonCrimes.isEmpty ? "Data Unavailable" : commonCrimes,
+                icon: "exclamationmark.triangle.fill",
+                color: .red
+            )
+        ]
+    }
+    
+    // Generate safety tips based on crime data
+    private var dataDrivenTips: [String] {
+        let cityHotspots = crimeDataService.crimeHotspots.filter { $0.city == selectedCity }
+        
+        if cityHotspots.isEmpty {
+            return []
+        }
+        
+        var tips: [String] = []
+        
+        // Areas with high risk levels
+        let highRiskAreas = cityHotspots.filter { $0.riskLevel == .high }
+        if !highRiskAreas.isEmpty {
+            let areaNames = highRiskAreas.prefix(3).map { $0.area }.joined(separator: ", ")
+            tips.append("Avoid \(areaNames) areas, especially at night - these have the highest reported incident rates.")
+        }
+        
+        // Night safety based on time patterns
+        if cityHotspots.filter({ $0.timePattern == .night }).count > cityHotspots.filter({ $0.timePattern == .day }).count {
+            tips.append("Most incidents in \(selectedCity) occur at night between 9PM-5AM. Use extra caution during these hours.")
+        }
+        
+        // Common crime types tips
+        let crimeTypes = Set(cityHotspots.flatMap { $0.crimeTypes })
+        if crimeTypes.contains("Theft") || crimeTypes.contains("Robbery") {
+            tips.append("Keep valuables hidden and secure your bag in crowded areas to prevent theft incidents.")
+        }
+        if crimeTypes.contains("Harassment") || crimeTypes.contains("Stalking") {
+            tips.append("If being followed, enter a public place with security personnel and use the SOS feature immediately.")
+        }
+        
+        return tips
+    }
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 // Header
-                Text("Safety Intelligence")
-                    .font(.largeTitle.bold())
-                    .foregroundColor(.white)
-                    .padding(.horizontal)
+                HStack {
+                    Text("Safety Intelligence")
+                        .font(.largeTitle.bold())
+                        .foregroundColor(.white)
+                    
+                    Spacer()
+                    
+                    Menu {
+                        ForEach(availableCities, id: \.self) { city in
+                            Button(city) {
+                                selectedCity = city
+                            }
+                        }
+                    } label: {
+                        HStack {
+                            Text(selectedCity)
+                                .foregroundColor(.white)
+                            Image(systemName: "chevron.down")
+                                .foregroundColor(AppTheme.primaryPurple)
+                        }
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
+                        .background(AppTheme.darkGray)
+                        .cornerRadius(20)
+                    }
+                }
+                .padding(.horizontal)
                 
                 // Safety Categories
                 ScrollView(.horizontal, showsIndicators: false) {
@@ -63,12 +192,38 @@ struct SafetyStatsView: View {
                         .foregroundColor(.white)
                         .padding(.horizontal)
                     
-                    ForEach(crimeStats) { stat in
-                        CrimeStatCard(stat: stat)
+                    if crimeDataService.isLoading {
+                        HStack {
+                            Spacer()
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle(tint: AppTheme.primaryPurple))
+                                .scaleEffect(1.5)
+                            Spacer()
+                        }
+                        .padding(.vertical, 30)
+                    } else {
+                        ForEach(crimeStats) { stat in
+                            CrimeStatCard(stat: stat)
+                        }
                     }
                 }
                 
-                // Safety Tips Section
+                // Data-driven tips
+                if !dataDrivenTips.isEmpty {
+                    VStack(alignment: .leading, spacing: 15) {
+                        Text("Data-Driven Safety Tips")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding(.horizontal)
+                        
+                        ForEach(dataDrivenTips, id: \.self) { tip in
+                            SafetyTipRow(tip: tip, iconName: "chart.bar.fill")
+                        }
+                    }
+                    .padding(.top, 10)
+                }
+                
+                // General Safety Tips Section
                 VStack(alignment: .leading, spacing: 15) {
                     Text("Safety Tips")
                         .font(.headline)
@@ -84,6 +239,9 @@ struct SafetyStatsView: View {
             .padding(.vertical)
         }
         .background(AppTheme.nightBlack)
+        .onAppear {
+            crimeDataService.fetchCrimeData()
+        }
     }
     
     private func getFilteredTips(for category: String) -> [String] {
@@ -152,10 +310,11 @@ struct CrimeStatCard: View {
 
 struct SafetyTipRow: View {
     let tip: String
+    var iconName: String = "checkmark.shield.fill"
     
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
-            Image(systemName: "checkmark.shield.fill")
+            Image(systemName: iconName)
                 .foregroundColor(AppTheme.primaryPurple)
                 .font(.system(size: 18))
             

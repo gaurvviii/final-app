@@ -15,7 +15,7 @@ struct HomeView: View {
             VStack(spacing: 25) {
                 // Header
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Explore Safely")
+                    Text("Nyx")
                         .font(.system(size: 32, weight: .bold))
                         .foregroundColor(.white)
                     Text("Navigate with confidence, anytime, anywhere")

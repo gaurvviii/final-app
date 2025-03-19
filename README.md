@@ -22,6 +22,16 @@ The app integrates police station data from Bangalore to provide users with info
 
 When a user is in an unsafe area, the app can navigate them to the nearest police station or provide contact details for immediate assistance.
 
+### Crime Data API Integration
+The app connects to a real-time crime data API to fetch information about crimes against women in major metropolitan cities. The integration:
+
+1. **Uses API Key Authentication**: Securely connects to the crime data service.
+2. **Fetches Live Data**: Retrieves the latest crime statistics from the official government database.
+3. **Covers Multiple Cities**: Includes data for Bangalore, Delhi, Mumbai, Chennai, and Kolkata.
+4. **Provides Detailed Records**: Each crime record includes location, type, time pattern, and severity.
+
+If the API is unavailable, the app falls back to locally stored crime data to ensure functionality is maintained.
+
 ### Crime Data Analysis
 The app incorporates crime data analysis to identify:
 
@@ -33,6 +43,7 @@ The crime data helps in:
 - Generating heat maps of unsafe areas
 - Providing safety scores for different neighborhoods
 - Alerting users when they enter high-risk zones
+- Creating data-driven safety recommendations specific to each area
 
 ## Technical Implementation
 
@@ -40,6 +51,8 @@ The crime data helps in:
 - **SwiftUI Interface**: Modern, intuitive user interface with dark mode support
 - **Data Visualization**: Map overlays showing safety zones and risk areas
 - **Local Notifications**: Alerts when entering high-risk areas
+- **CrimeDataService**: A dedicated service that manages fetching, processing, and analyzing crime data
+- **Dynamic Filtering**: Users can filter crime data by city and time of day for personalized safety information
 
 ## Privacy and Security
 
@@ -47,6 +60,7 @@ The app prioritizes user privacy while providing safety features:
 - Location data is only shared with explicit user permission
 - Emergency contacts are stored locally on the device
 - No unnecessary data collection or tracking
+- API communications are secured and encrypted
 
 ## Future Enhancements
 
@@ -55,7 +69,9 @@ The app prioritizes user privacy while providing safety features:
 - **Audio/Video Recording**: Quick access to record evidence in threatening situations
 - **Integration with Official Crime Data APIs**: Regular updates from police databases
 - **AI-Powered Risk Prediction**: Use machine learning to predict and prevent potential risks
+- **Expanded City Coverage**: Add more cities to the crime data coverage
 
 ## Credits
 
 Police and crime data sourced from government records and analyzed to provide meaningful safety intelligence. 
+Crime data API provided by [data.gov.in](https://data.gov.in). 
