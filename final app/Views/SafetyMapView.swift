@@ -4,22 +4,39 @@ import MapKit
 struct SafetyMapView: View {
     @StateObject private var locationManager = LocationManager()
     @StateObject private var crimeDataService = CrimeDataService()
+    @StateObject private var newsDataService = NewsDataService()
     
     @State private var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 12.9716, longitude: 77.5946), // Bangalore
-        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
     )
     @State private var selectedPlace: SafePlace?
     @State private var selectedPoliceStation: PoliceStation?
     @State private var selectedCrimeHotspot: CrimeHotspot?
+    @State private var selectedCrimeNews: CrimeNews?
     @State private var showingDirections = false
     @State private var showPoliceStations = true
     @State private var showCrimeHotspots = true
+    @State private var showCrimeNews = true
     @State private var isNightMode = false
     @State private var selectedCity = "Bangalore"
     @State private var filterTimeOfDay: TimePattern?
+    @State private var camera: MapCameraPosition = .region(MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 12.9716, longitude: 77.5946),
+        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+    ))
+    @State private var selectedDangerZone: DangerZone?
+    @State private var showingDangerZoneDetail = false
     
     private let availableCities = ["Bangalore", "Delhi", "Mumbai", "Chennai", "Kolkata"]
+    
+    private let cityCoordinates: [String: CLLocationCoordinate2D] = [
+        "Bangalore": CLLocationCoordinate2D(latitude: 12.9716, longitude: 77.5946),
+        "Delhi": CLLocationCoordinate2D(latitude: 28.6139, longitude: 77.2090),
+        "Mumbai": CLLocationCoordinate2D(latitude: 19.0760, longitude: 72.8777),
+        "Chennai": CLLocationCoordinate2D(latitude: 13.0827, longitude: 80.2707),
+        "Kolkata": CLLocationCoordinate2D(latitude: 22.5726, longitude: 88.3639)
+    ]
     
     // Nearest police stations based on user location
     private var nearestStations: [PoliceStation] {
@@ -44,34 +61,111 @@ struct SafetyMapView: View {
         return hotspots
     }
     
+    private func getDangerColor(for hotspot: CrimeHotspot) -> Color {
+        let opacity: Double
+        switch hotspot.riskLevel {
+        case .high:
+            opacity = 0.4
+        case .medium:
+            opacity = 0.3
+        case .low:
+            opacity = 0.2
+        }
+        return Color.red.opacity(opacity)
+    }
+    
+    private func getDangerRadius(for hotspot: CrimeHotspot) -> CGFloat {
+        let baseRadius: CGFloat
+        switch hotspot.riskLevel {
+        case .high:
+            baseRadius = 200
+        case .medium:
+            baseRadius = 150
+        case .low:
+            baseRadius = 100
+        }
+        
+        // Scale by crime count for visual effect
+        let countFactor = min(CGFloat(hotspot.crimeCount) / 100.0, 2.0)
+        return baseRadius * (1 + countFactor * 0.5)
+    }
+    
     var body: some View {
         ZStack {
-            // Map
-            Map(coordinateRegion: $region,
-                showsUserLocation: true,
-                userTrackingMode: .constant(.follow),
-                annotationItems: showPoliceStations ? nearestStations : []) { station in
-                MapAnnotation(coordinate: station.coordinates) {
-                    PoliceStationMarker(station: station, isSelected: selectedPoliceStation?.id == station.id) {
-                        selectedPoliceStation = station
-                        selectedCrimeHotspot = nil
-                        selectedPlace = nil
+            Map(position: $camera) {
+                // Police Station Markers
+                if showPoliceStations {
+                    ForEach(nearestStations) { station in
+                        Marker(
+                            "Police Station",
+                            coordinate: station.coordinates
+                        )
+                        .tint(.blue)
+                    }
+                }
+                
+                // Crime Hotspots
+                if showCrimeHotspots {
+                    ForEach(nearbyCrimeHotspots) { hotspot in
+                        Marker(
+                            "Crime Hotspot",
+                            coordinate: hotspot.coordinate
+                        )
+                        .tint(.red)
+                    }
+                }
+                
+                // Crime News Markers
+                if showCrimeNews {
+                    ForEach(newsDataService.crimeNews.filter { $0.coordinates != nil }) { news in
+                        if let coordinates = news.coordinates {
+                            Marker(
+                                news.title,
+                                coordinate: coordinates
+                            )
+                            .tint(.orange)
+                        }
+                    }
+                }
+                
+                if let userLocation = locationManager.location {
+                    UserAnnotation()
+                }
+                
+                // Safe Zones
+                ForEach(newsDataService.safeZones) { zone in
+                    MapCircle(
+                        center: zone.coordinate,
+                        radius: 500 // 500 meters radius
+                    )
+                    .foregroundStyle(.green.opacity(0.2))
+                    .stroke(.green, lineWidth: 2)
+                }
+                
+                // Danger Zones
+                if showCrimeHotspots {
+                    ForEach(nearbyCrimeHotspots) { hotspot in
+                        MapCircle(
+                            center: hotspot.coordinate,
+                            radius: Double(getDangerRadius(for: hotspot))
+                        )
+                        .foregroundStyle(.red.opacity(0.2))
+                        .stroke(.red, lineWidth: 2)
                     }
                 }
             }
-            .overlay(
-                showCrimeHotspots ?
-                CrimeHotspotsOverlay(
-                    hotspots: nearbyCrimeHotspots,
-                    onSelect: { hotspot in
-                        selectedCrimeHotspot = hotspot
-                        selectedPoliceStation = nil
-                        selectedPlace = nil
-                    },
-                    selectedHotspotID: selectedCrimeHotspot?.id
-                ) : nil
-            )
+            .mapStyle(isNightMode ? .hybrid : .standard)
             .ignoresSafeArea()
+            .onChange(of: selectedCity) { newCity in
+                if let coordinates = cityCoordinates[newCity] {
+                    withAnimation {
+                        camera = .region(MKCoordinateRegion(
+                            center: coordinates,
+                            span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+                        ))
+                    }
+                }
+            }
             
             // Navigation Overlay
             VStack {
@@ -101,7 +195,12 @@ struct SafetyMapView: View {
                         
                         Toggle("Show Police Stations", isOn: $showPoliceStations)
                         Toggle("Show Crime Hotspots", isOn: $showCrimeHotspots)
+                        Toggle("Show Recent Crime News", isOn: $showCrimeNews)
                         Toggle("Night Mode", isOn: $isNightMode)
+                        
+                        Button("Test API Connection") {
+                            newsDataService.testAPI()
+                        }
                     } label: {
                         Image(systemName: "line.3.horizontal")
                             .foregroundColor(.white)
@@ -114,6 +213,8 @@ struct SafetyMapView: View {
                         SafetyLocationBadge(title: station.name, subtitle: "Police Station")
                     } else if let hotspot = selectedCrimeHotspot {
                         CrimeHotspotBadge(hotspot: hotspot)
+                    } else if let news = selectedCrimeNews {
+                        CrimeNewsBadge(news: news)
                     } else if let place = selectedPlace {
                         SafetyLocationBadge(title: place.name, subtitle: "Safe Zone")
                     } else {
@@ -149,6 +250,8 @@ struct SafetyMapView: View {
                     }
                 } else if let station = selectedPoliceStation {
                     PoliceStationDetailCard(station: station)
+                } else if let news = selectedCrimeNews {
+                    CrimeNewsDetailCard(news: news)
                 } else if showingDirections {
                     NavigationInstructionView()
                 }
@@ -186,70 +289,45 @@ struct SafetyMapView: View {
                     }
                 }
                 .padding()
+                
+                // Safety Legend
+                HStack(spacing: 20) {
+                    HStack {
+                        Circle()
+                            .fill(Color.red.opacity(0.3))
+                            .frame(width: 20, height: 20)
+                        Text("Danger Zone")
+                            .font(.caption)
+                            .foregroundColor(.red)
+                    }
+                    
+                    HStack {
+                        Circle()
+                            .fill(Color.green.opacity(0.3))
+                            .frame(width: 20, height: 20)
+                        Text("Safe Zone")
+                            .font(.caption)
+                            .foregroundColor(.green)
+                    }
+                }
+                .padding()
+                .background(Color.black.opacity(0.7))
+                .cornerRadius(10)
             }
         }
         .preferredColorScheme(isNightMode ? .dark : .light)
         .onAppear {
-            crimeDataService.fetchCrimeData()
-        }
-    }
-}
-
-struct CrimeHotspotsOverlay: View {
-    let hotspots: [CrimeHotspot]
-    let onSelect: (CrimeHotspot) -> Void
-    let selectedHotspotID: UUID?
-    
-    var body: some View {
-        ZStack {
-            ForEach(hotspots) { hotspot in
-                Circle()
-                    .fill(hotspot.color.opacity(0.2))
-                    .frame(width: getCrimeRadius(for: hotspot))
-                    .position(
-                        x: hotspot.coordinate.longitude,
-                        y: hotspot.coordinate.latitude
-                    )
-                
-                Button(action: { onSelect(hotspot) }) {
-                    VStack {
-                        Image(systemName: "exclamationmark.triangle.fill")
-                            .foregroundColor(hotspot.color)
-                            .font(.system(size: selectedHotspotID == hotspot.id ? 30 : 24))
-                            .shadow(color: .black, radius: 2)
-                        
-                        if selectedHotspotID == hotspot.id {
-                            Text("\(hotspot.crimeCount)")
-                                .font(.caption)
-                                .padding(4)
-                                .background(Color.black.opacity(0.7))
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                        }
-                    }
-                }
-                .position(
-                    x: hotspot.coordinate.longitude,
-                    y: hotspot.coordinate.latitude
-                )
+            // Set initial camera position to Bangalore
+            if let coordinates = cityCoordinates["Bangalore"] {
+                camera = .region(MKCoordinateRegion(
+                    center: coordinates,
+                    span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+                ))
             }
+            crimeDataService.fetchCrimeData()
+            newsDataService.fetchCrimeNews { _ in }
+            newsDataService.testAPI()
         }
-    }
-    
-    private func getCrimeRadius(for hotspot: CrimeHotspot) -> CGFloat {
-        let baseRadius: CGFloat
-        switch hotspot.riskLevel {
-        case .high:
-            baseRadius = 120
-        case .medium:
-            baseRadius = 100
-        case .low:
-            baseRadius = 80
-        }
-        
-        // Scale by crime count for visual effect
-        let countFactor = min(CGFloat(hotspot.crimeCount) / 100.0, 2.0)
-        return baseRadius * (1 + countFactor * 0.5)
     }
 }
 
@@ -538,6 +616,102 @@ struct DangerLevelIndicator: View {
         .padding(.vertical, 8)
         .background(isInDangerZone ? Color.red.opacity(0.3) : Color.green.opacity(0.3))
         .cornerRadius(20)
+    }
+}
+
+// New Crime News Badge
+struct CrimeNewsBadge: View {
+    let news: CrimeNews
+    
+    var body: some View {
+        HStack(spacing: 8) {
+            Image(systemName: "newspaper.fill")
+                .foregroundColor(.red)
+            
+            VStack(alignment: .leading) {
+                Text(news.title)
+                    .font(.subheadline)
+                    .foregroundColor(.white)
+                
+                Text(news.pubDate)
+                    .font(.caption)
+                    .foregroundColor(.gray)
+            }
+        }
+        .padding(.horizontal)
+        .padding(.vertical, 8)
+        .background(AppTheme.darkGray.opacity(0.8))
+        .cornerRadius(20)
+    }
+}
+
+// New Crime News Detail Card
+struct CrimeNewsDetailCard: View {
+    let news: CrimeNews
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                Image(systemName: "newspaper.fill")
+                    .foregroundColor(.red)
+                
+                Text("Recent Crime News")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                
+                Spacer()
+                
+                Text(news.pubDate)
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+            }
+            
+            Divider()
+                .background(Color.gray.opacity(0.3))
+            
+            VStack(alignment: .leading, spacing: 8) {
+                Text(news.title)
+                    .font(.headline)
+                    .foregroundColor(.white)
+                
+                if let description = news.description {
+                    Text(description)
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                }
+                
+                if let content = news.content {
+                    Text(content)
+                        .font(.subheadline)
+                        .foregroundColor(.white)
+                }
+                
+                HStack {
+                    Spacer()
+                    
+                    Button(action: {
+                        if let url = URL(string: news.link) {
+                            UIApplication.shared.open(url)
+                        }
+                    }) {
+                        HStack {
+                            Image(systemName: "link")
+                            Text("Read More")
+                        }
+                        .font(.caption)
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
+                        .background(Color.blue)
+                        .cornerRadius(15)
+                    }
+                }
+            }
+        }
+        .padding()
+        .background(AppTheme.darkGray)
+        .cornerRadius(15)
+        .padding(.horizontal)
     }
 }
 
