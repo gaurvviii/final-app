@@ -221,91 +221,109 @@ struct SafetyMapView: View {
             // Navigation Overlay
             VStack(spacing: 0) {
                 // Top Bar
-                HStack {
-                    Menu {
-                        Picker("City", selection: $selectedCity) {
-                            ForEach(availableCities, id: \.self) { city in
-                                Text(city).tag(city)
+                VStack(spacing: 12) {
+                    // Menu and Night Mode
+                    HStack {
+                        Menu {
+                            Picker("City", selection: $selectedCity) {
+                                ForEach(availableCities, id: \.self) { city in
+                                    Text(city).tag(city)
+                                }
                             }
+                            
+                            Picker("Year", selection: $selectedYear) {
+                                Text("All Years").tag(nil as Int?)
+                                ForEach(availableYears, id: \.self) { year in
+                                    Text("\(year)").tag(year as Int?)
+                                }
+                            }
+                            
+                            Menu("Time of Day") {
+                                Button("All Times") {
+                                    filterTimeOfDay = nil
+                                }
+                                Button("Night (9PM - 5AM)") {
+                                    filterTimeOfDay = .night
+                                }
+                                Button("Evening (5PM - 9PM)") {
+                                    filterTimeOfDay = .evening
+                                }
+                                Button("Day (5AM - 5PM)") {
+                                    filterTimeOfDay = .day
+                                }
+                            }
+                        } label: {
+                            Image(systemName: "line.3.horizontal.decrease.circle")
+                                .font(.title2)
+                                .foregroundColor(.white)
+                                .padding()
+                                .background(AppTheme.primaryPurple)
+                                .cornerRadius(10)
                         }
                         
-                        Picker("Year", selection: $selectedYear) {
-                            Text("All Years").tag(nil as Int?)
-                            ForEach(availableYears, id: \.self) { year in
-                                Text("\(year)").tag(year as Int?)
-                            }
-                        }
+                        Spacer()
                         
-                        Menu("Time of Day") {
-                            Button("All Times") {
-                                filterTimeOfDay = nil
-                            }
-                            Button("Night (9PM - 5AM)") {
-                                filterTimeOfDay = .night
-                            }
-                            Button("Evening (5PM - 9PM)") {
-                                filterTimeOfDay = .evening
-                            }
-                            Button("Day (5AM - 5PM)") {
-                                filterTimeOfDay = .day
-                            }
+                        Button(action: {
+                            isNightMode.toggle()
+                        }) {
+                            Image(systemName: isNightMode ? "sun.max.fill" : "moon.fill")
+                                .font(.title2)
+                                .foregroundColor(.white)
+                                .padding()
+                                .background(AppTheme.primaryPurple)
+                                .cornerRadius(10)
                         }
-                    } label: {
-                        Image(systemName: "line.3.horizontal.decrease.circle")
-                            .font(.title2)
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(AppTheme.primaryPurple)
-                            .cornerRadius(10)
                     }
                     
-                    Spacer()
-                    
-                    Button(action: {
-                        isNightMode.toggle()
-                    }) {
-                        Image(systemName: isNightMode ? "sun.max.fill" : "moon.fill")
-                            .font(.title2)
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(AppTheme.primaryPurple)
-                            .cornerRadius(10)
+                    // Toggle Buttons
+                    HStack(spacing: 8) {
+                        ToggleButton(
+                            isOn: $showPoliceStations,
+                            icon: "building.columns.fill",
+                            label: "Police"
+                        )
+                        
+                        ToggleButton(
+                            isOn: $showMetroStations,
+                            icon: "tram.fill",
+                            label: "Metro"
+                        )
+                        
+                        ToggleButton(
+                            isOn: $showCrimeHotspots,
+                            icon: "exclamationmark.triangle.fill",
+                            label: "Crime"
+                        )
+                        
+                        ToggleButton(
+                            isOn: $showCrimeNews,
+                            icon: "newspaper.fill",
+                            label: "News"
+                        )
                     }
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 8)
+                    .background(AppTheme.darkGray.opacity(0.9))
+                    .cornerRadius(15)
                 }
                 .padding()
+                .background(Color.black.opacity(0.2))
                 
                 Spacer()
                 
-                // Bottom Controls
-                HStack {
-                    ToggleButton(
-                        isOn: $showPoliceStations,
-                        icon: "building.columns.fill",
-                        label: "Police"
-                    )
-                    
-                    ToggleButton(
-                        isOn: $showMetroStations,
-                        icon: "tram.fill",
-                        label: "Metro"
-                    )
-                    
-                    ToggleButton(
-                        isOn: $showCrimeHotspots,
-                        icon: "exclamationmark.triangle.fill",
-                        label: "Crime"
-                    )
-                    
-                    ToggleButton(
-                        isOn: $showCrimeNews,
-                        icon: "newspaper.fill",
-                        label: "News"
-                    )
+                // SOS Button
+                Button(action: {
+                    // Handle SOS action
+                }) {
+                    Text("SOS")
+                        .font(.title2.bold())
+                        .foregroundColor(.white)
+                        .frame(width: 80, height: 80)
+                        .background(Color.red)
+                        .clipShape(Circle())
+                        .shadow(radius: 5)
                 }
-                .padding()
-                .background(AppTheme.darkGray.opacity(0.9))
-                .cornerRadius(15)
-                .padding()
+                .padding(.bottom, 30)
             }
         }
     }
@@ -320,14 +338,14 @@ struct ToggleButton: View {
         Button(action: {
             isOn.toggle()
         }) {
-            VStack {
+            VStack(spacing: 4) {
                 Image(systemName: icon)
-                    .font(.title2)
+                    .font(.system(size: 16))
                 Text(label)
-                    .font(.caption)
+                    .font(.system(size: 10))
             }
             .foregroundColor(isOn ? .white : .gray)
-            .padding()
+            .frame(width: 50, height: 50)
             .background(isOn ? AppTheme.primaryPurple : AppTheme.darkGray)
             .cornerRadius(10)
         }
