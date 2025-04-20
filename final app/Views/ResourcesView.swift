@@ -1,4 +1,5 @@
 import SwiftUI
+import MapKit
 
 struct ResourcesView: View {
     @State private var selectedTab = 0

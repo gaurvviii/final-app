@@ -4,113 +4,129 @@ import MapKit
 struct PoliceStation: Identifiable {
     let id = UUID()
     let name: String
-    let stationCode: String
-    let address: String
     let phoneNumber: String
-    let division: String
-    let coordinates: CLLocationCoordinate2D
+    let coordinate: CLLocationCoordinate2D
+    let address: String
+    var distance: Double = 0.0  // Added distance property
     
-    var distance: Double = 0.0 // Will be calculated based on user location
+    // Helper function to extract coordinates from address
+    static func extractCoordinates(from address: String) -> CLLocationCoordinate2D {
+        // This is a placeholder - in a real app, you would use geocoding
+        // For now, we'll use some default coordinates for Bangalore
+        return CLLocationCoordinate2D(latitude: 12.9716, longitude: 77.5946)
+    }
+    
+    // Helper function to extract phone number from address
+    static func extractPhoneNumber(from address: String) -> String {
+        let pattern = "Ph no\\.\\s*([\\d-]+)"
+        if let regex = try? NSRegularExpression(pattern: pattern),
+           let match = regex.firstMatch(in: address, range: NSRange(address.startIndex..., in: address)),
+           let range = Range(match.range(at: 1), in: address) {
+            return String(address[range])
+        }
+        return ""
+    }
+    
+    // Helper function to clean address
+    static func cleanAddress(_ address: String) -> String {
+        return address.replacingOccurrences(of: "Ph no\\..*$", with: "", options: .regularExpression)
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+    }
 }
 
-// Sample data from the CSV file
-let bangalorePoliceStations: [PoliceStation] = [
+// Bangalore Women's Police Stations data
+let bangalorePoliceStations = [
     PoliceStation(
-        name: "Cubbon Park",
-        stationCode: "1644315",
-        address: "7 Cubbon Park Police Station, Kasturba Road, Bangalore 560001",
-        phoneNumber: "080-22942675",
-        division: "Central Division",
-        coordinates: CLLocationCoordinate2D(latitude: 12.9762, longitude: 77.5929)
+        name: "Women's Police Station, Cubbon Park",
+        phoneNumber: "080-2294-2222",
+        coordinate: CLLocationCoordinate2D(latitude: 12.9766, longitude: 77.5713),
+        address: "Cubbon Park, Bengaluru"
     ),
     PoliceStation(
-        name: "Vidhanasoudha",
-        stationCode: "1644390",
-        address: "Vidhana Soudha West Gate, Bangalore 560001",
-        phoneNumber: "080-22942590",
-        division: "Central Division",
-        coordinates: CLLocationCoordinate2D(latitude: 12.9797, longitude: 77.5912)
+        name: "Women's Police Station, Koramangala",
+        phoneNumber: "080-2573-1000",
+        coordinate: CLLocationCoordinate2D(latitude: 12.9352, longitude: 77.6245),
+        address: "Koramangala, Bengaluru"
     ),
     PoliceStation(
-        name: "Ulsoor",
-        stationCode: "1644384",
-        address: "Ulsoor, Bangalore 560008",
-        phoneNumber: "080-22942540",
-        division: "East Division",
-        coordinates: CLLocationCoordinate2D(latitude: 12.9718, longitude: 77.6186)
+        name: "Women's Police Station, Whitefield",
+        phoneNumber: "080-2841-1000",
+        coordinate: CLLocationCoordinate2D(latitude: 12.9698, longitude: 77.7499),
+        address: "Whitefield, Bengaluru"
     ),
     PoliceStation(
-        name: "Indiranagar",
-        stationCode: "1644337",
-        address: "Indira Nagar P.S., Old Madras Road, Bangalore 560038",
-        phoneNumber: "080-22942658",
-        division: "East Division",
-        coordinates: CLLocationCoordinate2D(latitude: 12.9784, longitude: 77.6408)
+        name: "Women's Police Station, Malleswaram",
+        phoneNumber: "080-2334-1000",
+        coordinate: CLLocationCoordinate2D(latitude: 13.0067, longitude: 77.5751),
+        address: "Malleswaram, Bengaluru"
     ),
     PoliceStation(
-        name: "Koramangala",
-        stationCode: "1644350",
-        address: "No.8/A, 20th Main, 6th Block, Koramangala, Bangalore 560095",
-        phoneNumber: "080-25503726",
-        division: "South East Division",
-        coordinates: CLLocationCoordinate2D(latitude: 12.9352, longitude: 77.6245)
-    ),
-    PoliceStation(
-        name: "J.P. Nagar",
-        stationCode: "1644344",
-        address: "Ca Site No.36, 21st Main, 7th Cross, 2nd Phase, J.P.Nagar, Bangalore 560078",
-        phoneNumber: "080-22942563",
-        division: "South Division",
-        coordinates: CLLocationCoordinate2D(latitude: 12.9102, longitude: 77.5922)
-    ),
-    PoliceStation(
-        name: "Jayanagar",
-        stationCode: "1644341",
-        address: "No 7677, Swagath Main Road, 30th Cross Tilak Nagar, Bangalore",
-        phoneNumber: "080-22942562",
-        division: "South Division",
-        coordinates: CLLocationCoordinate2D(latitude: 12.9299, longitude: 77.5932)
-    ),
-    PoliceStation(
-        name: "Women Police Station",
-        stationCode: "1644362",
-        address: "Banashankari, Bangalore",
-        phoneNumber: "080-22943250",
-        division: "South Division",
-        coordinates: CLLocationCoordinate2D(latitude: 12.9141, longitude: 77.5673)
-    ),
-    PoliceStation(
-        name: "Hebbal",
-        stationCode: "1644334",
-        address: "Hebbala P.S., Hebbala, Bellary Road, Bangalore 560024",
-        phoneNumber: "080-22942535",
-        division: "North Division",
-        coordinates: CLLocationCoordinate2D(latitude: 13.0358, longitude: 77.5970)
-    ),
-    PoliceStation(
-        name: "Malleswaram",
-        stationCode: "1644357",
-        address: "Malleswaram P.S. No.47, 5th cross, M.K.K. Road, Malleswaram, Bangalore 560003",
-        phoneNumber: "080-22942519",
-        division: "North Division",
-        coordinates: CLLocationCoordinate2D(latitude: 12.9955, longitude: 77.5706)
+        name: "Women's Police Station, Jayanagar",
+        phoneNumber: "080-2663-1000",
+        coordinate: CLLocationCoordinate2D(latitude: 12.9304, longitude: 77.5834),
+        address: "Jayanagar, Bengaluru"
     )
 ]
 
-// Function to find nearest police stations to a given location
-func nearestPoliceStations(to location: CLLocation, limit: Int = 5) -> [PoliceStation] {
-    var stations = bangalorePoliceStations
+// Data service to load and manage police station data
+class PoliceDataService: ObservableObject {
+    @Published var policeStations: [PoliceStation] = []
+    @Published var isLoading = false
+    @Published var errorMessage: String?
     
-    // Calculate distance for each station
-    for i in 0..<stations.count {
-        let stationLocation = CLLocation(
-            latitude: stations[i].coordinates.latitude,
-            longitude: stations[i].coordinates.longitude
-        )
-        let distance = location.distance(from: stationLocation)
-        stations[i].distance = distance
+    func loadPoliceStations() {
+        isLoading = true
+        errorMessage = nil
+        
+        // Read the CSV file
+        if let path = Bundle.main.path(forResource: "police_data", ofType: "csv"),
+           let content = try? String(contentsOfFile: path, encoding: .utf8) {
+            let rows = content.components(separatedBy: .newlines)
+            
+            // Skip header row
+            let dataRows = rows.dropFirst()
+            
+            policeStations = dataRows.compactMap { row in
+                let columns = row.components(separatedBy: ",")
+                guard columns.count >= 6 else { return nil }
+                
+                let name = columns[2].trimmingCharacters(in: .whitespacesAndNewlines)
+                let address = name // Using name as address for now
+                
+                return PoliceStation(
+                    name: name,
+                    phoneNumber: PoliceStation.extractPhoneNumber(from: address),
+                    coordinate: PoliceStation.extractCoordinates(from: address),
+                    address: PoliceStation.cleanAddress(address)
+                )
+            }
+        } else {
+            errorMessage = "Failed to load police station data"
+        }
+        
+        isLoading = false
     }
     
-    // Sort by distance and return the closest ones
-    return stations.sorted { $0.distance < $1.distance }.prefix(limit).map { $0 }
+    func getNearbyPoliceStations(to location: CLLocation, radiusInMeters: Double = 5000) -> [PoliceStation] {
+        var nearbyStations: [PoliceStation] = []
+        
+        for station in policeStations {
+            let stationLocation = CLLocation(
+                latitude: station.coordinate.latitude,
+                longitude: station.coordinate.longitude
+            )
+            
+            let distance = location.distance(from: stationLocation)
+            if distance <= radiusInMeters {
+                var updatedStation = station
+                updatedStation.distance = distance
+                nearbyStations.append(updatedStation)
+            }
+        }
+        
+        // Sort by distance using explicit closure
+        return nearbyStations.sorted { (station1: PoliceStation, station2: PoliceStation) -> Bool in
+            return station1.distance < station2.distance
+        }
+    }
 } 

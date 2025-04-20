@@ -96,6 +96,50 @@ class NewsDataService: ObservableObject {
         task.resume()
     }
     
+    func fetchCrimeNews(completion: @escaping (Result<[CrimeNews], Error>) -> Void) {
+        var components = URLComponents(string: baseURL)!
+        components.queryItems = [
+            URLQueryItem(name: "apikey", value: apiKey),
+            URLQueryItem(name: "q", value: "crime women"),
+            URLQueryItem(name: "country", value: "in"),
+            URLQueryItem(name: "language", value: "en"),
+            URLQueryItem(name: "size", value: "10")
+        ]
+        
+        guard let url = components.url else {
+            completion(.failure(URLError(.badURL)))
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(URLError(.badServerResponse)))
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(NewsResponse.self, from: data)
+                
+                DispatchQueue.main.async {
+                    self?.crimeNews = response.articles
+                    self?.processLocations(from: response.articles)
+                    self?.updateSafeZones()
+                    completion(.success(response.articles))
+                }
+            } catch {
+                completion(.failure(error))
+            }
+        }
+        
+        task.resume()
+    }
+    
     private func processLocations(from news: [CrimeNews]) {
         for article in news {
             // Extract location from title and description
@@ -183,52 +227,6 @@ class NewsDataService: ObservableObject {
                 }
             }
         }
-    }
-    
-    func fetchCrimeNews(completion: @escaping (Result<[CrimeNews], Error>) -> Void) {
-        var components = URLComponents(string: baseURL)!
-        components.queryItems = [
-            URLQueryItem(name: "apikey", value: apiKey),
-            URLQueryItem(name: "q", value: "crime women"),
-            URLQueryItem(name: "country", value: "in"),
-            URLQueryItem(name: "language", value: "en")
-        ]
-        
-        guard let url = components.url else {
-            completion(.failure(URLError(.badURL)))
-            return
-        }
-        
-        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-            
-            guard let data = data else {
-                completion(.failure(URLError(.badServerResponse)))
-                return
-            }
-            
-            do {
-                let decoder = JSONDecoder()
-                let newsResponse = try decoder.decode(NewsResponse.self, from: data)
-                
-                // Process locations and extract coordinates
-                Task {
-                    await self?.processNewsLocations()
-                }
-                
-                DispatchQueue.main.async {
-                    self?.crimeNews = newsResponse.articles
-                    completion(.success(newsResponse.articles))
-                }
-            } catch {
-                completion(.failure(error))
-            }
-        }
-        
-        task.resume()
     }
     
     private func updateSafeZones() {
