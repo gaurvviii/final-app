@@ -12,6 +12,7 @@ struct MetroStation: Identifiable {
     let layout: StationLayout
     let abbreviation: String
     let coordinate: CLLocationCoordinate2D
+    var distance: Double = 0.0
     
     enum MetroLine: String {
         case purple = "Purple Line"
@@ -31,66 +32,65 @@ class MetroDataService: ObservableObject {
     @Published var isLoading = false
     @Published var errorMessage: String?
     
+
+    init() {
+        loadMetroStations()
+    }
+    
     func loadMetroStations() {
         isLoading = true
         errorMessage = nil
         
-        // Read the CSV file
-        if let path = Bundle.main.path(forResource: "Namma_Metro_stations(Bengaluru)", ofType: "csv"),
-           let content = try? String(contentsOfFile: path, encoding: .utf8) {
-            let rows = content.components(separatedBy: .newlines)
-            
-            // Skip header row
-            let dataRows = rows.dropFirst()
-            
-            metroStations = dataRows.compactMap { row in
-                let columns = row.components(separatedBy: ",")
-                guard columns.count >= 8 else { return nil }
-                
-                let number = Int(columns[0]) ?? 0
-                let name = columns[1].trimmingCharacters(in: .whitespacesAndNewlines)
-                let kannadaName = columns[2].trimmingCharacters(in: .whitespacesAndNewlines)
-                let line = MetroStation.MetroLine(rawValue: columns[3].trimmingCharacters(in: .whitespacesAndNewlines)) ?? .purple
-                let openedDate = parseDate(columns[4])
-                let day = columns[5].trimmingCharacters(in: .whitespacesAndNewlines)
-                let layout = MetroStation.StationLayout(rawValue: columns[6].trimmingCharacters(in: .whitespacesAndNewlines)) ?? .elevated
-                let abbreviation = columns[7].trimmingCharacters(in: .whitespacesAndNewlines)
-                
-                return MetroStation(
-                    number: number,
-                    name: name,
-                    kannadaName: kannadaName,
-                    line: line,
-                    openedDate: openedDate,
-                    day: day,
-                    layout: layout,
-                    abbreviation: abbreviation,
-                    coordinate: extractCoordinates(from: name)
-                )
-            }
-        } else {
-            errorMessage = "Failed to load metro station data"
-        }
-        
+        // Use local data
+        metroStations = [
+            MetroStation(
+                number: 1,
+                name: "Baiyappanahalli",
+                kannadaName: "ಬೈಯಪ್ಪನಹಳ್ಳಿ",
+                line: .purple,
+                openedDate: Date(),
+                day: "Monday",
+                layout: .elevated,
+                abbreviation: "BYPL",
+                coordinate: CLLocationCoordinate2D(latitude: 12.9716, longitude: 77.5946)
+            ),
+            MetroStation(
+                number: 2,
+                name: "Swami Vivekananda Road",
+                kannadaName: "ಸ್ವಾಮಿ ವಿವೇಕಾನಂದ ರಸ್ತೆ",
+                line: .purple,
+                openedDate: Date(),
+                day: "Monday",
+                layout: .elevated,
+                abbreviation: "SVRO",
+                coordinate: CLLocationCoordinate2D(latitude: 12.9816, longitude: 77.6046)
+            ),
+            MetroStation(
+                number: 3,
+                name: "Indiranagar",
+                kannadaName: "ಇಂದಿರಾನಗರ",
+                line: .purple,
+                openedDate: Date(),
+                day: "Monday",
+                layout: .elevated,
+                abbreviation: "INDA",
+                coordinate: CLLocationCoordinate2D(latitude: 12.9916, longitude: 77.6146)
+            )
+        ]
         isLoading = false
     }
     
-    private func parseDate(_ dateString: String) -> Date {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MMM-yy"
-        return formatter.date(from: dateString) ?? Date()
-    }
-    
-    private func extractCoordinates(from stationName: String) -> CLLocationCoordinate2D {
-        // This is a placeholder - in a real app, you would use geocoding
-        // For now, we'll use some default coordinates for Bangalore
-        return CLLocationCoordinate2D(latitude: 12.9716, longitude: 77.5946)
-    }
-    
-    func getNearbyMetroStations(to location: CLLocation, radiusInMeters: Double = 2000) -> [MetroStation] {
-        return metroStations.filter { station in
-            let stationLocation = CLLocation(latitude: station.coordinate.latitude, longitude: station.coordinate.longitude)
-            return stationLocation.distance(from: location) <= radiusInMeters
+    func getNearbyMetroStations(to location: CLLocation) -> [MetroStation] {
+        return metroStations.map { station in
+            var updatedStation = station
+            let stationLocation = CLLocation(
+                latitude: station.coordinate.latitude,
+                longitude: station.coordinate.longitude
+            )
+            updatedStation.distance = location.distance(from: stationLocation)
+            return updatedStation
+        }.sorted { (station1: MetroStation, station2: MetroStation) -> Bool in
+            return station1.distance < station2.distance
         }
     }
     

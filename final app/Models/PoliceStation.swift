@@ -74,59 +74,28 @@ class PoliceDataService: ObservableObject {
     @Published var isLoading = false
     @Published var errorMessage: String?
     
+    init() {
+        loadPoliceStations()
+    }
+    
     func loadPoliceStations() {
         isLoading = true
         errorMessage = nil
         
-        // Read the CSV file
-        if let path = Bundle.main.path(forResource: "police_data", ofType: "csv"),
-           let content = try? String(contentsOfFile: path, encoding: .utf8) {
-            let rows = content.components(separatedBy: .newlines)
-            
-            // Skip header row
-            let dataRows = rows.dropFirst()
-            
-            policeStations = dataRows.compactMap { row in
-                let columns = row.components(separatedBy: ",")
-                guard columns.count >= 6 else { return nil }
-                
-                let name = columns[2].trimmingCharacters(in: .whitespacesAndNewlines)
-                let address = name // Using name as address for now
-                
-                return PoliceStation(
-                    name: name,
-                    phoneNumber: PoliceStation.extractPhoneNumber(from: address),
-                    coordinate: PoliceStation.extractCoordinates(from: address),
-                    address: PoliceStation.cleanAddress(address)
-                )
-            }
-        } else {
-            errorMessage = "Failed to load police station data"
-        }
-        
+        // Use local data
+        policeStations = bangalorePoliceStations
         isLoading = false
     }
     
-    func getNearbyPoliceStations(to location: CLLocation, radiusInMeters: Double = 5000) -> [PoliceStation] {
-        var nearbyStations: [PoliceStation] = []
-        
-        for station in policeStations {
+    func getNearbyPoliceStations(to location: CLLocation) -> [PoliceStation] {
+        return policeStations.map { station in
+            var updatedStation = station
             let stationLocation = CLLocation(
                 latitude: station.coordinate.latitude,
                 longitude: station.coordinate.longitude
             )
-            
-            let distance = location.distance(from: stationLocation)
-            if distance <= radiusInMeters {
-                var updatedStation = station
-                updatedStation.distance = distance
-                nearbyStations.append(updatedStation)
-            }
-        }
-        
-        // Sort by distance using explicit closure
-        return nearbyStations.sorted { (station1: PoliceStation, station2: PoliceStation) -> Bool in
-            return station1.distance < station2.distance
-        }
+            updatedStation.distance = location.distance(from: stationLocation)
+            return updatedStation
+        }.sorted { $0.distance < $1.distance }
     }
 } 

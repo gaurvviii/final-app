@@ -463,6 +463,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     override init() {
         super.init()
+        print("🗺️ LocationManager initialized")
         setupLocationManager()
     }
     
@@ -473,24 +474,34 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         
         // Get current authorization status
         authorizationStatus = locationManager.authorizationStatus
+        print("📍 Current location authorization status: \(authorizationStatus.description)")
         
         // Set up based on current authorization
         configureBasedOnAuthorizationStatus()
     }
     
     func requestLocationPermissions() {
-        // Request authorization
+        print("🔐 Requesting location permissions...")
         locationManager.requestWhenInUseAuthorization()
     }
     
     private func configureBasedOnAuthorizationStatus() {
+        print("⚙️ Configuring location manager based on status: \(authorizationStatus.description)")
         switch authorizationStatus {
         case .authorizedAlways:
+            print("✅ Always authorization granted, setting up background updates")
             setupBackgroundLocationUpdates()
         case .authorizedWhenInUse:
+            print("✅ When in use authorization granted, starting location updates")
             locationManager.startUpdatingLocation()
-        default:
-            break
+        case .denied:
+            print("❌ Location access denied by user")
+        case .restricted:
+            print("⚠️ Location access restricted")
+        case .notDetermined:
+            print("⏳ Location authorization not determined")
+        @unknown default:
+            print("❓ Unknown authorization status")
         }
     }
     
@@ -499,14 +510,16 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         locationManager.pausesLocationUpdatesAutomatically = false
         locationManager.showsBackgroundLocationIndicator = true
         locationManager.startUpdatingLocation()
+        print("🔄 Background location updates configured")
     }
     
     func enableBackgroundUpdates() {
+        print("🔄 Attempting to enable background updates...")
         if authorizationStatus == .authorizedWhenInUse {
-            // If we only have "when in use" permission, request "always" permission
+            print("📱 Requesting always authorization")
             locationManager.requestAlwaysAuthorization()
         } else if authorizationStatus == .authorizedAlways {
-            // If we already have "always" permission, start background updates
+            print("✅ Already have always authorization, setting up background updates")
             setupBackgroundLocationUpdates()
         }
     }
@@ -516,6 +529,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         
         // Update location
         self.location = location
+        print("📍 Location updated: \(location.coordinate.latitude), \(location.coordinate.longitude)")
         
         // Update region for map
         DispatchQueue.main.async {
@@ -527,15 +541,29 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Location manager failed with error: \(error.localizedDescription)")
+        print("❌ Location manager failed with error: \(error.localizedDescription)")
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         DispatchQueue.main.async {
             self.authorizationStatus = manager.authorizationStatus
+            print("🔐 Location authorization changed to: \(self.authorizationStatus.description)")
         }
         
         configureBasedOnAuthorizationStatus()
+    }
+}
+
+extension CLAuthorizationStatus {
+    var description: String {
+        switch self {
+        case .notDetermined: return "Not Determined"
+        case .restricted: return "Restricted"
+        case .denied: return "Denied"
+        case .authorizedAlways: return "Always"
+        case .authorizedWhenInUse: return "When in Use"
+        @unknown default: return "Unknown"
+        }
     }
 }
 

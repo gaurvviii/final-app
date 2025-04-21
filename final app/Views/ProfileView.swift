@@ -10,6 +10,13 @@ struct ProfileView: View {
     @State private var locationTrackingEnabled = true
     @State private var autoRecordEnabled = false
     
+    private let emergencyNumbers = [
+        ("Police", "100"),
+        ("Women's Helpline", "1091"),
+        ("Ambulance", "108"),
+        ("Fire", "101")
+    ]
+    
     var body: some View {
         ZStack {
             AppTheme.nightBlack.edgesIgnoringSafeArea(.all)
@@ -83,7 +90,7 @@ struct ProfileView: View {
                             title: "Emergency Contacts",
                             icon: "person.2.fill",
                             color: AppTheme.primaryPurple,
-                            destination: AnyView(EmergencyContactsView())
+                            destination: AnyView(EmergencyContactsView(emergencyNumbers: emergencyNumbers))
                         )
                         
                         TextSettingRow(

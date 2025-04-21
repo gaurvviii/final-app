@@ -6,6 +6,8 @@ struct EmergencyContactsView: View {
     @State private var showingAddContact = false
     @State private var showingDeleteAlert = false
     @State private var contactToDelete: EmergencyContact?
+    let emergencyNumbers: [(String, String)]
+    @Environment(\.dismiss) var dismiss
     
     private var emergencyContacts: [EmergencyContact] {
         if let decoded = try? JSONDecoder().decode([EmergencyContact].self, from: emergencyContactsData) {
@@ -122,6 +124,13 @@ struct EmergencyContactsView: View {
                 }
             } message: {
                 Text("Are you sure you want to delete this contact?")
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Done") {
+                        dismiss()
+                    }
+                }
             }
         }
     }
@@ -275,5 +284,5 @@ struct CustomTextFieldStyle: TextFieldStyle {
 }
 
 #Preview {
-    EmergencyContactsView()
+    EmergencyContactsView(emergencyNumbers: [("Police", "100"), ("Ambulance", "102"), ("Fire", "101")])
 } 
