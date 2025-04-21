@@ -217,47 +217,62 @@ struct SOSView: View {
     }
     
     private func sendEmergencyAlert() {
-        guard let location = locationManager.location else {
-            errorMessage = "Unable to get your current location"
+        // Check for location permission first
+        if locationManager.authorizationStatus == .denied || locationManager.authorizationStatus == .restricted {
+            errorMessage = locationManager.lastError ?? "Location access is required. Please enable location services in Settings."
             showingSendError = true
             return
         }
         
+        // Check for emergency contacts
         if emergencyContacts.isEmpty {
             errorMessage = "No emergency contacts found. Please add contacts in your profile."
             showingSendError = true
             return
         }
         
+        // Start sending process
         isSendingAlert = true
         
-        // Format location data
-        let latitude = location.coordinate.latitude
-        let longitude = location.coordinate.longitude
-        let mapsLink = "https://www.google.com/maps?q=\(latitude),\(longitude)"
+        // Request a fresh location update
+        locationManager.startUpdatingLocation()
         
-        // Construct the message parts
-        let messageParts = [
-            emergencyMessage,
-            "\nCurrent Location:",
-            "Latitude: \(latitude)",
-            "Longitude: \(longitude)",
-            "\nGoogle Maps Link:",
-            mapsLink
-        ]
-        
-        // Join message parts
-        let fullMessage = messageParts.joined(separator: "\n")
-        
-        // Send message to each emergency contact
-        for contact in emergencyContacts {
-            sendMessage(to: contact.phone, message: fullMessage)
-        }
-        
-        // Simulate sending completion
+        // Wait briefly for a location update
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            isSendingAlert = false
-            presentationMode.wrappedValue.dismiss()
+            if let location = locationManager.location {
+                // Format location data
+                let latitude = location.coordinate.latitude
+                let longitude = location.coordinate.longitude
+                let mapsLink = "https://www.google.com/maps?q=\(latitude),\(longitude)"
+                
+                // Construct the message
+                let messageParts = [
+                    emergencyMessage,
+                    "\nCurrent Location:",
+                    "Latitude: \(latitude)",
+                    "Longitude: \(longitude)",
+                    "\nGoogle Maps Link:",
+                    mapsLink
+                ]
+                
+                let fullMessage = messageParts.joined(separator: "\n")
+                
+                // Send to all contacts
+                for contact in emergencyContacts {
+                    sendMessage(to: contact.phone, message: fullMessage)
+                }
+                
+                // Close the view
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    isSendingAlert = false
+                    presentationMode.wrappedValue.dismiss()
+                }
+            } else {
+                // Handle location error
+                isSendingAlert = false
+                errorMessage = locationManager.lastError ?? "Unable to get your current location. Please try again."
+                showingSendError = true
+            }
         }
     }
     
@@ -293,50 +308,44 @@ struct SOSView: View {
             }
             .padding()
             
-            // Current Location Display
-            if let location = locationManager.location {
-                VStack(alignment: .leading, spacing: 15) {
-                    Text("Current Location")
-                        .font(.headline)
-                        .foregroundColor(.white)
+            // Location Status
+            VStack(alignment: .leading, spacing: 15) {
+                Text("Location Status")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                
+                HStack {
+                    Image(systemName: locationManager.location != nil ? "location.fill" : "location.slash.fill")
+                        .foregroundColor(locationManager.location != nil ? .green : .red)
+                        .font(.title3)
                     
-                    HStack {
-                        Image(systemName: "location.fill")
-                            .foregroundColor(.green)
-                            .font(.title3)
-                        
-                        VStack(alignment: .leading) {
-                            Text("Coordinates")
-                                .font(.subheadline)
-                                .foregroundColor(.gray)
+                    VStack(alignment: .leading) {
+                        if let location = locationManager.location {
+                            Text("Location Available")
+                                .foregroundColor(.green)
                             Text("\(location.coordinate.latitude), \(location.coordinate.longitude)")
                                 .font(.caption)
                                 .foregroundColor(.white)
-                        }
-                        
-                        Spacer()
-                        
-                        Button(action: {
-                            UIPasteboard.general.string = "\(location.coordinate.latitude), \(location.coordinate.longitude)"
-                        }) {
-                            Image(systemName: "doc.on.doc.fill")
+                        } else {
+                            Text(locationManager.lastError ?? "Waiting for location...")
+                                .foregroundColor(.red)
+                            if locationManager.authorizationStatus == .denied {
+                                Button("Open Settings") {
+                                    if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
+                                        UIApplication.shared.open(settingsUrl)
+                                    }
+                                }
+                                .font(.caption)
                                 .foregroundColor(AppTheme.primaryPurple)
+                            }
                         }
                     }
-                    
-                    Divider()
-                        .background(Color.gray.opacity(0.3))
-                    
-                    // Mini map preview
-                    MapSnapshotView(coordinate: location.coordinate)
-                        .frame(height: 120)
-                        .cornerRadius(15)
                 }
-                .padding()
-                .background(AppTheme.darkGray.opacity(0.6))
-                .cornerRadius(15)
-                .padding(.horizontal)
             }
+            .padding()
+            .background(AppTheme.darkGray.opacity(0.6))
+            .cornerRadius(15)
+            .padding(.horizontal)
             
             // Emergency Contacts List
             VStack(alignment: .leading, spacing: 10) {
@@ -410,6 +419,10 @@ struct SOSView: View {
         } message: {
             Text(errorMessage)
         }
+        .onAppear {
+            // Request fresh location when view appears
+            locationManager.startUpdatingLocation()
+        }
     }
 }
 
@@ -453,36 +466,174 @@ struct MapSnapshotView: View {
 
 // Location Manager with real-time updates
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
-    private let locationManager = CLLocationManager()
+    let locationManager = CLLocationManager()
     @Published var location: CLLocation?
     @Published var authorizationStatus: CLAuthorizationStatus = .notDetermined
+    @Published var lastError: String?
+    @Published var isSimulated: Bool = false
     @Published var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 0, longitude: 0),
         span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+    )
+    
+    // Simulated location (San Francisco)
+    private let simulatedLocation = CLLocation(
+        coordinate: CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194),
+        altitude: 0,
+        horizontalAccuracy: 10,
+        verticalAccuracy: 10,
+        timestamp: Date()
     )
     
     override init() {
         super.init()
         print("🗺️ LocationManager initialized")
         setupLocationManager()
+        
+        #if DEBUG
+        // Enable simulation by default in debug mode
+        self.isSimulated = true
+        self.useSimulatedLocation()
+        #endif
+    }
+    
+    private func useSimulatedLocation() {
+        if isSimulated {
+            print("🎮 Using simulated location: San Francisco")
+            DispatchQueue.main.async {
+                self.location = self.simulatedLocation
+                self.region = MKCoordinateRegion(
+                    center: self.simulatedLocation.coordinate,
+                    span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                )
+                self.lastError = nil
+            }
+        }
+    }
+    
+    func toggleSimulation() {
+        isSimulated.toggle()
+        if isSimulated {
+            useSimulatedLocation()
+        } else {
+            // Resume real location updates
+            startUpdatingLocation()
+        }
     }
     
     private func setupLocationManager() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 5 // Update location every 5 meters
+        locationManager.distanceFilter = 5
+        locationManager.activityType = .otherNavigation
         
         // Get current authorization status
         authorizationStatus = locationManager.authorizationStatus
         print("📍 Current location authorization status: \(authorizationStatus.description)")
         
-        // Set up based on current authorization
+        // Configure based on current authorization
         configureBasedOnAuthorizationStatus()
     }
     
     func requestLocationPermissions() {
         print("🔐 Requesting location permissions...")
         locationManager.requestWhenInUseAuthorization()
+        
+        // Start updating immediately if we already have permission
+        if authorizationStatus == .authorizedWhenInUse || authorizationStatus == .authorizedAlways {
+            print("📍 Starting immediate location updates...")
+            startUpdatingLocation()
+            // Request immediate one-time update
+            locationManager.requestLocation()
+        }
+    }
+    
+    func startUpdatingLocation() {
+        if isSimulated {
+            useSimulatedLocation()
+            return
+        }
+        
+        print("🔄 Starting location updates...")
+        locationManager.startUpdatingLocation()
+        
+        // Request an immediate location update
+        locationManager.requestLocation()
+        
+        // Set a timer to check if we got a location
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+            guard let self = self else { return }
+            if self.location == nil && !self.isSimulated {
+                print("⚠️ No location received after 3 seconds")
+                self.lastError = "Unable to get location. Please check if location services are enabled."
+                // Try requesting location again
+                self.locationManager.requestLocation()
+            }
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard !isSimulated, let location = locations.last else { return }
+        
+        // Update location
+        DispatchQueue.main.async {
+            self.lastError = nil // Clear any previous errors
+            self.location = location
+            print("📍 Location updated: \(location.coordinate.latitude), \(location.coordinate.longitude)")
+            
+            // Update region for map
+            self.region = MKCoordinateRegion(
+                center: location.coordinate,
+                span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+            )
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("❌ Location manager failed with error: \(error.localizedDescription)")
+        
+        DispatchQueue.main.async {
+            if let clError = error as? CLError {
+                switch clError.code {
+                case .denied:
+                    self.lastError = "Location access denied. Please enable location services in Settings."
+                case .locationUnknown:
+                    self.lastError = "Unable to determine location. Please try again."
+                default:
+                    self.lastError = "Error getting location: \(error.localizedDescription)"
+                }
+            } else {
+                self.lastError = "Error getting location: \(error.localizedDescription)"
+            }
+            
+            // If it's a timeout or unknown location, try requesting location again
+            if let clError = error as? CLError, clError.code == .locationUnknown {
+                print("📍 Location unknown, requesting again...")
+                self.locationManager.requestLocation()
+            }
+        }
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        DispatchQueue.main.async {
+            self.authorizationStatus = manager.authorizationStatus
+            print("🔐 Location authorization changed to: \(self.authorizationStatus.description)")
+            
+            switch manager.authorizationStatus {
+            case .authorizedWhenInUse, .authorizedAlways:
+                print("✅ Location authorization granted")
+                self.lastError = nil
+                self.startUpdatingLocation()
+            case .denied:
+                self.lastError = "Location access denied. Please enable location services in Settings."
+            case .restricted:
+                self.lastError = "Location access restricted. Please check your device settings."
+            case .notDetermined:
+                self.lastError = nil // Clear error while waiting for user input
+            @unknown default:
+                self.lastError = "Unknown authorization status"
+            }
+        }
     }
     
     private func configureBasedOnAuthorizationStatus() {
@@ -493,7 +644,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             setupBackgroundLocationUpdates()
         case .authorizedWhenInUse:
             print("✅ When in use authorization granted, starting location updates")
-            locationManager.startUpdatingLocation()
+            startUpdatingLocation()
         case .denied:
             print("❌ Location access denied by user")
         case .restricted:
@@ -509,7 +660,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.pausesLocationUpdatesAutomatically = false
         locationManager.showsBackgroundLocationIndicator = true
-        locationManager.startUpdatingLocation()
+        startUpdatingLocation()
         print("🔄 Background location updates configured")
     }
     
@@ -522,35 +673,6 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             print("✅ Already have always authorization, setting up background updates")
             setupBackgroundLocationUpdates()
         }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return }
-        
-        // Update location
-        self.location = location
-        print("📍 Location updated: \(location.coordinate.latitude), \(location.coordinate.longitude)")
-        
-        // Update region for map
-        DispatchQueue.main.async {
-            self.region = MKCoordinateRegion(
-                center: location.coordinate,
-                span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-            )
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("❌ Location manager failed with error: \(error.localizedDescription)")
-    }
-    
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        DispatchQueue.main.async {
-            self.authorizationStatus = manager.authorizationStatus
-            print("🔐 Location authorization changed to: \(self.authorizationStatus.description)")
-        }
-        
-        configureBasedOnAuthorizationStatus()
     }
 }
 

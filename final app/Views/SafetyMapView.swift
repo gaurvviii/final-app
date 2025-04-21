@@ -69,6 +69,57 @@ struct SafetyMapView: View {
         return hotspots
     }
     
+    private func handleSOS() {
+        // First check location authorization
+        switch locationManager.authorizationStatus {
+        case .notDetermined:
+            // Request location permission first
+            locationManager.requestLocationPermissions()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                // Show alert after requesting permission
+                showingSosAlert = true
+            }
+            
+        case .restricted, .denied:
+            // Show alert with warning about location access
+            showingSosAlert = true
+            print("⚠️ Location access not granted. Using default location.")
+            
+        case .authorizedWhenInUse, .authorizedAlways:
+            if locationManager.location == nil {
+                // Start updating location if we don't have one
+                print("📍 Requesting immediate location update...")
+                locationManager.locationManager.startUpdatingLocation()
+                
+                // Wait briefly for location update
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    showingSosAlert = true
+                }
+            } else {
+                showingSosAlert = true
+            }
+            
+        @unknown default:
+            showingSosAlert = true
+        }
+    }
+    
+    private func sendSOSToContacts() {
+        if let contacts = try? JSONDecoder().decode([EmergencyContact].self, from: UserDefaults.standard.data(forKey: "emergencyContacts") ?? Data()) {
+            let location = locationManager.location?.coordinate ?? defaultLocation.coordinate
+            print("📍 Sending SOS with location: \(location.latitude), \(location.longitude)")
+            
+            for contact in contacts {
+                let message = contact.generateSOSMessage(location: location)
+                if let url = URL(string: "sms:\(contact.phone)&body=\(message.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")") {
+                    DispatchQueue.main.async {
+                        UIApplication.shared.open(url)
+                    }
+                }
+            }
+        }
+    }
+    
     var body: some View {
         ZStack {
             Map(position: $cameraPosition) {
@@ -257,9 +308,7 @@ struct SafetyMapView: View {
                 Spacer()
                 
                 // SOS Button
-                Button(action: {
-                    showingSosAlert = true
-                }) {
+                Button(action: handleSOS) {
                     Text("SOS")
                         .font(.title2.bold())
                         .foregroundColor(.white)
@@ -275,25 +324,28 @@ struct SafetyMapView: View {
             print("🔄 SafetyMapView appeared")
             initializeServices()
             
-            // Set initial camera position to default location
-            updateMapForCity(selectedCity)
+            // Request location immediately
+            locationManager.requestLocationPermissions()
         }
         .onChange(of: selectedCity) { newCity in
             updateMapForCity(newCity)
         }
         .alert("Emergency SOS", isPresented: $showingSosAlert) {
+            Button("Send SOS to All Contacts", role: .destructive) {
+                sendSOSToContacts()
+            }
             Button("Call Police (100)", role: .destructive) {
-                callEmergency("100")
-            }
-            Button("Women's Helpline (1091)") {
-                callEmergency("1091")
-            }
-            Button("Show All Contacts") {
-                showingEmergencyContacts = true
+                if let url = URL(string: "tel://100") {
+                    UIApplication.shared.open(url)
+                }
             }
             Button("Cancel", role: .cancel) {}
         } message: {
-            Text("Choose an emergency service to contact")
+            if locationManager.authorizationStatus == .denied || locationManager.authorizationStatus == .restricted {
+                Text("Location access is not granted. SOS messages will use approximate location. Consider enabling location access in Settings for more accurate location sharing.")
+            } else {
+                Text("Choose an emergency action")
+            }
         }
         .sheet(isPresented: $showingEmergencyContacts) {
             EmergencyContactsView(emergencyNumbers: emergencyNumbers)
@@ -330,13 +382,6 @@ struct SafetyMapView: View {
                     span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
                 ))
             }
-        }
-    }
-    
-    private func callEmergency(_ number: String) {
-        if let url = URL(string: "tel://\(number)"),
-           UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url)
         }
     }
     
