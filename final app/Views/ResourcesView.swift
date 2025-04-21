@@ -1,5 +1,14 @@
 import SwiftUI
 import MapKit
+import AVFoundation
+
+// Add FakeCall model
+struct FakeCall: Identifiable {
+    let id = UUID()
+    let name: String
+    let image: String
+    let delay: TimeInterval
+}
 
 struct ResourcesView: View {
     @State private var selectedTab = 0
@@ -53,6 +62,9 @@ struct TabButton: View {
 }
 
 struct ResourceContentView: View {
+    @State private var showingFakeCallSheet = false
+    @State private var selectedFakeCall: FakeCall?
+    
     let resources = [
         Resource(title: "Emergency Helpline", description: "Women's Helpline: 1091", icon: "phone.fill"),
         Resource(title: "Police Control Room", description: "Dial 100", icon: "building.columns.fill"),
@@ -64,14 +76,54 @@ struct ResourceContentView: View {
         Resource(title: "Transport Services", description: "Safe transportation options", icon: "car.fill")
     ]
     
+    let fakeCallers = [
+        FakeCall(name: "Mom", image: "person.circle.fill", delay: 30),
+        FakeCall(name: "Dad", image: "person.circle.fill", delay: 30),
+        FakeCall(name: "Police", image: "building.columns.fill", delay: 15),
+        FakeCall(name: "Custom", image: "person.fill.questionmark", delay: 30)
+    ]
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
+                // Fake Call Section
+                VStack(alignment: .leading, spacing: 15) {
+                    Text("Fake Call")
+                        .font(.largeTitle.bold())
+                        .foregroundColor(.white)
+                        .padding(.horizontal)
+                    
+                    Text("Schedule a fake call to help you exit uncomfortable situations")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                        .padding(.horizontal)
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 15) {
+                            ForEach(fakeCallers) { caller in
+                                Button(action: {
+                                    print("🔘 Selected caller: \(caller.name)")
+                                    selectedFakeCall = caller
+                                    showingFakeCallSheet = true
+                                }) {
+                                    FakeCallerCard(caller: caller)
+                                }
+                            }
+                        }
+                        .padding(.horizontal)
+                    }
+                }
+                .padding(.top)
+                
+                Divider()
+                    .background(Color.gray.opacity(0.3))
+                    .padding(.vertical)
+                
+                // Existing Emergency Resources section
                 Text("Emergency Resources")
                     .font(.largeTitle.bold())
                     .foregroundColor(.white)
                     .padding(.horizontal)
-                    .padding(.top)
                 
                 ForEach(resources) { resource in
                     ResourceCard(resource: resource)
@@ -106,6 +158,15 @@ struct ResourceContentView: View {
             .padding(.bottom, 30)
         }
         .background(AppTheme.nightBlack)
+        .sheet(isPresented: $showingFakeCallSheet, onDismiss: {
+            print("📱 Sheet dismissed")
+            selectedFakeCall = nil
+        }) {
+            if let fakeCall = selectedFakeCall {
+                FakeCallSheet(isPresented: $showingFakeCallSheet, fakeCall: fakeCall)
+                    .interactiveDismissDisabled()
+            }
+        }
     }
 }
 
@@ -184,6 +245,135 @@ struct PoliceStationRow: View {
         .background(AppTheme.darkGray)
         .cornerRadius(15)
         .padding(.horizontal)
+    }
+}
+
+struct FakeCallerCard: View {
+    let caller: FakeCall
+    
+    var body: some View {
+        VStack(spacing: 12) {
+            Image(systemName: caller.image)
+                .font(.system(size: 40))
+                .foregroundColor(AppTheme.primaryPurple)
+            
+            Text(caller.name)
+                .font(.headline)
+                .foregroundColor(.white)
+            
+            Text("\(Int(caller.delay))s")
+                .font(.caption)
+                .foregroundColor(.gray)
+        }
+        .frame(width: 100, height: 120)
+        .background(AppTheme.darkGray)
+        .cornerRadius(15)
+    }
+}
+
+struct FakeCallSheet: View {
+    @Binding var isPresented: Bool
+    let fakeCall: FakeCall
+    @State private var customName: String = ""
+    @State private var selectedDelay: TimeInterval = 30
+    @State private var isScheduled = false
+    @State private var remainingTime: TimeInterval = 0
+    @State private var timer: Timer?
+    @State private var showingFakeCall = false
+    
+    let availableDelays: [TimeInterval] = [15, 30, 60, 120]
+    
+    var body: some View {
+        NavigationView {
+            ZStack {
+                AppTheme.nightBlack.edgesIgnoringSafeArea(.all)
+                
+                VStack(spacing: 20) {
+                    Image(systemName: fakeCall.image)
+                        .font(.system(size: 60))
+                        .foregroundColor(AppTheme.primaryPurple)
+                    
+                    if fakeCall.name == "Custom" {
+                        TextField("Enter caller name", text: $customName)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding(.horizontal)
+                    } else {
+                        Text(fakeCall.name)
+                            .font(.title)
+                            .foregroundColor(.white)
+                    }
+                    
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Call in:")
+                            .foregroundColor(.white)
+                        
+                        Picker("Delay", selection: $selectedDelay) {
+                            ForEach(availableDelays, id: \.self) { delay in
+                                Text("\(Int(delay)) seconds")
+                                    .foregroundColor(.white)
+                                    .tag(delay)
+                            }
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
+                    }
+                    .padding()
+                    
+                    if isScheduled {
+                        Text("Call coming in \(Int(remainingTime)) seconds")
+                            .foregroundColor(.white)
+                            .padding()
+                    }
+                    
+                    Button(action: scheduleFakeCall) {
+                        HStack {
+                            Image(systemName: isScheduled ? "xmark.circle.fill" : "phone.circle.fill")
+                            Text(isScheduled ? "Cancel Call" : "Schedule Call")
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(isScheduled ? Color.red : AppTheme.primaryPurple)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                    }
+                    .padding()
+                }
+            }
+            .navigationBarItems(trailing: Button("Close") {
+                if !isScheduled {
+                    isPresented = false
+                }
+            })
+        }
+        .onDisappear {
+            timer?.invalidate()
+        }
+        .fullScreenCover(isPresented: $showingFakeCall) {
+            FakeCallView(callerName: fakeCall.name == "Custom" ? customName : fakeCall.name)
+        }
+    }
+    
+    private func scheduleFakeCall() {
+        if isScheduled {
+            // Cancel the call
+            timer?.invalidate()
+            timer = nil
+            isScheduled = false
+        } else {
+            // Schedule the call
+            isScheduled = true
+            remainingTime = selectedDelay
+            
+            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+                if remainingTime > 0 {
+                    remainingTime -= 1
+                } else {
+                    // Time to show the fake call
+                    timer.invalidate()
+                    showingFakeCall = true
+                    isPresented = false
+                }
+            }
+        }
     }
 }
 
