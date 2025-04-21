@@ -6,7 +6,7 @@ struct CrimeMapView: View {
     
     var body: some View {
         Map(coordinateRegion: $viewModel.region, annotationItems: viewModel.crimeNews) { news in
-            MapAnnotation(coordinate: news.coordinates ?? viewModel.region.center) {
+            MapAnnotation(coordinate: news.coordinates) {
                 VStack {
                     Image(systemName: "exclamationmark.triangle.fill")
                         .foregroundColor(.red)
@@ -29,9 +29,9 @@ struct CrimeMapView: View {
 class CrimeMapViewModel: ObservableObject {
     @Published var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 12.9716, longitude: 77.5946),
-        span: MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10)
+        span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
     )
-    @Published var crimeNews: [CrimeNews] = []
+    @Published var crimeNews: [NewsItem] = []
     private let newsService = NewsDataService()
     
     func fetchCrimeNews() {
@@ -39,7 +39,13 @@ class CrimeMapViewModel: ObservableObject {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let news):
-                    self.crimeNews = news
+                    self.crimeNews = news.filter { $0.coordinates != nil }
+                    
+                    // If we have news items, center the map on the first one
+                    if let firstNews = self.crimeNews.first {
+                        self.region.center = firstNews.coordinates
+                    }
+                    
                 case .failure(let error):
                     print("Error fetching crime news: \(error.localizedDescription)")
                 }

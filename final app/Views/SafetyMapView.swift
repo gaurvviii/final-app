@@ -87,9 +87,15 @@ struct SafetyMapView: View {
                     }
                 }
                 
-                // Police Station Markers
+                // Police Station Markers with Safe Zone Overlays
                 if showPoliceStations {
                     ForEach(nearestStations) { station in
+                        // Safe zone overlay
+                        MapCircle(center: station.coordinate, radius: 500) // 500 meters radius
+                            .foregroundStyle(.green.opacity(0.1))
+                            .stroke(.green, lineWidth: 1)
+                        
+                        // Station marker
                         Annotation("Police Station: \(station.name)", coordinate: station.coordinate) {
                             Image(systemName: "building.columns.fill")
                                 .foregroundColor(.white)
@@ -100,9 +106,15 @@ struct SafetyMapView: View {
                     }
                 }
                 
-                // Metro Station Markers
+                // Metro Station Markers with Safe Zone Overlays
                 if showMetroStations {
                     ForEach(nearestMetroStations) { station in
+                        // Safe zone overlay
+                        MapCircle(center: station.coordinate, radius: 400) // 400 meters radius
+                            .foregroundStyle(.green.opacity(0.1))
+                            .stroke(.green, lineWidth: 1)
+                        
+                        // Station marker
                         Annotation("Metro Station: \(station.name)", coordinate: station.coordinate) {
                             Image(systemName: "tram.fill")
                                 .foregroundColor(.white)
@@ -113,9 +125,15 @@ struct SafetyMapView: View {
                     }
                 }
                 
-                // Crime Hotspots
+                // Crime Hotspots with Overlays
                 if showCrimeHotspots {
                     ForEach(nearbyCrimeHotspots) { hotspot in
+                        // Risk zone overlay
+                        MapCircle(center: hotspot.coordinate, radius: 300)  // 300 meters radius
+                            .foregroundStyle(.red.opacity(0.15))
+                            .stroke(.red, lineWidth: 1)
+                        
+                        // Hotspot marker
                         Annotation("Crime Hotspot: \(hotspot.area)", coordinate: hotspot.coordinate) {
                             Image(systemName: "exclamationmark.triangle.fill")
                                 .foregroundColor(.white)
@@ -126,17 +144,21 @@ struct SafetyMapView: View {
                     }
                 }
                 
-                // Crime News Markers
+                // Crime News Markers with Overlays
                 if showCrimeNews {
                     ForEach(newsDataService.crimeNews.filter { $0.coordinates != nil }) { news in
-                        if let coordinates = news.coordinates {
-                            Annotation(news.title, coordinate: coordinates) {
-                                Image(systemName: "newspaper.fill")
-                                    .foregroundColor(.white)
-                                    .padding(8)
-                                    .background(Color.orange)
-                                    .clipShape(Circle())
-                            }
+                        // Incident zone overlay
+                        MapCircle(center: news.coordinates, radius: 200)  // 200 meters radius
+                            .foregroundStyle(.orange.opacity(0.15))
+                            .stroke(.orange, lineWidth: 1)
+                        
+                        // News marker
+                        Annotation(news.title, coordinate: news.coordinates) {
+                            Image(systemName: "newspaper.fill")
+                                .foregroundColor(.white)
+                                .padding(8)
+                                .background(Color.orange)
+                                .clipShape(Circle())
                         }
                     }
                 }
