@@ -25,6 +25,11 @@ struct SafetyMapView: View {
         span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
     ))
     
+    // Add zoom level state
+    @State private var currentZoomLevel: Double = 0.05
+    private let minZoomLevel: Double = 0.01
+    private let maxZoomLevel: Double = 0.5
+    
     private let availableCities = ["Bangalore", "Delhi", "Mumbai", "Chennai", "Kolkata"]
     private let emergencyNumbers = [
         ("Police", "100"),
@@ -120,6 +125,72 @@ struct SafetyMapView: View {
         }
     }
     
+    private func initializeServices() {
+        print("🚀 Initializing services...")
+        locationManager.requestLocationPermissions()
+        
+        // Initialize with default location if user location is not available
+        let location = locationManager.location ?? defaultLocation
+        print("📍 Initializing services with location: \(location.coordinate.latitude), \(location.coordinate.longitude)")
+        
+        crimeDataService.fetchCrimeData()
+        policeDataService.loadPoliceStations()
+        metroDataService.loadMetroStations()
+        
+        // Fetch news with retry logic
+        fetchNewsWithRetry()
+    }
+    
+    private func fetchNewsWithRetry() {
+        let location = locationManager.location ?? defaultLocation
+        newsDataService.fetchCrimeNews(userLocation: location) { result in
+            switch result {
+            case .success(let news):
+                print("📰 Loaded \(news.count) news items")
+                // Update map region to show all news items
+                if !news.isEmpty {
+                    updateMapRegionForNews(news)
+                }
+            case .failure(let error):
+                print("❌ Failed to load news: \(error.localizedDescription)")
+                // Retry after a delay
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                    fetchNewsWithRetry()
+                }
+            }
+        }
+    }
+    
+    private func zoomOut() {
+        withAnimation {
+            currentZoomLevel = min(currentZoomLevel * 2, maxZoomLevel)
+            if let region = cameraPosition.region {
+                cameraPosition = .region(MKCoordinateRegion(
+                    center: region.center,
+                    span: MKCoordinateSpan(
+                        latitudeDelta: currentZoomLevel,
+                        longitudeDelta: currentZoomLevel
+                    )
+                ))
+            }
+        }
+    }
+    
+    private func zoomIn() {
+        withAnimation {
+            currentZoomLevel = max(currentZoomLevel / 2, minZoomLevel)
+            if let region = cameraPosition.region {
+                cameraPosition = .region(MKCoordinateRegion(
+                    center: region.center,
+                    span: MKCoordinateSpan(
+                        latitudeDelta: currentZoomLevel,
+                        longitudeDelta: currentZoomLevel
+                    )
+                ))
+            }
+        }
+    }
+    
     var body: some View {
         ZStack {
             Map(position: $cameraPosition) {
@@ -199,17 +270,50 @@ struct SafetyMapView: View {
                 if showCrimeNews {
                     ForEach(newsDataService.crimeNews.filter { $0.coordinates != nil }) { news in
                         // Incident zone overlay
-                        MapCircle(center: news.coordinates, radius: 200)  // 200 meters radius
-                            .foregroundStyle(.orange.opacity(0.15))
-                            .stroke(.orange, lineWidth: 1)
+                        MapCircle(center: news.coordinates, radius: 500)  // 500 meters radius
+                            .foregroundStyle(.orange.opacity(0.2))
+                            .stroke(.orange, lineWidth: 2)
                         
-                        // News marker
+                        // News marker with callout
                         Annotation(news.title, coordinate: news.coordinates) {
-                            Image(systemName: "newspaper.fill")
-                                .foregroundColor(.white)
+                            VStack(spacing: 4) {
+                                Image(systemName: "newspaper.fill")
+                                    .foregroundColor(.white)
+                                    .padding(8)
+                                    .background(Color.orange)
+                                    .clipShape(Circle())
+                                    .shadow(radius: 3)
+                                
+                                // Callout view
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(news.title)
+                                        .font(.caption)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.white)
+                                        .lineLimit(2)
+                                    
+                                    Text(news.description)
+                                        .font(.caption2)
+                                        .foregroundColor(.white)
+                                        .lineLimit(3)
+                                    
+                                    HStack {
+                                        Text(news.source)
+                                            .font(.caption2)
+                                            .foregroundColor(.white.opacity(0.8))
+                                        
+                                        Spacer()
+                                        
+                                        Text("\(Int(news.distance / 1000))km away")
+                                            .font(.caption2)
+                                            .foregroundColor(.white.opacity(0.8))
+                                    }
+                                }
                                 .padding(8)
-                                .background(Color.orange)
-                                .clipShape(Circle())
+                                .background(Color.black.opacity(0.8))
+                                .cornerRadius(8)
+                                .frame(maxWidth: 200)
+                            }
                         }
                     }
                 }
@@ -258,6 +362,27 @@ struct SafetyMapView: View {
                         }
                         
                         Spacer()
+                        
+                        // Zoom Controls
+                        HStack(spacing: 8) {
+                            Button(action: zoomIn) {
+                                Image(systemName: "minus.magnifyingglass")
+                                    .font(.title2)
+                                    .foregroundColor(.white)
+                                    .padding()
+                                    .background(AppTheme.primaryPurple)
+                                    .cornerRadius(10)
+                            }
+                            
+                            Button(action: zoomOut) {
+                                Image(systemName: "plus.magnifyingglass")
+                                    .font(.title2)
+                                    .foregroundColor(.white)
+                                    .padding()
+                                    .background(AppTheme.primaryPurple)
+                                    .cornerRadius(10)
+                            }
+                        }
                         
                         Button(action: {
                             isNightMode.toggle()
@@ -323,12 +448,9 @@ struct SafetyMapView: View {
         .onAppear {
             print("🔄 SafetyMapView appeared")
             initializeServices()
-            
-            // Request location immediately
-            locationManager.requestLocationPermissions()
         }
-        .onChange(of: selectedCity) { newCity in
-            updateMapForCity(newCity)
+        .onChange(of: selectedCity) { oldValue, newValue in
+            updateMapForCity(newValue)
         }
         .alert("Emergency SOS", isPresented: $showingSosAlert) {
             Button("Send SOS to All Contacts", role: .destructive) {
@@ -350,26 +472,42 @@ struct SafetyMapView: View {
         .sheet(isPresented: $showingEmergencyContacts) {
             EmergencyContactsView(emergencyNumbers: emergencyNumbers)
         }
+        
+        // Update map region when news items change
+        .onChange(of: newsDataService.crimeNews) { oldValue, newValue in
+            if !newValue.isEmpty {
+                updateMapRegionForNews(newValue)
+            }
+        }
     }
     
-    private func initializeServices() {
-        print("🚀 Initializing services...")
-        locationManager.requestLocationPermissions()
+    private func updateMapRegionForNews(_ news: [NewsItem]) {
+        // Calculate the bounding box for all news items
+        var minLat = news[0].coordinates.latitude
+        var maxLat = news[0].coordinates.latitude
+        var minLon = news[0].coordinates.longitude
+        var maxLon = news[0].coordinates.longitude
         
-        // Initialize with default location if user location is not available
-        let location = locationManager.location ?? defaultLocation
-        print("📍 Initializing services with location: \(location.coordinate.latitude), \(location.coordinate.longitude)")
+        for item in news {
+            minLat = min(minLat, item.coordinates.latitude)
+            maxLat = max(maxLat, item.coordinates.latitude)
+            minLon = min(minLon, item.coordinates.longitude)
+            maxLon = max(maxLon, item.coordinates.longitude)
+        }
         
-        crimeDataService.fetchCrimeData()
-        policeDataService.loadPoliceStations()
-        metroDataService.loadMetroStations()
-        newsDataService.fetchCrimeNews { result in
-            switch result {
-            case .success(let news):
-                print("📰 Loaded \(news.count) news items")
-            case .failure(let error):
-                print("❌ Failed to load news: \(error.localizedDescription)")
-            }
+        // Add some padding
+        let padding = 0.1
+        let center = CLLocationCoordinate2D(
+            latitude: (minLat + maxLat) / 2,
+            longitude: (minLon + maxLon) / 2
+        )
+        let span = MKCoordinateSpan(
+            latitudeDelta: max(maxLat - minLat + padding, 0.1),
+            longitudeDelta: max(maxLon - minLon + padding, 0.1)
+        )
+        
+        withAnimation {
+            cameraPosition = .region(MKCoordinateRegion(center: center, span: span))
         }
     }
     
