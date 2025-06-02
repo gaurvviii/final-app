@@ -1,5 +1,17 @@
 # Nyx - Women's Safety App
 
+## App Screenshots
+
+<p align="center">
+  <img src="public/Simulator%20Screenshot%20-%20iPhone%2016%20Pro%20-%202025-06-03%20at%2000.05.13.png" alt="Screenshot 1" width="180"/>
+  <img src="public/Simulator%20Screenshot%20-%20iPhone%2016%20Pro%20-%202025-06-03%20at%2000.05.19.png" alt="Screenshot 2" width="180"/>
+  <img src="public/Simulator%20Screenshot%20-%20iPhone%2016%20Pro%20-%202025-06-03%20at%2000.05.31.png" alt="Screenshot 3" width="180"/>
+  <img src="public/Simulator%20Screenshot%20-%20iPhone%2016%20Pro%20-%202025-06-03%20at%2000.05.39.png" alt="Screenshot 4" width="180"/>
+  <img src="public/Simulator%20Screenshot%20-%20iPhone%2016%20Pro%20-%202025-06-03%20at%2000.05.43.png" alt="Screenshot 5" width="180"/>
+  <img src="public/Simulator%20Screenshot%20-%20iPhone%2016%20Pro%20-%202025-06-03%20at%2000.02.44.png" alt="Screenshot 6" width="180"/>
+  <img src="public/Simulator%20Screenshot%20-%20iPhone%2016%20Pro%20-%202025-06-03%20at%2000.02.55.png" alt="Screenshot 7" width="180"/>
+</p>
+
 A comprehensive women's safety application built with SwiftUI that focuses on real-time location tracking, safety features, and emergency assistance.
 
 ## Key Features

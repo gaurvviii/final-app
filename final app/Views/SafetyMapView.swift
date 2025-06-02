@@ -19,16 +19,17 @@ struct SafetyMapView: View {
     @State private var showMetroStations = true
     @State private var showCrimeHotspots = true
     @State private var showCrimeNews = true
+    @State private var isLoadingNews = false
     
     @State private var cameraPosition: MapCameraPosition = .region(MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 12.9716, longitude: 77.5946),
-        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
     ))
     
     // Add zoom level state
-    @State private var currentZoomLevel: Double = 0.05
+    @State private var currentZoomLevel: Double = 5.0
     private let minZoomLevel: Double = 0.01
-    private let maxZoomLevel: Double = 0.5
+    private let maxZoomLevel: Double = 30.0
     
     private let availableCities = ["Bangalore", "Delhi", "Mumbai", "Chennai", "Kolkata"]
     private let emergencyNumbers = [
@@ -125,37 +126,36 @@ struct SafetyMapView: View {
         }
     }
     
-    private func initializeServices() {
-        print("🚀 Initializing services...")
-        locationManager.requestLocationPermissions()
-        
-        // Initialize with default location if user location is not available
-        let location = locationManager.location ?? defaultLocation
-        print("📍 Initializing services with location: \(location.coordinate.latitude), \(location.coordinate.longitude)")
-        
-        crimeDataService.fetchCrimeData()
-        policeDataService.loadPoliceStations()
-        metroDataService.loadMetroStations()
-        
-        // Fetch news with retry logic
-        fetchNewsWithRetry()
-    }
-    
     private func fetchNewsWithRetry() {
-        let location = locationManager.location ?? defaultLocation
-        newsDataService.fetchCrimeNews(userLocation: location) { result in
-            switch result {
-            case .success(let news):
-                print("📰 Loaded \(news.count) news items")
-                // Update map region to show all news items
-                if !news.isEmpty {
-                    updateMapRegionForNews(news)
-                }
-            case .failure(let error):
-                print("❌ Failed to load news: \(error.localizedDescription)")
-                // Retry after a delay
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                    fetchNewsWithRetry()
+        isLoadingNews = true
+        let userLocation = locationManager.location ?? defaultLocation
+        print("📍 Fetching news for location: \(userLocation.coordinate.latitude), \(userLocation.coordinate.longitude)")
+        
+        // Remove distance filtering by passing nil for userLocation
+        newsDataService.fetchCrimeNews(userLocation: nil) { [self] result in
+            DispatchQueue.main.async {
+                isLoadingNews = false
+                switch result {
+                case .success(let news):
+                    print("📰 Loaded \(news.count) news items")
+                    if !news.isEmpty {
+                        // First update the news data
+                        newsDataService.crimeNews = news
+                        
+                        // Log each news item for debugging
+                        news.forEach { item in
+                            print("📍 News item at: \(item.coordinates.latitude), \(item.coordinates.longitude)")
+                            print("📰 Title: \(item.title)")
+                        }
+                        
+                        // Then update the map region
+                        updateMapRegionForNews(news)
+                    }
+                case .failure(let error):
+                    print("❌ Failed to load news: \(error.localizedDescription)")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                        fetchNewsWithRetry()
+                    }
                 }
             }
         }
@@ -163,32 +163,93 @@ struct SafetyMapView: View {
     
     private func zoomOut() {
         withAnimation {
-            currentZoomLevel = min(currentZoomLevel * 2, maxZoomLevel)
-            if let region = cameraPosition.region {
-                cameraPosition = .region(MKCoordinateRegion(
-                    center: region.center,
-                    span: MKCoordinateSpan(
-                        latitudeDelta: currentZoomLevel,
-                        longitudeDelta: currentZoomLevel
-                    )
-                ))
-            }
+            currentZoomLevel = min(currentZoomLevel + 5.0, maxZoomLevel)
+            updateMapRegion(delta: currentZoomLevel)
         }
     }
     
     private func zoomIn() {
         withAnimation {
-            currentZoomLevel = max(currentZoomLevel / 2, minZoomLevel)
-            if let region = cameraPosition.region {
-                cameraPosition = .region(MKCoordinateRegion(
-                    center: region.center,
-                    span: MKCoordinateSpan(
-                        latitudeDelta: currentZoomLevel,
-                        longitudeDelta: currentZoomLevel
-                    )
-                ))
-            }
+            currentZoomLevel = max(currentZoomLevel - 1.0, minZoomLevel)
+            updateMapRegion(delta: currentZoomLevel)
         }
+    }
+    
+    private func updateMapRegion(delta: Double) {
+        if let region = cameraPosition.region {
+            cameraPosition = .region(MKCoordinateRegion(
+                center: region.center,
+                span: MKCoordinateSpan(
+                    latitudeDelta: delta,
+                    longitudeDelta: delta
+                )
+            ))
+        }
+    }
+    
+    private func updateMapRegionForNews(_ news: [NewsItem]) {
+        guard !news.isEmpty else { return }
+        print("🗺️ Updating map region for \(news.count) news items")
+        
+        // Calculate the bounding box for all news items
+        var minLat = news[0].coordinates.latitude
+        var maxLat = news[0].coordinates.latitude
+        var minLon = news[0].coordinates.longitude
+        var maxLon = news[0].coordinates.longitude
+        
+        for item in news {
+            minLat = min(minLat, item.coordinates.latitude)
+            maxLat = max(maxLat, item.coordinates.latitude)
+            minLon = min(minLon, item.coordinates.longitude)
+            maxLon = max(maxLon, item.coordinates.longitude)
+            print("📍 Including point: \(item.coordinates.latitude), \(item.coordinates.longitude) - \(item.title)")
+        }
+        
+        // Calculate deltas and log them
+        let latDelta = maxLat - minLat
+        let lonDelta = maxLon - minLon
+        print("🧭 Lat Delta: \(latDelta), Lon Delta: \(lonDelta)")
+        
+        // Increase padding for better visibility
+        let maxDistance = max(latDelta, lonDelta)
+        let padding = maxDistance * 2.5 // Increased padding to 250%
+        
+        // Use larger minimum span for India-wide visibility
+        let minSpanDelta = 15.0 // Increased from 10.0 to 15.0 degrees
+        
+        let center = CLLocationCoordinate2D(
+            latitude: (minLat + maxLat) / 2,
+            longitude: (minLon + maxLon) / 2
+        )
+        
+        let span = MKCoordinateSpan(
+            latitudeDelta: max(latDelta + padding, minSpanDelta),
+            longitudeDelta: max(lonDelta + padding, minSpanDelta)
+        )
+        
+        print("📍 New map region - Center: \(center.latitude), \(center.longitude)")
+        print("📏 Span: Lat Delta = \(span.latitudeDelta), Lon Delta = \(span.longitudeDelta)")
+        
+        withAnimation(.easeInOut(duration: 0.5)) {
+            currentZoomLevel = span.latitudeDelta
+            cameraPosition = .region(MKCoordinateRegion(center: center, span: span))
+        }
+    }
+    
+    private func initializeServices() {
+        print("🚀 Initializing services...")
+        locationManager.requestLocationPermissions()
+        
+        // Initialize with default location if user location is not available
+        let userLocation = locationManager.location ?? defaultLocation
+        print("📍 Initializing services with location: \(userLocation.coordinate.latitude), \(userLocation.coordinate.longitude)")
+        
+        crimeDataService.fetchCrimeData()
+        policeDataService.loadPoliceStations()
+        metroDataService.loadMetroStations()
+        
+        // Fetch news with retry logic
+        fetchNewsWithRetry()
     }
     
     var body: some View {
@@ -268,11 +329,11 @@ struct SafetyMapView: View {
                 
                 // Crime News Markers with Overlays
                 if showCrimeNews {
-                    ForEach(newsDataService.crimeNews.filter { $0.coordinates != nil }) { news in
-                        // Incident zone overlay
-                        MapCircle(center: news.coordinates, radius: 500)  // 500 meters radius
-                            .foregroundStyle(.orange.opacity(0.2))
-                            .stroke(.orange, lineWidth: 2)
+                    ForEach(newsDataService.crimeNews) { news in
+                        // Make the overlay larger for better visibility
+                        MapCircle(center: news.coordinates, radius: 5000)  // Increased from 500 to 5000 meters
+                            .foregroundStyle(.orange.opacity(0.3))
+                            .stroke(.orange, lineWidth: 3)
                         
                         // News marker with callout
                         Annotation(news.title, coordinate: news.coordinates) {
@@ -299,12 +360,6 @@ struct SafetyMapView: View {
                                     
                                     HStack {
                                         Text(news.source)
-                                            .font(.caption2)
-                                            .foregroundColor(.white.opacity(0.8))
-                                        
-                                        Spacer()
-                                        
-                                        Text("\(Int(news.distance / 1000))km away")
                                             .font(.caption2)
                                             .foregroundColor(.white.opacity(0.8))
                                     }
@@ -365,8 +420,8 @@ struct SafetyMapView: View {
                         
                         // Zoom Controls
                         HStack(spacing: 8) {
-                            Button(action: zoomIn) {
-                                Image(systemName: "minus.magnifyingglass")
+                            Button(action: zoomOut) {
+                                Image(systemName: "plus.magnifyingglass")
                                     .font(.title2)
                                     .foregroundColor(.white)
                                     .padding()
@@ -374,8 +429,8 @@ struct SafetyMapView: View {
                                     .cornerRadius(10)
                             }
                             
-                            Button(action: zoomOut) {
-                                Image(systemName: "plus.magnifyingglass")
+                            Button(action: zoomIn) {
+                                Image(systemName: "minus.magnifyingglass")
                                     .font(.title2)
                                     .foregroundColor(.white)
                                     .padding()
@@ -444,6 +499,24 @@ struct SafetyMapView: View {
                 }
                 .padding(.bottom, 30)
             }
+
+            // Add loading indicator
+            if isLoadingNews {
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                            .scaleEffect(1.5)
+                            .padding()
+                            .background(Color.black.opacity(0.7))
+                            .cornerRadius(10)
+                        Spacer()
+                    }
+                    Spacer().frame(height: 100)
+                }
+            }
         }
         .onAppear {
             print("🔄 SafetyMapView appeared")
@@ -471,43 +544,6 @@ struct SafetyMapView: View {
         }
         .sheet(isPresented: $showingEmergencyContacts) {
             EmergencyContactsView(emergencyNumbers: emergencyNumbers)
-        }
-        
-        // Update map region when news items change
-        .onChange(of: newsDataService.crimeNews) { oldValue, newValue in
-            if !newValue.isEmpty {
-                updateMapRegionForNews(newValue)
-            }
-        }
-    }
-    
-    private func updateMapRegionForNews(_ news: [NewsItem]) {
-        // Calculate the bounding box for all news items
-        var minLat = news[0].coordinates.latitude
-        var maxLat = news[0].coordinates.latitude
-        var minLon = news[0].coordinates.longitude
-        var maxLon = news[0].coordinates.longitude
-        
-        for item in news {
-            minLat = min(minLat, item.coordinates.latitude)
-            maxLat = max(maxLat, item.coordinates.latitude)
-            minLon = min(minLon, item.coordinates.longitude)
-            maxLon = max(maxLon, item.coordinates.longitude)
-        }
-        
-        // Add some padding
-        let padding = 0.1
-        let center = CLLocationCoordinate2D(
-            latitude: (minLat + maxLat) / 2,
-            longitude: (minLon + maxLon) / 2
-        )
-        let span = MKCoordinateSpan(
-            latitudeDelta: max(maxLat - minLat + padding, 0.1),
-            longitudeDelta: max(maxLon - minLon + padding, 0.1)
-        )
-        
-        withAnimation {
-            cameraPosition = .region(MKCoordinateRegion(center: center, span: span))
         }
     }
     
