@@ -24,7 +24,7 @@ class CrimeDataService: ObservableObject {
     // Load local crime data based on the police and crime CSV data
     private func loadLocalCrimeData() {
         // Bangalore hotspots based on police data
-        self.crimeHotspots = [
+        let bangaloreHotspots = [
             CrimeHotspot(
                 id: UUID(),
                 city: "Bangalore",
@@ -76,6 +76,82 @@ class CrimeDataService: ObservableObject {
                 timePattern: .night
             )
         ]
+        
+        // Delhi hotspots based on known high-crime areas
+        let delhiHotspots = [
+            CrimeHotspot(
+                id: UUID(),
+                city: "Delhi",
+                area: "Paharganj",
+                coordinate: CLLocationCoordinate2D(latitude: 28.6448, longitude: 77.2167),
+                crimeCount: 234,
+                crimeTypes: ["Harassment", "Theft", "Stalking"],
+                riskLevel: .high,
+                timePattern: .night
+            ),
+            CrimeHotspot(
+                id: UUID(),
+                city: "Delhi",
+                area: "Chandni Chowk",
+                coordinate: CLLocationCoordinate2D(latitude: 28.6506, longitude: 77.2334),
+                crimeCount: 189,
+                crimeTypes: ["Harassment", "Theft"],
+                riskLevel: .high,
+                timePattern: .allDay
+            ),
+            CrimeHotspot(
+                id: UUID(),
+                city: "Delhi",
+                area: "Karol Bagh",
+                coordinate: CLLocationCoordinate2D(latitude: 28.6519, longitude: 77.1909),
+                crimeCount: 156,
+                crimeTypes: ["Stalking", "Harassment"],
+                riskLevel: .medium,
+                timePattern: .evening
+            ),
+            CrimeHotspot(
+                id: UUID(),
+                city: "Delhi",
+                area: "Connaught Place",
+                coordinate: CLLocationCoordinate2D(latitude: 28.6315, longitude: 77.2167),
+                crimeCount: 143,
+                crimeTypes: ["Harassment", "Theft"],
+                riskLevel: .medium,
+                timePattern: .evening
+            ),
+            CrimeHotspot(
+                id: UUID(),
+                city: "Delhi",
+                area: "Nizamuddin",
+                coordinate: CLLocationCoordinate2D(latitude: 28.5933, longitude: 77.2507),
+                crimeCount: 167,
+                crimeTypes: ["Assault", "Harassment"],
+                riskLevel: .high,
+                timePattern: .night
+            ),
+            CrimeHotspot(
+                id: UUID(),
+                city: "Delhi",
+                area: "Lajpat Nagar",
+                coordinate: CLLocationCoordinate2D(latitude: 28.5677, longitude: 77.2437),
+                crimeCount: 134,
+                crimeTypes: ["Theft", "Harassment"],
+                riskLevel: .medium,
+                timePattern: .day
+            ),
+            CrimeHotspot(
+                id: UUID(),
+                city: "Delhi",
+                area: "Sarai Kale Khan",
+                coordinate: CLLocationCoordinate2D(latitude: 28.5933, longitude: 77.2507),
+                crimeCount: 178,
+                crimeTypes: ["Harassment", "Stalking"],
+                riskLevel: .high,
+                timePattern: .allDay
+            )
+        ]
+        
+        self.crimeHotspots = bangaloreHotspots + delhiHotspots
     }
     
     // Get crime hotspots for a specific city

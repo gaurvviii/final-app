@@ -49,15 +49,33 @@ struct SafetyMapView: View {
     private var nearestStations: [PoliceStation] {
         let location = locationManager.location ?? defaultLocation
         print("📍 Using location: \(location.coordinate.latitude), \(location.coordinate.longitude)")
-        let stations = policeDataService.getNearbyPoliceStations(to: location)
-        print("📍 Found \(stations.count) police stations")
+        let cityStations = policeDataService.getPoliceStations(for: selectedCity)
+        let stations = cityStations.map { station in
+            var updatedStation = station
+            let stationLocation = CLLocation(
+                latitude: station.coordinate.latitude,
+                longitude: station.coordinate.longitude
+            )
+            updatedStation.distance = location.distance(from: stationLocation)
+            return updatedStation
+        }.sorted { $0.distance < $1.distance }
+        print("📍 Found \(stations.count) police stations for \(selectedCity)")
         return stations
     }
     
     private var nearestMetroStations: [MetroStation] {
         let location = locationManager.location ?? defaultLocation
-        let stations = metroDataService.getNearbyMetroStations(to: location)
-        print("🚇 Found \(stations.count) metro stations")
+        let cityStations = metroDataService.getMetroStations(for: selectedCity)
+        let stations = cityStations.map { station in
+            var updatedStation = station
+            let stationLocation = CLLocation(
+                latitude: station.coordinate.latitude,
+                longitude: station.coordinate.longitude
+            )
+            updatedStation.distance = location.distance(from: stationLocation)
+            return updatedStation
+        }.sorted { $0.distance < $1.distance }
+        print("🚇 Found \(stations.count) metro stations for \(selectedCity)")
         return stations
     }
     

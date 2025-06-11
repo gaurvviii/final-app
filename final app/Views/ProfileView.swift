@@ -120,29 +120,26 @@ struct ProfileView: View {
                     
                     // Help & Support Section
                     ProfileSectionCard(title: "Help & Support") {
-                        SettingRow(
+                        NavigationSettingRow(
                             title: "Help Center",
                             icon: "questionmark.circle.fill",
-                            color: .blue
-                        ) {
-                            // Open help center
-                        }
+                            color: .blue,
+                            destination: AnyView(HelpCenterView())
+                        )
                         
-                        SettingRow(
+                        NavigationSettingRow(
                             title: "Contact Support",
                             icon: "envelope.fill",
-                            color: .green
-                        ) {
-                            // Contact support
-                        }
+                            color: .green,
+                            destination: AnyView(ContactSupportView())
+                        )
                         
-                        SettingRow(
+                        NavigationSettingRow(
                             title: "About",
                             icon: "info.circle.fill",
-                            color: AppTheme.primaryPurple
-                        ) {
-                            // Show about
-                        }
+                            color: AppTheme.primaryPurple,
+                            destination: AnyView(AboutView())
+                        )
                     }
                     
                     // Version Info
@@ -163,6 +160,21 @@ struct ProfileView: View {
         .navigationBarHidden(true)
         .sheet(isPresented: $showingEditProfile) {
             EditProfileView(userName: $userName, userPhone: $userPhone)
+        }
+    }
+    
+    private func exportUserData() {
+        // Create data export
+        let dataString = "User Data Export\n" +
+                       "Name: \(userName)\n" +
+                       "Phone: \(userPhone)\n" +
+                       "Emergency Message: \(emergencyMessage)\n" +
+                       "Export Date: \(Date())"
+        
+        let activityVC = UIActivityViewController(activityItems: [dataString], applicationActivities: nil)
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            window.rootViewController?.present(activityVC, animated: true, completion: nil)
         }
     }
 }
@@ -504,7 +516,7 @@ struct PrivacySettingsView: View {
                             icon: "square.and.arrow.up.fill",
                             color: .blue
                         ) {
-                            // Handle data export
+                            exportUserData()
                         }
                         
                         NavigationSettingRow(
@@ -550,6 +562,22 @@ struct PrivacySettingsView: View {
             }
         } message: {
             Text("Are you sure you want to delete all your data? This action cannot be undone.")
+        }
+    }
+    
+    private func exportUserData() {
+        // Create data export for privacy settings
+        let dataString = "Privacy Settings Data Export\n" +
+                       "Location Access: \(locationAccess)\n" +
+                       "Camera Access: \(cameraAccess)\n" +
+                       "Microphone Access: \(microphoneAccess)\n" +
+                       "Notification Access: \(notificationAccess)\n" +
+                       "Export Date: \(Date())"
+        
+        let activityVC = UIActivityViewController(activityItems: [dataString], applicationActivities: nil)
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            window.rootViewController?.present(activityVC, animated: true, completion: nil)
         }
     }
 }
