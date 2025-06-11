@@ -1,0 +1,3614 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>delhi_police_station_locs.geojson</name>
+	<Schema name="delhi_police_station_locs" id="J_delhi_police_station_locs_SISSS">
+		<SimpleField type="string" name="DISTRICT"><displayName>DISTRICT</displayName>
+</SimpleField>
+		<SimpleField type="int" name="FID"><displayName>FID</displayName>
+</SimpleField>
+		<SimpleField type="string" name="NAME"><displayName>NAME</displayName>
+</SimpleField>
+		<SimpleField type="string" name="X"><displayName>X</displayName>
+</SimpleField>
+		<SimpleField type="string" name="Y"><displayName>Y</displayName>
+</SimpleField>
+	</Schema>
+	<Style id="delhi_police_station_locs_style">
+		<BalloonStyle>
+			<text><![CDATA[<table border="0">
+  <tr><td><b>$[delhi_police_station_locs/DISTRICT/displayName]</b></td><td>$[delhi_police_station_locs/DISTRICT]</td></tr>
+  <tr><td><b>$[delhi_police_station_locs/FID/displayName]</b></td><td>$[delhi_police_station_locs/FID]</td></tr>
+  <tr><td><b>$[delhi_police_station_locs/NAME/displayName]</b></td><td>$[delhi_police_station_locs/NAME]</td></tr>
+  <tr><td><b>$[delhi_police_station_locs/X/displayName]</b></td><td>$[delhi_police_station_locs/X]</td></tr>
+  <tr><td><b>$[delhi_police_station_locs/Y/displayName]</b></td><td>$[delhi_police_station_locs/Y]</td></tr>
+</table>
+$[description]]]></text>
+		</BalloonStyle>
+	</Style>
+	<Placemark>
+		<name>PS CIVIL LINES</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH</SimpleData>
+				<SimpleData name="FID">0</SimpleData>
+				<SimpleData name="NAME">PS CIVIL LINES</SimpleData>
+				<SimpleData name="X">717069° 16&apos; 50.880&quot; E</SimpleData>
+				<SimpleData name="Y">3175551° 40&apos; 19.200&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2217181,28.6890036,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS TIMAR PUR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH</SimpleData>
+				<SimpleData name="FID">1</SimpleData>
+				<SimpleData name="NAME">PS TIMAR PUR</SimpleData>
+				<SimpleData name="X">717275° 18&apos; 33.438&quot; E</SimpleData>
+				<SimpleData name="Y">3177501° 32&apos; 17.590&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2241975,28.7065559,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS ROOP NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH</SimpleData>
+				<SimpleData name="FID">2</SimpleData>
+				<SimpleData name="NAME">PS ROOP NAGAR</SimpleData>
+				<SimpleData name="X">715203° 50&apos; 25.440&quot; E</SimpleData>
+				<SimpleData name="Y">3175057° 29&apos; 25.080&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2025435,28.6848582,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SARAI ROHILLA</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH</SimpleData>
+				<SimpleData name="FID">3</SimpleData>
+				<SimpleData name="NAME">PS SARAI ROHILLA</SimpleData>
+				<SimpleData name="X">713368° 44&apos; 6.909&quot; E</SimpleData>
+				<SimpleData name="Y">3173244° 11&apos; 44.173&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1834338,28.6688069,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS BARA HINDU RAO</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH</SimpleData>
+				<SimpleData name="FID">4</SimpleData>
+				<SimpleData name="NAME">PS BARA HINDU RAO</SimpleData>
+				<SimpleData name="X">715790° 24&apos; 13.680&quot; E</SimpleData>
+				<SimpleData name="Y">3172941° 59&apos; 48.840&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2081428,28.6656794,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS GULABI BAGH</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH</SimpleData>
+				<SimpleData name="FID">5</SimpleData>
+				<SimpleData name="NAME">PS GULABI BAGH</SimpleData>
+				<SimpleData name="X">714239° 36&apos; 59.725&quot; E</SimpleData>
+				<SimpleData name="Y">3173367° 17&apos; 4.793&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1923634,28.6697732,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS MAURICE NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH</SimpleData>
+				<SimpleData name="FID">6</SimpleData>
+				<SimpleData name="NAME">PS MAURICE NAGAR</SimpleData>
+				<SimpleData name="X">715622° 39&apos; 54.309&quot; E</SimpleData>
+				<SimpleData name="Y">3175916° 43&apos; 26.409&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2069901,28.6925384,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS LAHORI GATE</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH</SimpleData>
+				<SimpleData name="FID">7</SimpleData>
+				<SimpleData name="NAME">PS LAHORI GATE</SimpleData>
+				<SimpleData name="X">716868° 49&apos; 44.224&quot; E</SimpleData>
+				<SimpleData name="Y">3171850° 34&apos; 30.162&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.21896390000001,28.6556548,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SADAR BAZAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH</SimpleData>
+				<SimpleData name="FID">8</SimpleData>
+				<SimpleData name="NAME">PS SADAR BAZAR</SimpleData>
+				<SimpleData name="X">716081° 10&apos; 12.000&quot; E</SimpleData>
+				<SimpleData name="Y">3171663° 31&apos; 14.520&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2108743,28.6540994,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SUBZI MANDI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH</SimpleData>
+				<SimpleData name="FID">9</SimpleData>
+				<SimpleData name="NAME">PS SUBZI MANDI</SimpleData>
+				<SimpleData name="X">715714° 51&apos; 56.170&quot; E</SimpleData>
+				<SimpleData name="Y">3173351° 29&apos; 46.250&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2074478,28.6693855,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS BURARI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH</SimpleData>
+				<SimpleData name="FID">10</SimpleData>
+				<SimpleData name="NAME">PS BURARI</SimpleData>
+				<SimpleData name="X">714565° 51&apos; 36.966&quot; E</SimpleData>
+				<SimpleData name="Y">3180784° 38&apos; 13.683&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.19709760000001,28.7366215,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS KOTWALI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH</SimpleData>
+				<SimpleData name="FID">11</SimpleData>
+				<SimpleData name="NAME">PS KOTWALI</SimpleData>
+				<SimpleData name="X">718055° 44&apos; 22.200&quot; E</SimpleData>
+				<SimpleData name="Y">3172195° 33&apos; 22.320&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2311665,28.6585669,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS KASHMERE GATE</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH</SimpleData>
+				<SimpleData name="FID">12</SimpleData>
+				<SimpleData name="NAME">PS KASHMERE GATE</SimpleData>
+				<SimpleData name="X">718036° 51&apos; 27.752&quot; E</SimpleData>
+				<SimpleData name="Y">3172664° 12&apos; 0.319&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.23106300000001,28.6627971,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS KAROL BAGH</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">CENTRAL</SimpleData>
+				<SimpleData name="FID">13</SimpleData>
+				<SimpleData name="NAME">PS KAROL BAGH</SimpleData>
+				<SimpleData name="X">714323° 43&apos; 19.423&quot; E</SimpleData>
+				<SimpleData name="Y">3171427° 2&apos; 12.347&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.19285910000001,28.6522586,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS D.B.G.ROAD</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">CENTRAL</SimpleData>
+				<SimpleData name="FID">14</SimpleData>
+				<SimpleData name="NAME">PS D.B.G.ROAD</SimpleData>
+				<SimpleData name="X">714365° 35&apos; 1.478&quot; E</SimpleData>
+				<SimpleData name="Y">3171495° 10&apos; 32.993&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1932999,28.6528663,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS DARYA GANJ</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">CENTRAL</SimpleData>
+				<SimpleData name="FID">15</SimpleData>
+				<SimpleData name="NAME">PS DARYA GANJ</SimpleData>
+				<SimpleData name="X">719035° 16&apos; 44.040&quot; E</SimpleData>
+				<SimpleData name="Y">3170374° 36&apos; 34.560&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2408336,28.6419774,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS I.P. ESTATE</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">CENTRAL</SimpleData>
+				<SimpleData name="FID">16</SimpleData>
+				<SimpleData name="NAME">PS I.P. ESTATE</SimpleData>
+				<SimpleData name="X">719710° 4&apos; 53.543&quot; E</SimpleData>
+				<SimpleData name="Y">3168747° 25&apos; 44.163&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.24742000000001,28.6271868,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS RAJINDER NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">CENTRAL</SimpleData>
+				<SimpleData name="FID">17</SimpleData>
+				<SimpleData name="NAME">PS RAJINDER NAGAR</SimpleData>
+				<SimpleData name="X">713378° 48&apos; 39.540&quot; E</SimpleData>
+				<SimpleData name="Y">3169468° 11&apos; 50.832&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.18283099999999,28.6347463,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS PARSHAD NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">CENTRAL</SimpleData>
+				<SimpleData name="FID">18</SimpleData>
+				<SimpleData name="NAME">PS PARSHAD NAGAR</SimpleData>
+				<SimpleData name="X">713147° 28&apos; 39.360&quot; E</SimpleData>
+				<SimpleData name="Y">3170929° 54&apos; 55.080&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.18073870000001,28.6479689,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS NABI KARIM</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">CENTRAL</SimpleData>
+				<SimpleData name="FID">19</SimpleData>
+				<SimpleData name="NAME">PS NABI KARIM</SimpleData>
+				<SimpleData name="X">716723° 25&apos; 49.427&quot; E</SimpleData>
+				<SimpleData name="Y">3171191° 38&apos; 8.533&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2173521,28.6497358,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS KAMLA MARKET</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">CENTRAL</SimpleData>
+				<SimpleData name="FID">20</SimpleData>
+				<SimpleData name="NAME">PS KAMLA MARKET</SimpleData>
+				<SimpleData name="X">717605° 0&apos; 52.923&quot; E</SimpleData>
+				<SimpleData name="Y">3170374° 56&apos; 42.424&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2262106,28.6422216,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS HAUZ QAZI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">CENTRAL</SimpleData>
+				<SimpleData name="FID">21</SimpleData>
+				<SimpleData name="NAME">PS HAUZ QAZI</SimpleData>
+				<SimpleData name="X">717546° 23&apos; 42.242&quot; E</SimpleData>
+				<SimpleData name="Y">3171223° 50&apos; 39.923&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2257729,28.6498882,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS JAMA MASJID</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">CENTRAL</SimpleData>
+				<SimpleData name="FID">22</SimpleData>
+				<SimpleData name="NAME">PS JAMA MASJID</SimpleData>
+				<SimpleData name="X">718349° 54&apos; 4.933&quot; E</SimpleData>
+				<SimpleData name="Y">3171568° 27&apos; 38.748&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.23405459999999,28.6528612,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS CHANDNI MAHAL</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">CENTRAL</SimpleData>
+				<SimpleData name="FID">23</SimpleData>
+				<SimpleData name="NAME">PS CHANDNI MAHAL</SimpleData>
+				<SimpleData name="X">718579° 13&apos; 34.030&quot; E</SimpleData>
+				<SimpleData name="Y">3170552° 1&apos; 42.076&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2362049,28.6436547,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS ANAND PARBAT</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">CENTRAL</SimpleData>
+				<SimpleData name="FID">24</SimpleData>
+				<SimpleData name="NAME">PS ANAND PARBAT</SimpleData>
+				<SimpleData name="X">712515° 36&apos; 31.993&quot; E</SimpleData>
+				<SimpleData name="Y">3172202° 14&apos; 55.709&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1745147,28.6595491,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS PATEL NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">CENTRAL</SimpleData>
+				<SimpleData name="FID">25</SimpleData>
+				<SimpleData name="NAME">PS PATEL NAGAR</SimpleData>
+				<SimpleData name="X">710903° 23&apos; 49.746&quot; E</SimpleData>
+				<SimpleData name="Y">3171372° 51&apos; 33.815&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.15787450000001,28.6523319,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS PAHAR GANJ</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">CENTRAL</SimpleData>
+				<SimpleData name="FID">26</SimpleData>
+				<SimpleData name="NAME">PS PAHAR GANJ</SimpleData>
+				<SimpleData name="X">715906° 36&apos; 16.920&quot; E</SimpleData>
+				<SimpleData name="Y">3170718° 15&apos; 42.120&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2089105,28.6456026,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS ASHOK VIHAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH WEST</SimpleData>
+				<SimpleData name="FID">27</SimpleData>
+				<SimpleData name="NAME">PS ASHOK VIHAR</SimpleData>
+				<SimpleData name="X">712375° 41&apos; 20.588&quot; E</SimpleData>
+				<SimpleData name="Y">3175855° 22&apos; 42.788&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1737643,28.6925229,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS ADARSH NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH WEST</SimpleData>
+				<SimpleData name="FID">28</SimpleData>
+				<SimpleData name="NAME">PS ADARSH NAGAR</SimpleData>
+				<SimpleData name="X">712483° 27&apos; 53.280&quot; E</SimpleData>
+				<SimpleData name="Y">3177793° 31&apos; 27.840&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.17522839999999,28.70998700000001,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS JAHANGIR PURI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH WEST</SimpleData>
+				<SimpleData name="FID">29</SimpleData>
+				<SimpleData name="NAME">PS JAHANGIR PURI</SimpleData>
+				<SimpleData name="X">712435° 46&apos; 4.135&quot; E</SimpleData>
+				<SimpleData name="Y">3180410° 15&apos; 55.090&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1752291,28.7335973,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SHALIMAR BAGH</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH WEST</SimpleData>
+				<SimpleData name="FID">30</SimpleData>
+				<SimpleData name="NAME">PS SHALIMAR BAGH</SimpleData>
+				<SimpleData name="X">710703° 31&apos; 6.600&quot; E</SimpleData>
+				<SimpleData name="Y">3178550° 50&apos; 44.520&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1571577,28.7171097,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SUBHASH PLACE</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH WEST</SimpleData>
+				<SimpleData name="FID">31</SimpleData>
+				<SimpleData name="NAME">PS SUBHASH PLACE</SimpleData>
+				<SimpleData name="X">709488° 1&apos; 1.200&quot; E</SimpleData>
+				<SimpleData name="Y">3175444° 29&apos; 47.400&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1441492,28.6892882,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS MODEL TOWN</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH WEST</SimpleData>
+				<SimpleData name="FID">32</SimpleData>
+				<SimpleData name="NAME">PS MODEL TOWN</SimpleData>
+				<SimpleData name="X">714307° 45&apos; 21.240&quot; E</SimpleData>
+				<SimpleData name="Y">3176981° 35&apos; 57.120&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1937399,28.7023621,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SWARUP NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">OUTER NORTH</SimpleData>
+				<SimpleData name="FID">33</SimpleData>
+				<SimpleData name="NAME">PS SWARUP NAGAR</SimpleData>
+				<SimpleData name="X">710519° 58&apos; 56.803&quot; E</SimpleData>
+				<SimpleData name="Y">3183142° 21&apos; 44.913&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.15613020000001,28.7585547,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS FARASH BAZAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SHAHDARA</SimpleData>
+				<SimpleData name="FID">34</SimpleData>
+				<SimpleData name="NAME">PS FARASH BAZAR</SimpleData>
+				<SimpleData name="X">723441° 19&apos; 51.117&quot; E</SimpleData>
+				<SimpleData name="Y">3173011° 46&apos; 31.925&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2863966,28.6650097,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS MANDAWALI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">EAST</SimpleData>
+				<SimpleData name="FID">35</SimpleData>
+				<SimpleData name="NAME">PS MANDAWALI</SimpleData>
+				<SimpleData name="X">725479° 16&apos; 15.832&quot; E</SimpleData>
+				<SimpleData name="Y">3168643° 16&apos; 59.818&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.3063738,28.6252562,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS MAYUR VIHAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">EAST</SimpleData>
+				<SimpleData name="FID">36</SimpleData>
+				<SimpleData name="NAME">PS MAYUR VIHAR</SimpleData>
+				<SimpleData name="X">725295° 19&apos; 47.278&quot; E</SimpleData>
+				<SimpleData name="Y">3166629° 11&apos; 16.710&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.3040968,28.6071228,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SEEMA PURI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SHAHDARA</SimpleData>
+				<SimpleData name="FID">37</SimpleData>
+				<SimpleData name="NAME">PS SEEMA PURI</SimpleData>
+				<SimpleData name="X">726332° 52&apos; 22.726&quot; E</SimpleData>
+				<SimpleData name="Y">3174498° 13&apos; 59.154&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.31625990000001,28.6779134,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SHAHDARA</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SHAHDARA</SimpleData>
+				<SimpleData name="FID">38</SimpleData>
+				<SimpleData name="NAME">PS SHAHDARA</SimpleData>
+				<SimpleData name="X">723299° 22&apos; 8.357&quot; E</SimpleData>
+				<SimpleData name="Y">3174061° 29&apos; 41.271&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.28515040000001,28.6745019,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SEELAM PUR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH EAST</SimpleData>
+				<SimpleData name="FID">39</SimpleData>
+				<SimpleData name="NAME">PS SEELAM PUR</SimpleData>
+				<SimpleData name="X">721588° 32&apos; 55.174&quot; E</SimpleData>
+				<SimpleData name="Y">3174023° 48&apos; 1.337&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.26764660000001,28.6744562,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS GOKUL PURI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH EAST</SimpleData>
+				<SimpleData name="FID">40</SimpleData>
+				<SimpleData name="NAME">PS GOKUL PURI</SimpleData>
+				<SimpleData name="X">723368° 36&apos; 34.844&quot; E</SimpleData>
+				<SimpleData name="Y">3177160° 33&apos; 44.018&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.286466,28.7024409,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS KHAJURI KHAS</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH EAST</SimpleData>
+				<SimpleData name="FID">41</SimpleData>
+				<SimpleData name="NAME">PS KHAJURI KHAS</SimpleData>
+				<SimpleData name="X">720248° 11&apos; 7.447&quot; E</SimpleData>
+				<SimpleData name="Y">3178309° 45&apos; 31.234&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2547673,28.7133419,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS BHAJAN PURA</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH EAST</SimpleData>
+				<SimpleData name="FID">42</SimpleData>
+				<SimpleData name="NAME">PS BHAJAN PURA</SimpleData>
+				<SimpleData name="X">721259° 34&apos; 7.680&quot; E</SimpleData>
+				<SimpleData name="Y">3176974° 20&apos; 29.400&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.264855,28.7011244,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS NAND NAGRI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH EAST</SimpleData>
+				<SimpleData name="FID">43</SimpleData>
+				<SimpleData name="NAME">PS NAND NAGRI</SimpleData>
+				<SimpleData name="X">725452° 56&apos; 53.578&quot; E</SimpleData>
+				<SimpleData name="Y">3176639° 16&apos; 25.018&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.30768449999999,28.6973773,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS KARAWAL NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH EAST</SimpleData>
+				<SimpleData name="FID">44</SimpleData>
+				<SimpleData name="NAME">PS KARAWAL NAGAR</SimpleData>
+				<SimpleData name="X">722201° 31&apos; 41.880&quot; E</SimpleData>
+				<SimpleData name="Y">3180509° 22&apos; 38.280&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.27518120000001,28.7328459,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS NEW USMAN PUR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH EAST</SimpleData>
+				<SimpleData name="FID">45</SimpleData>
+				<SimpleData name="NAME">PS NEW USMAN PUR</SimpleData>
+				<SimpleData name="X">721036° 43&apos; 14.104&quot; E</SimpleData>
+				<SimpleData name="Y">3173807° 52&apos; 49.337&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2619612,28.6726032,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS HARSH VIHAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH EAST</SimpleData>
+				<SimpleData name="FID">46</SimpleData>
+				<SimpleData name="NAME">PS HARSH VIHAR</SimpleData>
+				<SimpleData name="X">726504° 6&apos; 20.160&quot; E</SimpleData>
+				<SimpleData name="Y">3177603° 10&apos; 40.440&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.31862839999999,28.7058868,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS DEFENCE COLONY</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH</SimpleData>
+				<SimpleData name="FID">47</SimpleData>
+				<SimpleData name="NAME">PS DEFENCE COLONY</SimpleData>
+				<SimpleData name="X">718436° 25&apos; 8.748&quot; E</SimpleData>
+				<SimpleData name="Y">3161813° 35&apos; 43.440&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.23307680000001,28.5648616,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS LODHI COLONY</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH</SimpleData>
+				<SimpleData name="FID">48</SimpleData>
+				<SimpleData name="NAME">PS LODHI COLONY</SimpleData>
+				<SimpleData name="X">717734° 11&apos; 9.960&quot; E</SimpleData>
+				<SimpleData name="Y">3164363° 49&apos; 38.640&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.22638689999999,28.5879818,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS HAUZ KHAS</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH</SimpleData>
+				<SimpleData name="FID">49</SimpleData>
+				<SimpleData name="NAME">PS HAUZ KHAS</SimpleData>
+				<SimpleData name="X">716038° 19&apos; 29.280&quot; E</SimpleData>
+				<SimpleData name="Y">3160028° 26&apos; 40.920&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.20824,28.5491609,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS VASANT VIHAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH WEST</SimpleData>
+				<SimpleData name="FID">50</SimpleData>
+				<SimpleData name="NAME">PS VASANT VIHAR</SimpleData>
+				<SimpleData name="X">712195° 21&apos; 1.499&quot; E</SimpleData>
+				<SimpleData name="Y">3160954° 25&apos; 55.067&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.16915349999999,28.5581465,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS R.K.PURAM</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH WEST</SimpleData>
+				<SimpleData name="FID">51</SimpleData>
+				<SimpleData name="NAME">PS R.K.PURAM</SimpleData>
+				<SimpleData name="X">713090° 25&apos; 33.383&quot; E</SimpleData>
+				<SimpleData name="Y">3162342° 37&apos; 12.870&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.17855590000001,28.5705215,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SAROJINI NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH WEST</SimpleData>
+				<SimpleData name="FID">52</SimpleData>
+				<SimpleData name="NAME">PS SAROJINI NAGAR</SimpleData>
+				<SimpleData name="X">715127° 18&apos; 26.531&quot; E</SimpleData>
+				<SimpleData name="Y">3162827° 5&apos; 16.370&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1994586,28.5745554,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS VASANT KUNJ NORTH</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH WEST</SimpleData>
+				<SimpleData name="FID">53</SimpleData>
+				<SimpleData name="NAME">PS VASANT KUNJ NORTH</SimpleData>
+				<SimpleData name="X">710544° 29&apos; 43.573&quot; E</SimpleData>
+				<SimpleData name="Y">3158383° 22&apos; 56.106&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1518159,28.5352237,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS KOTLA MUBARAK PUR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH</SimpleData>
+				<SimpleData name="FID">54</SimpleData>
+				<SimpleData name="NAME">PS KOTLA MUBARAK PUR</SimpleData>
+				<SimpleData name="X">717633° 51&apos; 21.255&quot; E</SimpleData>
+				<SimpleData name="Y">3163034° 55&apos; 8.441&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.22510920000001,28.5760123,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SAKET</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH</SimpleData>
+				<SimpleData name="FID">55</SimpleData>
+				<SimpleData name="NAME">PS SAKET</SimpleData>
+				<SimpleData name="X">716940° 17&apos; 59.645&quot; E</SimpleData>
+				<SimpleData name="Y">3157504° 59&apos; 36.807&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.21697709999999,28.5262496,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS NEB SARAI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH</SimpleData>
+				<SimpleData name="FID">56</SimpleData>
+				<SimpleData name="NAME">PS NEB SARAI</SimpleData>
+				<SimpleData name="X">716694° 37&apos; 49.543&quot; E</SimpleData>
+				<SimpleData name="Y">3154473° 5&apos; 35.062&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.21389670000001,28.4989433,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS MALVIYA NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH</SimpleData>
+				<SimpleData name="FID">57</SimpleData>
+				<SimpleData name="NAME">PS MALVIYA NAGAR</SimpleData>
+				<SimpleData name="X">715717° 4&apos; 16.266&quot; E</SimpleData>
+				<SimpleData name="Y">3157982° 48&apos; 55.120&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2045739,28.5307629,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS NAJAFGARH</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">DWARKA</SimpleData>
+				<SimpleData name="FID">58</SimpleData>
+				<SimpleData name="NAME">PS NAJAFGARH</SimpleData>
+				<SimpleData name="X">693885° 27&apos; 35.688&quot; E</SimpleData>
+				<SimpleData name="Y">3166381° 14&apos; 23.192&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>76.9829968,28.60996400000001,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS KAPASHERA</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH WEST</SimpleData>
+				<SimpleData name="FID">59</SimpleData>
+				<SimpleData name="NAME">PS KAPASHERA</SimpleData>
+				<SimpleData name="X">704247° 34&apos; 43.344&quot; E</SimpleData>
+				<SimpleData name="Y">3157637° 59&apos; 46.850&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.087363,28.5295042,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS DELHI CANTT.</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH WEST</SimpleData>
+				<SimpleData name="FID">60</SimpleData>
+				<SimpleData name="NAME">PS DELHI CANTT.</SimpleData>
+				<SimpleData name="X">707690° 35&apos; 47.398&quot; E</SimpleData>
+				<SimpleData name="Y">3165399° 27&apos; 44.545&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.12393590000001,28.59897,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS NARAINA</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">WEST</SimpleData>
+				<SimpleData name="FID">61</SimpleData>
+				<SimpleData name="NAME">PS NARAINA</SimpleData>
+				<SimpleData name="X">708958° 8&apos; 18.129&quot; E</SimpleData>
+				<SimpleData name="Y">3169210° 51&apos; 43.501&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1375874,28.6331459,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS DABRI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">DWARKA</SimpleData>
+				<SimpleData name="FID">62</SimpleData>
+				<SimpleData name="NAME">PS DABRI</SimpleData>
+				<SimpleData name="X">703910° 39&apos; 45.225&quot; E</SimpleData>
+				<SimpleData name="Y">3166898° 24&apos; 6.813&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.08556900000001,28.613091,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS DWARKA SEC-23</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">DWARKA</SimpleData>
+				<SimpleData name="FID">63</SimpleData>
+				<SimpleData name="NAME">PS DWARKA SEC-23</SimpleData>
+				<SimpleData name="X">701318° 59&apos; 2.010&quot; E</SimpleData>
+				<SimpleData name="Y">3161487° 27&apos; 48.549&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.05812469999999,28.5646858,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS BINDA PUR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">DWARKA</SimpleData>
+				<SimpleData name="FID">64</SimpleData>
+				<SimpleData name="NAME">PS BINDA PUR</SimpleData>
+				<SimpleData name="X">703055° 1&apos; 18.028&quot; E</SimpleData>
+				<SimpleData name="Y">3166727° 45&apos; 57.821&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.07679210000001,28.6116861,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS MAURYA ENCLAVE</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH WEST</SimpleData>
+				<SimpleData name="FID">65</SimpleData>
+				<SimpleData name="NAME">PS MAURYA ENCLAVE</SimpleData>
+				<SimpleData name="X">709658° 6&apos; 29.520&quot; E</SimpleData>
+				<SimpleData name="Y">3176664° 29&apos; 45.960&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1461137,28.70026500000001,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS KESHAV PURAM</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH WEST</SimpleData>
+				<SimpleData name="FID">66</SimpleData>
+				<SimpleData name="NAME">PS KESHAV PURAM</SimpleData>
+				<SimpleData name="X">711012° 36&apos; 17.085&quot; E</SimpleData>
+				<SimpleData name="Y">3174872° 45&apos; 35.171&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1596387,28.6838831,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS MUKHERJI NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH WEST</SimpleData>
+				<SimpleData name="FID">67</SimpleData>
+				<SimpleData name="NAME">PS MUKHERJI NAGAR</SimpleData>
+				<SimpleData name="X">715787° 23&apos; 4.589&quot; E</SimpleData>
+				<SimpleData name="Y">3176750° 2&apos; 20.139&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2088329,28.7000271,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS BAWANA</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">OUTER NORTH</SimpleData>
+				<SimpleData name="FID">68</SimpleData>
+				<SimpleData name="NAME">PS BAWANA</SimpleData>
+				<SimpleData name="X">699271° 45&apos; 1.642&quot; E</SimpleData>
+				<SimpleData name="Y">3187155° 53&apos; 7.081&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.0416937,28.7965475,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS NARELA</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">OUTER NORTH</SimpleData>
+				<SimpleData name="FID">69</SimpleData>
+				<SimpleData name="NAME">PS NARELA</SimpleData>
+				<SimpleData name="X">703686° 21&apos; 28.253&quot; E</SimpleData>
+				<SimpleData name="Y">3193523° 4&apos; 39.710&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.0880464,28.8532894,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS ALI PUR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">OUTER NORTH</SimpleData>
+				<SimpleData name="FID">70</SimpleData>
+				<SimpleData name="NAME">PS ALI PUR</SimpleData>
+				<SimpleData name="X">708736° 51&apos; 39.960&quot; E</SimpleData>
+				<SimpleData name="Y">3187586° 6&apos; 10.800&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1386959,28.7989271,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS KANJHAWALA</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">ROHINI</SimpleData>
+				<SimpleData name="FID">71</SimpleData>
+				<SimpleData name="NAME">PS KANJHAWALA</SimpleData>
+				<SimpleData name="X">695656° 39&apos; 16.200&quot; E</SimpleData>
+				<SimpleData name="Y">3179224° 31&apos; 43.680&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.0033061,28.7255557,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SAMAIPUR BADLI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">OUTER NORTH</SimpleData>
+				<SimpleData name="FID">72</SimpleData>
+				<SimpleData name="NAME">PS SAMAIPUR BADLI</SimpleData>
+				<SimpleData name="X">709145° 46&apos; 49.870&quot; E</SimpleData>
+				<SimpleData name="Y">3179407° 17&apos; 58.527&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1413764,28.7250883,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS MANGOL PURI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">OUTER</SimpleData>
+				<SimpleData name="FID">73</SimpleData>
+				<SimpleData name="NAME">PS MANGOL PURI</SimpleData>
+				<SimpleData name="X">704327° 18&apos; 4.460&quot; E</SimpleData>
+				<SimpleData name="Y">3176135° 14&apos; 17.604&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.0914815,28.6963453,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SULTAN PURI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">OUTER</SimpleData>
+				<SimpleData name="FID">74</SimpleData>
+				<SimpleData name="NAME">PS SULTAN PURI</SimpleData>
+				<SimpleData name="X">703089° 37&apos; 28.200&quot; E</SimpleData>
+				<SimpleData name="Y">3176831° 37&apos; 35.040&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.0789438,28.7028222,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS PARSHANT VIHAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">ROHINI</SimpleData>
+				<SimpleData name="FID">75</SimpleData>
+				<SimpleData name="NAME">PS PARSHANT VIHAR</SimpleData>
+				<SimpleData name="X">707785° 40&apos; 30.000&quot; E</SimpleData>
+				<SimpleData name="Y">3178585° 6&apos; 36.000&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1273085,28.7178918,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SHAHBAD DAIRY</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">OUTER NORTH</SimpleData>
+				<SimpleData name="FID">76</SimpleData>
+				<SimpleData name="NAME">PS SHAHBAD DAIRY</SimpleData>
+				<SimpleData name="X">702992° 44&apos; 31.629&quot; E</SimpleData>
+				<SimpleData name="Y">3181796° 15&apos; 49.601&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.07883870000001,28.7476203,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS BUDH VIHAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">ROHINI</SimpleData>
+				<SimpleData name="FID">77</SimpleData>
+				<SimpleData name="NAME">PS BUDH VIHAR</SimpleData>
+				<SimpleData name="X">705901° 32&apos; 18.473&quot; E</SimpleData>
+				<SimpleData name="Y">3178502° 12&apos; 17.759&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1080145,28.7174459,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS PARLIAMENT STREET</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NEW DELHI</SimpleData>
+				<SimpleData name="FID">78</SimpleData>
+				<SimpleData name="NAME">PS PARLIAMENT STREET</SimpleData>
+				<SimpleData name="X">716349° 36&apos; 4.311&quot; E</SimpleData>
+				<SimpleData name="Y">3168433° 53&apos; 50.788&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2130074,28.6249243,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS CHANAKYA PURI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NEW DELHI</SimpleData>
+				<SimpleData name="FID">79</SimpleData>
+				<SimpleData name="NAME">PS CHANAKYA PURI</SimpleData>
+				<SimpleData name="X">714721° 58&apos; 43.680&quot; E</SimpleData>
+				<SimpleData name="Y">3165978° 50&apos; 34.080&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.19590789999999,28.6030509,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS TUGLAK ROAD</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NEW DELHI</SimpleData>
+				<SimpleData name="FID">80</SimpleData>
+				<SimpleData name="NAME">PS TUGLAK ROAD</SimpleData>
+				<SimpleData name="X">716166° 32&apos; 8.160&quot; E</SimpleData>
+				<SimpleData name="Y">3165443° 54&apos; 2.520&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.210571,28.5979859,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS TILAK MARG</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NEW DELHI</SimpleData>
+				<SimpleData name="FID">81</SimpleData>
+				<SimpleData name="NAME">PS TILAK MARG</SimpleData>
+				<SimpleData name="X">718557° 37&apos; 48.360&quot; E</SimpleData>
+				<SimpleData name="Y">3167702° 41&apos; 30.480&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2354392,28.6179586,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS CONNAUGHT PLACE</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NEW DELHI</SimpleData>
+				<SimpleData name="FID">82</SimpleData>
+				<SimpleData name="NAME">PS CONNAUGHT PLACE</SimpleData>
+				<SimpleData name="X">716450° 2&apos; 12.350&quot; E</SimpleData>
+				<SimpleData name="Y">3168988° 38&apos; 7.354&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.21413920000001,28.6299111,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS BARAKHAMBA ROAD</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NEW DELHI</SimpleData>
+				<SimpleData name="FID">83</SimpleData>
+				<SimpleData name="NAME">PS BARAKHAMBA ROAD</SimpleData>
+				<SimpleData name="X">717584° 14&apos; 42.013&quot; E</SimpleData>
+				<SimpleData name="Y">3169094° 38&apos; 8.759&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2257544,28.6306772,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS MANDIR MARG</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NEW DELHI</SimpleData>
+				<SimpleData name="FID">84</SimpleData>
+				<SimpleData name="NAME">PS MANDIR MARG</SimpleData>
+				<SimpleData name="X">715368° 17&apos; 6.000&quot; E</SimpleData>
+				<SimpleData name="Y">3169983° 41&apos; 2.713&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2032679,28.6390665,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS JAGAT PURI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SHAHDARA</SimpleData>
+				<SimpleData name="FID">85</SimpleData>
+				<SimpleData name="NAME">PS JAGAT PURI</SimpleData>
+				<SimpleData name="X">723232° 42&apos; 43.279&quot; E</SimpleData>
+				<SimpleData name="Y">3170659° 28&apos; 9.471&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.28380319999999,28.6438298,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS PANDAV NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">EAST</SimpleData>
+				<SimpleData name="FID">86</SimpleData>
+				<SimpleData name="NAME">PS PANDAV NAGAR</SimpleData>
+				<SimpleData name="X">725141° 49&apos; 26.270&quot; E</SimpleData>
+				<SimpleData name="Y">3168071° 33&apos; 20.572&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.3028118,28.6201584,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS KALYAN PURI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">EAST</SimpleData>
+				<SimpleData name="FID">87</SimpleData>
+				<SimpleData name="NAME">PS KALYAN PURI</SimpleData>
+				<SimpleData name="X">726593° 13&apos; 47.640&quot; E</SimpleData>
+				<SimpleData name="Y">3167334° 29&apos; 48.120&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.3175012,28.6132579,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS GEETA COLONY</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SHAHDARA</SimpleData>
+				<SimpleData name="FID">88</SimpleData>
+				<SimpleData name="NAME">PS GEETA COLONY</SimpleData>
+				<SimpleData name="X">722451° 27&apos; 39.960&quot; E</SimpleData>
+				<SimpleData name="Y">3171920° 35&apos; 58.560&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2760615,28.6553387,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS VIVEK VIHAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SHAHDARA</SimpleData>
+				<SimpleData name="FID">89</SimpleData>
+				<SimpleData name="NAME">PS VIVEK VIHAR</SimpleData>
+				<SimpleData name="X">725394° 15&apos; 2.520&quot; E</SimpleData>
+				<SimpleData name="Y">3173267° 58&apos; 5.520&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.30641749999999,28.6669815,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS KRISHNA NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SHAHDARA</SimpleData>
+				<SimpleData name="FID">90</SimpleData>
+				<SimpleData name="NAME">PS KRISHNA NAGAR</SimpleData>
+				<SimpleData name="X">722833° 4&apos; 40.440&quot; E</SimpleData>
+				<SimpleData name="Y">3173244° 43&apos; 54.120&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2802221,28.6672157,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SHAKAR PUR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">EAST</SimpleData>
+				<SimpleData name="FID">91</SimpleData>
+				<SimpleData name="NAME">PS SHAKAR PUR</SimpleData>
+				<SimpleData name="X">721961° 26&apos; 36.942&quot; E</SimpleData>
+				<SimpleData name="Y">3169919° 45&apos; 27.357&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2706621,28.6373766,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS GANDHI NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SHAHDARA</SimpleData>
+				<SimpleData name="FID">92</SimpleData>
+				<SimpleData name="NAME">PS GANDHI NAGAR</SimpleData>
+				<SimpleData name="X">721616° 52&apos; 17.040&quot; E</SimpleData>
+				<SimpleData name="Y">3172417° 49&apos; 49.440&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.26762429999999,28.6599666,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS NEW ASHOK NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">EAST</SimpleData>
+				<SimpleData name="FID">93</SimpleData>
+				<SimpleData name="NAME">PS NEW ASHOK NAGAR</SimpleData>
+				<SimpleData name="X">727194° 9&apos; 49.006&quot; E</SimpleData>
+				<SimpleData name="Y">3166293° 33&apos; 59.903&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.3234365,28.6037645,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS BEGUM PUR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">ROHINI</SimpleData>
+				<SimpleData name="FID">94</SimpleData>
+				<SimpleData name="NAME">PS BEGUM PUR</SimpleData>
+				<SimpleData name="X">702433° 34&apos; 23.773&quot; E</SimpleData>
+				<SimpleData name="Y">3178981° 52&apos; 25.521&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.0726142,28.7223213,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SOUTH CAMPUS</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH WEST</SimpleData>
+				<SimpleData name="FID">95</SimpleData>
+				<SimpleData name="NAME">PS SOUTH CAMPUS</SimpleData>
+				<SimpleData name="X">713093° 27&apos; 14.781&quot; E</SimpleData>
+				<SimpleData name="Y">3162353° 29&apos; 21.954&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.17858889999999,28.570619,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS FATEHPUR BERI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH</SimpleData>
+				<SimpleData name="FID">96</SimpleData>
+				<SimpleData name="NAME">PS FATEHPUR BERI</SimpleData>
+				<SimpleData name="X">710581° 0&apos; 14.280&quot; E</SimpleData>
+				<SimpleData name="Y">3150644° 37&apos; 51.785&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1507723,28.46541240000001,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS PUL PRAHLAD PUR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH EAST</SimpleData>
+				<SimpleData name="FID">97</SimpleData>
+				<SimpleData name="NAME">PS PUL PRAHLAD PUR</SimpleData>
+				<SimpleData name="X">724209° 12&apos; 31.576&quot; E</SimpleData>
+				<SimpleData name="Y">3154946° 25&apos; 34.249&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.29071329999999,28.5019406,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS INDER PURI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">WEST</SimpleData>
+				<SimpleData name="FID">98</SimpleData>
+				<SimpleData name="NAME">PS INDER PURI</SimpleData>
+				<SimpleData name="X">709704° 37&apos; 54.748&quot; E</SimpleData>
+				<SimpleData name="Y">3168997° 14&apos; 15.521&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1451802,28.6310983,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS PALAM VILLAGE</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH WEST</SimpleData>
+				<SimpleData name="FID">99</SimpleData>
+				<SimpleData name="NAME">PS PALAM VILLAGE</SimpleData>
+				<SimpleData name="X">703698° 48&apos; 47.365&quot; E</SimpleData>
+				<SimpleData name="Y">3164143° 30&apos; 17.845&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.0829131,28.5882737,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS JAFFARPUR KALAN</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">DWARKA</SimpleData>
+				<SimpleData name="FID">100</SimpleData>
+				<SimpleData name="NAME">PS JAFFARPUR KALAN</SimpleData>
+				<SimpleData name="X">687216° 32&apos; 33.053&quot; E</SimpleData>
+				<SimpleData name="Y">3164711° 6&apos; 1.274&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>76.914548,28.5958773,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS CHHAWLA</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">DWARKA</SimpleData>
+				<SimpleData name="FID">101</SimpleData>
+				<SimpleData name="NAME">PS CHHAWLA</SimpleData>
+				<SimpleData name="X">695102° 46&apos; 18.294&quot; E</SimpleData>
+				<SimpleData name="Y">3163842° 16&apos; 46.107&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>76.99500810000001,28.5868774,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS LAJPAT NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH EAST</SimpleData>
+				<SimpleData name="FID">102</SimpleData>
+				<SimpleData name="NAME">PS LAJPAT NAGAR</SimpleData>
+				<SimpleData name="X">719145° 35&apos; 33.720&quot; E</SimpleData>
+				<SimpleData name="Y">3162217° 33&apos; 55.440&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2403994,28.5683858,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS KALKAJI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH EAST</SimpleData>
+				<SimpleData name="FID">103</SimpleData>
+				<SimpleData name="NAME">PS KALKAJI</SimpleData>
+				<SimpleData name="X">720713° 26&apos; 36.240&quot; E</SimpleData>
+				<SimpleData name="Y">3159878° 49&apos; 24.600&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2559679,28.5470259,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS OKHLA INDL. AREA</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH EAST</SimpleData>
+				<SimpleData name="FID">104</SimpleData>
+				<SimpleData name="NAME">PS OKHLA INDL. AREA</SimpleData>
+				<SimpleData name="X">722567° 13&apos; 43.680&quot; E</SimpleData>
+				<SimpleData name="Y">3157707° 35&apos; 9.240&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2744829,28.5271264,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SANGAM VIHAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH</SimpleData>
+				<SimpleData name="FID">105</SimpleData>
+				<SimpleData name="NAME">PS SANGAM VIHAR</SimpleData>
+				<SimpleData name="X">719561° 5&apos; 34.729&quot; E</SimpleData>
+				<SimpleData name="Y">3155713° 1&apos; 18.098&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2434007,28.509647,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS H.N.DIN</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH EAST</SimpleData>
+				<SimpleData name="FID">106</SimpleData>
+				<SimpleData name="NAME">PS H.N.DIN</SimpleData>
+				<SimpleData name="X">719426° 41&apos; 47.869&quot; E</SimpleData>
+				<SimpleData name="Y">3164867° 35&apos; 15.053&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2437789,28.5922404,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS JAMIA NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH EAST</SimpleData>
+				<SimpleData name="FID">107</SimpleData>
+				<SimpleData name="NAME">PS JAMIA NAGAR</SimpleData>
+				<SimpleData name="X">724227° 20&apos; 35.880&quot; E</SimpleData>
+				<SimpleData name="Y">3161597° 47&apos; 58.560&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.29219689999999,28.5619285,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS CHITRANJAN PARK</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH</SimpleData>
+				<SimpleData name="FID">108</SimpleData>
+				<SimpleData name="NAME">PS CHITRANJAN PARK</SimpleData>
+				<SimpleData name="X">720079° 47&apos; 30.631&quot; E</SimpleData>
+				<SimpleData name="Y">3158732° 39&apos; 1.856&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2492756,28.5367953,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS GREATER KAILASH</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH</SimpleData>
+				<SimpleData name="FID">109</SimpleData>
+				<SimpleData name="NAME">PS GREATER KAILASH</SimpleData>
+				<SimpleData name="X">719473° 53&apos; 9.293&quot; E</SimpleData>
+				<SimpleData name="Y">3159772° 3&apos; 27.765&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2432857,28.5462728,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS AMBEDKAR NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH</SimpleData>
+				<SimpleData name="FID">110</SimpleData>
+				<SimpleData name="NAME">PS AMBEDKAR NAGAR</SimpleData>
+				<SimpleData name="X">719272° 51&apos; 43.152&quot; E</SimpleData>
+				<SimpleData name="Y">3157248° 14&apos; 32.592&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2407504,28.5235428,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS BADAR PUR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH EAST</SimpleData>
+				<SimpleData name="FID">111</SimpleData>
+				<SimpleData name="NAME">PS BADAR PUR</SimpleData>
+				<SimpleData name="X">725513° 14&apos; 46.725&quot; E</SimpleData>
+				<SimpleData name="Y">3154069° 21&apos; 38.755&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.3038557,28.4938049,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SARITA VIHAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH EAST</SimpleData>
+				<SimpleData name="FID">112</SimpleData>
+				<SimpleData name="NAME">PS SARITA VIHAR</SimpleData>
+				<SimpleData name="X">723225° 38&apos; 21.428&quot; E</SimpleData>
+				<SimpleData name="Y">3159176° 12&apos; 12.705&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2814924,28.5402597,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS NEW FRIENDS COLONY</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH EAST</SimpleData>
+				<SimpleData name="FID">113</SimpleData>
+				<SimpleData name="NAME">PS NEW FRIENDS COLONY</SimpleData>
+				<SimpleData name="X">721800° 18&apos; 4.680&quot; E</SimpleData>
+				<SimpleData name="Y">3161600° 39&apos; 47.520&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.26740270000001,28.562371,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS AMAR COLONY</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH EAST</SimpleData>
+				<SimpleData name="FID">114</SimpleData>
+				<SimpleData name="NAME">PS AMAR COLONY</SimpleData>
+				<SimpleData name="X">719188° 32&apos; 45.440&quot; E</SimpleData>
+				<SimpleData name="Y">3161212° 43&apos; 35.008&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2406462,28.5593152,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS JAITPUR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH EAST</SimpleData>
+				<SimpleData name="FID">115</SimpleData>
+				<SimpleData name="NAME">PS JAITPUR</SimpleData>
+				<SimpleData name="X">727034° 23&apos; 2.510&quot; E</SimpleData>
+				<SimpleData name="Y">3155198° 33&apos; 8.926&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.3196082,28.5037251,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS GOVIND PURI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH EAST</SimpleData>
+				<SimpleData name="FID">116</SimpleData>
+				<SimpleData name="NAME">PS GOVIND PURI</SimpleData>
+				<SimpleData name="X">721696° 28&apos; 10.518&quot; E</SimpleData>
+				<SimpleData name="Y">3158092° 35&apos; 14.393&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2656643,28.5307476,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS PUNJABI BAGH</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">WEST</SimpleData>
+				<SimpleData name="FID">117</SimpleData>
+				<SimpleData name="NAME">PS PUNJABI BAGH</SimpleData>
+				<SimpleData name="X">708343° 27&apos; 36.877&quot; E</SimpleData>
+				<SimpleData name="Y">3173748° 46&apos; 49.904&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1321312,28.6741777,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS PASCHIM VIHAR EAST</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">OUTER</SimpleData>
+				<SimpleData name="FID">118</SimpleData>
+				<SimpleData name="NAME">PS PASCHIM VIHAR EAST</SimpleData>
+				<SimpleData name="X">705303° 26&apos; 12.120&quot; E</SimpleData>
+				<SimpleData name="Y">3173341° 41&apos; 57.840&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1009645,28.670992,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS MOTI NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">WEST</SimpleData>
+				<SimpleData name="FID">119</SimpleData>
+				<SimpleData name="NAME">PS MOTI NAGAR</SimpleData>
+				<SimpleData name="X">709799° 26&apos; 6.720&quot; E</SimpleData>
+				<SimpleData name="Y">3172254° 31&apos; 5.160&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.14674789999999,28.6604639,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS RAJOURI GARDEN</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">WEST</SimpleData>
+				<SimpleData name="FID">120</SimpleData>
+				<SimpleData name="NAME">PS RAJOURI GARDEN</SimpleData>
+				<SimpleData name="X">707196° 33&apos; 42.480&quot; E</SimpleData>
+				<SimpleData name="Y">3171214° 2&apos; 0.960&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1199405,28.651498,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SAGAR PUR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH WEST</SimpleData>
+				<SimpleData name="FID">121</SimpleData>
+				<SimpleData name="NAME">PS SAGAR PUR</SimpleData>
+				<SimpleData name="X">705313° 11&apos; 47.760&quot; E</SimpleData>
+				<SimpleData name="Y">3166522° 19&apos; 49.800&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.0998385,28.6094773,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS UTTAM NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">DWARKA</SimpleData>
+				<SimpleData name="FID">122</SimpleData>
+				<SimpleData name="NAME">PS UTTAM NAGAR</SimpleData>
+				<SimpleData name="X">701862° 23&apos; 56.400&quot; E</SimpleData>
+				<SimpleData name="Y">3168222° 52&apos; 10.200&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.0648647,28.6253591,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS JANAK PURI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">WEST</SimpleData>
+				<SimpleData name="FID">123</SimpleData>
+				<SimpleData name="NAME">PS JANAK PURI</SimpleData>
+				<SimpleData name="X">703518° 19&apos; 29.640&quot; E</SimpleData>
+				<SimpleData name="Y">3168588° 43&apos; 57.720&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.0818593,28.6284002,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS TILAK NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">WEST</SimpleData>
+				<SimpleData name="FID">124</SimpleData>
+				<SimpleData name="NAME">PS TILAK NAGAR</SimpleData>
+				<SimpleData name="X">705460° 58&apos; 48.000&quot; E</SimpleData>
+				<SimpleData name="Y">3169758° 40&apos; 46.920&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.10193080000001,28.6386469,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS KIRTI NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">WEST</SimpleData>
+				<SimpleData name="FID">125</SimpleData>
+				<SimpleData name="NAME">PS KIRTI NAGAR</SimpleData>
+				<SimpleData name="X">708721° 16&apos; 0.661&quot; E</SimpleData>
+				<SimpleData name="Y">3169992° 25&apos; 38.255&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1353084,28.6402339,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS VIKAS PURI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">WEST</SimpleData>
+				<SimpleData name="FID">126</SimpleData>
+				<SimpleData name="NAME">PS VIKAS PURI</SimpleData>
+				<SimpleData name="X">702177° 3&apos; 22.960&quot; E</SimpleData>
+				<SimpleData name="Y">3168765° 12&apos; 44.402&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.0681776,28.6302022,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS MAYA PURI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">WEST</SimpleData>
+				<SimpleData name="FID">127</SimpleData>
+				<SimpleData name="NAME">PS MAYA PURI</SimpleData>
+				<SimpleData name="X">707395° 37&apos; 30.679&quot; E</SimpleData>
+				<SimpleData name="Y">3168465° 27&apos; 20.845&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.121477,28.6266733,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS NANGLOI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">OUTER</SimpleData>
+				<SimpleData name="FID">128</SimpleData>
+				<SimpleData name="NAME">PS NANGLOI</SimpleData>
+				<SimpleData name="X">701961° 13&apos; 24.240&quot; E</SimpleData>
+				<SimpleData name="Y">3174477° 27&apos; 35.640&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.0669817,28.6817634,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS NIHAL VIHAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">OUTER</SimpleData>
+				<SimpleData name="FID">129</SimpleData>
+				<SimpleData name="NAME">PS NIHAL VIHAR</SimpleData>
+				<SimpleData name="X">702413° 5&apos; 3.840&quot; E</SimpleData>
+				<SimpleData name="Y">3172617° 58&apos; 46.200&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.0712738,28.6649193,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS KHYALA</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">WEST</SimpleData>
+				<SimpleData name="FID">130</SimpleData>
+				<SimpleData name="NAME">PS KHYALA</SimpleData>
+				<SimpleData name="X">704896° 35&apos; 29.275&quot; E</SimpleData>
+				<SimpleData name="Y">3171203° 55&apos; 17.873&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.0964194,28.651773,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS MEHRAULI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH</SimpleData>
+				<SimpleData name="FID">131</SimpleData>
+				<SimpleData name="NAME">PS MEHRAULI</SimpleData>
+				<SimpleData name="X">713329° 35&apos; 28.666&quot; E</SimpleData>
+				<SimpleData name="Y">3156938° 11&apos; 25.604&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1799951,28.5217342,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS PREET VIHAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">EAST</SimpleData>
+				<SimpleData name="FID">132</SimpleData>
+				<SimpleData name="NAME">PS PREET VIHAR</SimpleData>
+				<SimpleData name="X">724363° 39&apos; 22.243&quot; E</SimpleData>
+				<SimpleData name="Y">3170119° 2&apos; 26.507&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2952597,28.63876,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS MADHU VIHAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">EAST</SimpleData>
+				<SimpleData name="FID">133</SimpleData>
+				<SimpleData name="NAME">PS MADHU VIHAR</SimpleData>
+				<SimpleData name="X">725455° 8&apos; 3.802&quot; E</SimpleData>
+				<SimpleData name="Y">3168632° 37&apos; 7.353&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.30612499999999,28.6251642,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS JAFFRABAD</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH EAST</SimpleData>
+				<SimpleData name="FID">134</SimpleData>
+				<SimpleData name="NAME">PS JAFFRABAD</SimpleData>
+				<SimpleData name="X">722089° 40&apos; 48.000&quot; E</SimpleData>
+				<SimpleData name="Y">3174542° 22&apos; 31.800&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.27287269999999,28.6790474,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SONIA VIHAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH EAST</SimpleData>
+				<SimpleData name="FID">135</SimpleData>
+				<SimpleData name="NAME">PS SONIA VIHAR</SimpleData>
+				<SimpleData name="X">719311° 12&apos; 35.280&quot; E</SimpleData>
+				<SimpleData name="Y">3181908° 43&apos; 59.160&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.24587529999999,28.7459619,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS JYOTI NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH EAST</SimpleData>
+				<SimpleData name="FID">136</SimpleData>
+				<SimpleData name="NAME">PS JYOTI NAGAR</SimpleData>
+				<SimpleData name="X">723818° 13&apos; 24.535&quot; E</SimpleData>
+				<SimpleData name="Y">3176504° 10&apos; 12.791&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.29093640000001,28.696443,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS BHALSWA DAIRY</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">OUTER NORTH</SimpleData>
+				<SimpleData name="FID">137</SimpleData>
+				<SimpleData name="NAME">PS BHALSWA DAIRY</SimpleData>
+				<SimpleData name="X">711475° 7&apos; 9.369&quot; E</SimpleData>
+				<SimpleData name="Y">3181403° 58&apos; 23.610&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.16558329999999,28.7427183,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS BHARAT NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH WEST</SimpleData>
+				<SimpleData name="FID">138</SimpleData>
+				<SimpleData name="NAME">PS BHARAT NAGAR</SimpleData>
+				<SimpleData name="X">712827° 43&apos; 29.640&quot; E</SimpleData>
+				<SimpleData name="Y">3174530° 12&apos; 39.960&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.17814079999999,28.6804957,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS RANI BAGH</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">OUTER</SimpleData>
+				<SimpleData name="FID">139</SimpleData>
+				<SimpleData name="NAME">PS RANI BAGH</SimpleData>
+				<SimpleData name="X">707035° 4&apos; 44.984&quot; E</SimpleData>
+				<SimpleData name="Y">3176323° 42&apos; 49.992&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1192169,28.6976142,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS MAHENDRA PARK</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH WEST</SimpleData>
+				<SimpleData name="FID">140</SimpleData>
+				<SimpleData name="NAME">PS MAHENDRA PARK</SimpleData>
+				<SimpleData name="X">711362° 11&apos; 41.022&quot; E</SimpleData>
+				<SimpleData name="Y">3179510° 0&apos; 8.046&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1640754,28.7256535,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS K.N. KATJU MARG</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">ROHINI</SimpleData>
+				<SimpleData name="FID">141</SimpleData>
+				<SimpleData name="NAME">PS K.N. KATJU MARG</SimpleData>
+				<SimpleData name="X">707139° 11&apos; 26.808&quot; E</SimpleData>
+				<SimpleData name="Y">3180025° 12&apos; 44.402&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1209558,28.7309856,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS NORTH ROHINI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">ROHINI</SimpleData>
+				<SimpleData name="FID">142</SimpleData>
+				<SimpleData name="NAME">PS NORTH ROHINI</SimpleData>
+				<SimpleData name="X">706884° 40&apos; 53.400&quot; E</SimpleData>
+				<SimpleData name="Y">3177567° 44&apos; 39.120&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1179044,28.7088597,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SOUTH ROHINI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">ROHINI</SimpleData>
+				<SimpleData name="FID">143</SimpleData>
+				<SimpleData name="NAME">PS SOUTH ROHINI</SimpleData>
+				<SimpleData name="X">706670° 40&apos; 36.480&quot; E</SimpleData>
+				<SimpleData name="Y">3176843° 46&apos; 14.880&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.11558340000001,28.7023636,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS AMAN VIHAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">ROHINI</SimpleData>
+				<SimpleData name="FID">144</SimpleData>
+				<SimpleData name="NAME">PS AMAN VIHAR</SimpleData>
+				<SimpleData name="X">701650° 13&apos; 51.045&quot; E</SimpleData>
+				<SimpleData name="Y">3178511° 2&apos; 35.530&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.0645148,28.7181969,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS DWARKA NORTH</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">DWARKA</SimpleData>
+				<SimpleData name="FID">145</SimpleData>
+				<SimpleData name="NAME">PS DWARKA NORTH</SimpleData>
+				<SimpleData name="X">698352° 28&apos; 44.656&quot; E</SimpleData>
+				<SimpleData name="Y">3164360° 50&apos; 44.827&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.0283106,28.5910626,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS RANHOLA</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">OUTER</SimpleData>
+				<SimpleData name="FID">146</SimpleData>
+				<SimpleData name="NAME">PS RANHOLA</SimpleData>
+				<SimpleData name="X">698947° 35&apos; 9.240&quot; E</SimpleData>
+				<SimpleData name="Y">3171339° 20&apos; 30.480&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.0356073,28.6539228,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS RANJIT NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">CENTRAL</SimpleData>
+				<SimpleData name="FID">147</SimpleData>
+				<SimpleData name="NAME">PS RANJIT NAGAR</SimpleData>
+				<SimpleData name="X">710985° 8&apos; 57.120&quot; E</SimpleData>
+				<SimpleData name="Y">3170832° 27&apos; 3.960&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1586106,28.6474441,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SUNLIGHT COLONY</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH EAST</SimpleData>
+				<SimpleData name="FID">148</SimpleData>
+				<SimpleData name="NAME">PS SUNLIGHT COLONY</SimpleData>
+				<SimpleData name="X">721046° 40&apos; 44.631&quot; E</SimpleData>
+				<SimpleData name="Y">3163336° 32&apos; 33.605&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.26003830000001,28.5781562,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS VASANT KUNJ SOUTH</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH WEST</SimpleData>
+				<SimpleData name="FID">149</SimpleData>
+				<SimpleData name="NAME">PS VASANT KUNJ SOUTH</SimpleData>
+				<SimpleData name="X">710525° 26&apos; 14.892&quot; E</SimpleData>
+				<SimpleData name="Y">3158395° 20&apos; 37.293&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1516235,28.5353347,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SAFDARJUNG ENCLAVE</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH WEST</SimpleData>
+				<SimpleData name="FID">150</SimpleData>
+				<SimpleData name="NAME">PS SAFDARJUNG ENCLAVE</SimpleData>
+				<SimpleData name="X">715128° 37&apos; 57.772&quot; E</SimpleData>
+				<SimpleData name="Y">3162800° 53&apos; 59.125&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1994672,28.574319,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS PASCHIM VIHAR WEST</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">OUTER</SimpleData>
+				<SimpleData name="FID">151</SimpleData>
+				<SimpleData name="NAME">PS PASCHIM VIHAR WEST</SimpleData>
+				<SimpleData name="X">704007° 28&apos; 12.155&quot; E</SimpleData>
+				<SimpleData name="Y">3173016° 40&apos; 17.655&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.0876514,28.6682652,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS DOMESTIC AIRPORT</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">AIRPORT</SimpleData>
+				<SimpleData name="FID">152</SimpleData>
+				<SimpleData name="NAME">PS DOMESTIC AIRPORT</SimpleData>
+				<SimpleData name="X">707555° 17&apos; 57.685&quot; E</SimpleData>
+				<SimpleData name="Y">3161611° 9&apos; 41.800&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.12186680000001,28.56482,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS IGI AIRPORT</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">AIRPORT</SimpleData>
+				<SimpleData name="FID">153</SimpleData>
+				<SimpleData name="NAME">PS IGI AIRPORT</SimpleData>
+				<SimpleData name="X">704581° 48&apos; 49.636&quot; E</SimpleData>
+				<SimpleData name="Y">3160381° 24&apos; 47.357&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.0912658,28.5541988,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS MUNDKA</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">OUTER</SimpleData>
+				<SimpleData name="FID">154</SimpleData>
+				<SimpleData name="NAME">PS MUNDKA</SimpleData>
+				<SimpleData name="X">691579° 45&apos; 10.849&quot; E</SimpleData>
+				<SimpleData name="Y">3173076° 13&apos; 46.294&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>76.9605492,28.6707033,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS MANSAROVER PARK</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SHAHDARA</SimpleData>
+				<SimpleData name="FID">155</SimpleData>
+				<SimpleData name="NAME">PS MANSAROVER PARK</SimpleData>
+				<SimpleData name="X">724585° 18&apos; 35.424&quot; E</SimpleData>
+				<SimpleData name="Y">3175025° 46&apos; 7.175&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2984914,28.6829761,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS G.T.B.ENCLAVE</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SHAHDARA</SimpleData>
+				<SimpleData name="FID">156</SimpleData>
+				<SimpleData name="NAME">PS G.T.B.ENCLAVE</SimpleData>
+				<SimpleData name="X">726277° 43&apos; 26.967&quot; E</SimpleData>
+				<SimpleData name="Y">3175349° 39&apos; 37.209&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.31586489999999,28.6856021,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS GHAZIPUR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">EAST</SimpleData>
+				<SimpleData name="FID">157</SimpleData>
+				<SimpleData name="NAME">PS GHAZIPUR</SimpleData>
+				<SimpleData name="X">728032° 23&apos; 48.896&quot; E</SimpleData>
+				<SimpleData name="Y">3168624° 58&apos; 5.964&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.3324677,28.6246442,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS BABA HARIDAS NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">DWARKA</SimpleData>
+				<SimpleData name="FID">158</SimpleData>
+				<SimpleData name="NAME">PS BABA HARIDAS NAGAR</SimpleData>
+				<SimpleData name="X">691698° 24&apos; 59.971&quot; E</SimpleData>
+				<SimpleData name="Y">3169561° 32&apos; 3.507&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>76.9611726,28.6389792,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS DWARKA SOUTH</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">DWARKA</SimpleData>
+				<SimpleData name="FID">159</SimpleData>
+				<SimpleData name="NAME">PS DWARKA SOUTH</SimpleData>
+				<SimpleData name="X">702125° 6&apos; 29.349&quot; E</SimpleData>
+				<SimpleData name="Y">3162976° 39&apos; 55.070&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.066624,28.5779942,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS OLD DELHI RAILWAY STATION</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">RAILWAY</SimpleData>
+				<SimpleData name="FID">160</SimpleData>
+				<SimpleData name="NAME">PS OLD DELHI RAILWAY STATION</SimpleData>
+				<SimpleData name="X">717883° 2&apos; 53.870&quot; E</SimpleData>
+				<SimpleData name="Y">3172419° 4&apos; 0.526&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2294433,28.660612,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS ANAND VIHAR RAILWAY STATION</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">RAILWAY</SimpleData>
+				<SimpleData name="FID">161</SimpleData>
+				<SimpleData name="NAME">PS ANAND VIHAR RAILWAY STATION</SimpleData>
+				<SimpleData name="X">726275° 30&apos; 30.682&quot; E</SimpleData>
+				<SimpleData name="Y">3171223° 26&apos; 18.898&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.31502380000001,28.648388,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS METRO STATION KASHMERE GATE</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">METRO</SimpleData>
+				<SimpleData name="FID">162</SimpleData>
+				<SimpleData name="NAME">PS METRO STATION KASHMERE GATE</SimpleData>
+				<SimpleData name="X">717572° 21&apos; 32.642&quot; E</SimpleData>
+				<SimpleData name="Y">3173026° 32&apos; 24.020&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2263821,28.6661434,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS NEW DELHI RAILWAY STATION</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">RAILWAY</SimpleData>
+				<SimpleData name="FID">163</SimpleData>
+				<SimpleData name="NAME">PS NEW DELHI RAILWAY STATION</SimpleData>
+				<SimpleData name="X">716887° 32&apos; 16.010&quot; E</SimpleData>
+				<SimpleData name="Y">3170549° 57&apos; 56.821&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2189082,28.6439206,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS METRO STATION RITHALA</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">METRO</SimpleData>
+				<SimpleData name="FID">164</SimpleData>
+				<SimpleData name="NAME">PS METRO STATION RITHALA</SimpleData>
+				<SimpleData name="X">705868° 31&apos; 11.897&quot; E</SimpleData>
+				<SimpleData name="Y">3178747° 23&apos; 46.974&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.107721,28.7196629,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS METRO STATION SHASTRI PARK</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">METRO</SimpleData>
+				<SimpleData name="FID">165</SimpleData>
+				<SimpleData name="NAME">PS METRO STATION SHASTRI PARK</SimpleData>
+				<SimpleData name="X">719805° 2&apos; 58.437&quot; E</SimpleData>
+				<SimpleData name="Y">3173356° 50&apos; 53.658&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2492781,28.6687451,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS HAZRAT NIZAMUDIN RAILWAY STATION</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">RAILWAY</SimpleData>
+				<SimpleData name="FID">166</SimpleData>
+				<SimpleData name="NAME">PS HAZRAT NIZAMUDIN RAILWAY STATION</SimpleData>
+				<SimpleData name="X">720382° 26&apos; 52.008&quot; E</SimpleData>
+				<SimpleData name="Y">3164434° 21&apos; 10.812&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2534625,28.5881708,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS METRO STATION RAJA GARDEN</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">METRO</SimpleData>
+				<SimpleData name="FID">167</SimpleData>
+				<SimpleData name="NAME">PS METRO STATION RAJA GARDEN</SimpleData>
+				<SimpleData name="X">707412° 30&apos; 50.533&quot; E</SimpleData>
+				<SimpleData name="Y">3171048° 51&apos; 43.423&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1221187,28.6499735,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SPL.CELL</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SPL.CELL</SimpleData>
+				<SimpleData name="FID">168</SimpleData>
+				<SimpleData name="NAME">PS SPL.CELL</SimpleData>
+				<SimpleData name="X">717820° 8&apos; 9.022&quot; E</SimpleData>
+				<SimpleData name="Y">3164368° 52&apos; 10.846&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2272662,28.5880128,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS CAW CELL</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">CRIME</SimpleData>
+				<SimpleData name="FID">169</SimpleData>
+				<SimpleData name="NAME">PS CAW CELL</SimpleData>
+				<SimpleData name="X">715205° 24&apos; 25.072&quot; E</SimpleData>
+				<SimpleData name="Y">3157986° 46&apos; 15.496&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1993488,28.5308834,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS CRIME BRANCH</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">CRIME</SimpleData>
+				<SimpleData name="FID">170</SimpleData>
+				<SimpleData name="NAME">PS CRIME BRANCH</SimpleData>
+				<SimpleData name="X">717398° 47&apos; 34.642&quot; E</SimpleData>
+				<SimpleData name="Y">3156493° 44&apos; 18.947&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.22146840000001,28.5170518,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SARAI ROHILLA RAILWAY STATION</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">RAILWAY</SimpleData>
+				<SimpleData name="FID">171</SimpleData>
+				<SimpleData name="NAME">PS SARAI ROHILLA RAILWAY STATION</SimpleData>
+				<SimpleData name="X">713601° 10&apos; 57.493&quot; E</SimpleData>
+				<SimpleData name="Y">3172580° 31&apos; 20.311&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.18568670000001,28.6627823,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS METRO STATION GHITORNI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">METRO</SimpleData>
+				<SimpleData name="FID">172</SimpleData>
+				<SimpleData name="NAME">PS METRO STATION GHITORNI</SimpleData>
+				<SimpleData name="X">710387° 10&apos; 24.354&quot; E</SimpleData>
+				<SimpleData name="Y">3153812° 13&apos; 5.283&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1493724,28.4940162,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS WELCOME</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH EAST</SimpleData>
+				<SimpleData name="FID">173</SimpleData>
+				<SimpleData name="NAME">PS WELCOME</SimpleData>
+				<SimpleData name="X">722624° 38&apos; 17.293&quot; E</SimpleData>
+				<SimpleData name="Y">3174859° 0&apos; 37.167&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.27840569999999,28.6818112,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS ANAND VIHAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SHAHDARA</SimpleData>
+				<SimpleData name="FID">174</SimpleData>
+				<SimpleData name="NAME">PS ANAND VIHAR</SimpleData>
+				<SimpleData name="X">724160° 30&apos; 11.971&quot; E</SimpleData>
+				<SimpleData name="Y">3171814° 14&apos; 35.592&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.29351560000001,28.6540846,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS METRO STATION OKHLA VIHAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">METRO</SimpleData>
+				<SimpleData name="FID">175</SimpleData>
+				<SimpleData name="NAME">PS METRO STATION OKHLA VIHAR</SimpleData>
+				<SimpleData name="X">724194° 34&apos; 5.062&quot; E</SimpleData>
+				<SimpleData name="Y">3161426° 42&apos; 38.131&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2918286,28.560391,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS METRO STATION YAMUNA DEPOT</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">METRO</SimpleData>
+				<SimpleData name="FID">176</SimpleData>
+				<SimpleData name="NAME">PS METRO STATION YAMUNA DEPOT</SimpleData>
+				<SimpleData name="X">721671° 47&apos; 9.563&quot; E</SimpleData>
+				<SimpleData name="Y">3168282° 41&apos; 48.729&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.26738330000001,28.622661,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS VIGILANCE</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">VIGILANCE</SimpleData>
+				<SimpleData name="FID">177</SimpleData>
+				<SimpleData name="NAME">PS VIGILANCE</SimpleData>
+				<SimpleData name="X">717591° 46&apos; 4.324&quot; E</SimpleData>
+				<SimpleData name="Y">3169117° 14&apos; 8.337&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2258356,28.6308798,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS EOW</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">CRIME</SimpleData>
+				<SimpleData name="FID">178</SimpleData>
+				<SimpleData name="NAME">PS EOW</SimpleData>
+				<SimpleData name="X">715341° 11&apos; 16.068&quot; E</SimpleData>
+				<SimpleData name="Y">3170017° 19&apos; 46.964&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2029972,28.6393745,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SOUTH AVENUE</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NEW DELHI</SimpleData>
+				<SimpleData name="FID">179</SimpleData>
+				<SimpleData name="NAME">PS SOUTH AVENUE</SimpleData>
+				<SimpleData name="X">715090° 24&apos; 42.372&quot; E</SimpleData>
+				<SimpleData name="Y">3166449° 24&apos; 11.699&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.19976200000001,28.6072343,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS NORTH AVENUE</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NEW DELHI</SimpleData>
+				<SimpleData name="FID">180</SimpleData>
+				<SimpleData name="NAME">PS NORTH AVENUE</SimpleData>
+				<SimpleData name="X">715002° 1&apos; 26.435&quot; E</SimpleData>
+				<SimpleData name="Y">3167637° 45&apos; 14.950&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1990819,28.6179676,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS E-POILCE STATION</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">CRIME</SimpleData>
+				<SimpleData name="FID">181</SimpleData>
+				<SimpleData name="NAME">PS E-POILCE STATION</SimpleData>
+				<SimpleData name="X">717595° 31&apos; 45.139&quot; E</SimpleData>
+				<SimpleData name="Y">3170422° 11&apos; 7.035&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2261226,28.6426493,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS METRO STATION IGI AIRPORT</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">METRO</SimpleData>
+				<SimpleData name="FID">182</SimpleData>
+				<SimpleData name="NAME">PS METRO STATION IGI AIRPORT</SimpleData>
+				<SimpleData name="X">707512° 18&apos; 35.518&quot; E</SimpleData>
+				<SimpleData name="Y">3159823° 58&apos; 11.039&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1211042,28.5487058,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS METRO STATION NANGLOI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">METRO</SimpleData>
+				<SimpleData name="FID">183</SimpleData>
+				<SimpleData name="NAME">PS METRO STATION NANGLOI</SimpleData>
+				<SimpleData name="X">701694° 55&apos; 42.731&quot; E</SimpleData>
+				<SimpleData name="Y">3174648° 27&apos; 29.798&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.064288,28.6833475,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS METRO STATION JANAK PURI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">METRO</SimpleData>
+				<SimpleData name="FID">184</SimpleData>
+				<SimpleData name="NAME">PS METRO STATION JANAK PURI</SimpleData>
+				<SimpleData name="X">697727° 8&apos; 7.058&quot; E</SimpleData>
+				<SimpleData name="Y">3166849° 44&apos; 17.473&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.0223493,28.61361,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS DELHI CANTT.RAILWAY STATION</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">RAILWAY</SimpleData>
+				<SimpleData name="FID">185</SimpleData>
+				<SimpleData name="NAME">PS DELHI CANTT.RAILWAY STATION</SimpleData>
+				<SimpleData name="X">706827° 5&apos; 13.318&quot; E</SimpleData>
+				<SimpleData name="Y">3166783° 8&apos; 20.268&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.11536030000001,28.6115892,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SUBZI MANDI RAILWAY STATION</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">RAILWAY</SimpleData>
+				<SimpleData name="FID">186</SimpleData>
+				<SimpleData name="NAME">PS SUBZI MANDI RAILWAY STATION</SimpleData>
+				<SimpleData name="X">715019° 54&apos; 51.315&quot; E</SimpleData>
+				<SimpleData name="Y">3173180° 7&apos; 24.168&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.20030819999999,28.6679555,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS METRO STATION AZAD PUR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">METRO</SimpleData>
+				<SimpleData name="FID">187</SimpleData>
+				<SimpleData name="NAME">PS METRO STATION AZAD PUR</SimpleData>
+				<SimpleData name="X">712961° 11&apos; 22.967&quot; E</SimpleData>
+				<SimpleData name="Y">3177444° 7&apos; 39.851&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1800507,28.7067568,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS METRO STATION RAJIV CHOWK</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">METRO</SimpleData>
+				<SimpleData name="FID">188</SimpleData>
+				<SimpleData name="NAME">PS METRO STATION RAJIV CHOWK</SimpleData>
+				<SimpleData name="X">717661° 49&apos; 32.943&quot; E</SimpleData>
+				<SimpleData name="Y">3171233° 49&apos; 43.477&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2269551,28.64995890000001,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS METRO STATION PRAGATI MAIDAN</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">METRO</SimpleData>
+				<SimpleData name="FID">189</SimpleData>
+				<SimpleData name="NAME">PS METRO STATION PRAGATI MAIDAN</SimpleData>
+				<SimpleData name="X">719247° 50&apos; 26.068&quot; E</SimpleData>
+				<SimpleData name="Y">3168328° 10&apos; 41.218&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2426143,28.6234836,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS METRO STATION INA</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">METRO</SimpleData>
+				<SimpleData name="FID">190</SimpleData>
+				<SimpleData name="NAME">PS METRO STATION INA</SimpleData>
+				<SimpleData name="X">716124° 29&apos; 39.575&quot; E</SimpleData>
+				<SimpleData name="Y">3162977° 57&apos; 14.150&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2096761,28.5757506,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS METRO STATION NETAJI SUBHASH PLACE</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">METRO</SimpleData>
+				<SimpleData name="FID">191</SimpleData>
+				<SimpleData name="NAME">PS METRO STATION NETAJI SUBHASH PLACE</SimpleData>
+				<SimpleData name="X">710282° 28&apos; 58.158&quot; E</SimpleData>
+				<SimpleData name="Y">3176189° 37&apos; 4.357&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.15241349999999,28.6958801,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS HARI NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">WEST</SimpleData>
+				<SimpleData name="FID">192</SimpleData>
+				<SimpleData name="NAME">PS HARI NAGAR</SimpleData>
+				<SimpleData name="X">706217° 54&apos; 39.576&quot; E</SimpleData>
+				<SimpleData name="Y">3168018° 13&apos; 53.671&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1093561,28.6228272,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS PREM NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">ROHINI</SimpleData>
+				<SimpleData name="FID">193</SimpleData>
+				<SimpleData name="NAME">PS PREM NAGAR</SimpleData>
+				<SimpleData name="X">700317° 42&apos; 59.350&quot; E</SimpleData>
+				<SimpleData name="Y">3176615° 31&apos; 5.666&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.050546,28.7013057,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS VIJAY VIHAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">ROHINI</SimpleData>
+				<SimpleData name="FID">194</SimpleData>
+				<SimpleData name="NAME">PS VIJAY VIHAR</SimpleData>
+				<SimpleData name="X">704839° 18&apos; 53.105&quot; E</SimpleData>
+				<SimpleData name="Y">3176857° 48&apos; 12.444&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.0968496,28.702782,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS NARELA INDL.AREA</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">OUTER NORTH</SimpleData>
+				<SimpleData name="FID">195</SimpleData>
+				<SimpleData name="NAME">PS NARELA INDL.AREA</SimpleData>
+				<SimpleData name="X">704370° 6&apos; 0.197&quot; E</SimpleData>
+				<SimpleData name="Y">3191146° 40&apos; 39.622&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.0946222,28.8317453,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS KISHAN GARH</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH WEST</SimpleData>
+				<SimpleData name="FID">196</SimpleData>
+				<SimpleData name="NAME">PS KISHAN GARH</SimpleData>
+				<SimpleData name="X">714113° 53&apos; 36.166&quot; E</SimpleData>
+				<SimpleData name="Y">3158698° 2&apos; 34.410&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.188333,28.5374792,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS METRO STATION NEHRU PLACE</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">METRO</SimpleData>
+				<SimpleData name="FID">197</SimpleData>
+				<SimpleData name="NAME">PS METRO STATION NEHRU PLACE</SimpleData>
+				<SimpleData name="X">720364° 18&apos; 53.828&quot; E</SimpleData>
+				<SimpleData name="Y">3160361° 22&apos; 40.244&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2524943,28.5514376,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS DAYAL PUR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH EAST</SimpleData>
+				<SimpleData name="FID">198</SimpleData>
+				<SimpleData name="NAME">PS DAYAL PUR</SimpleData>
+				<SimpleData name="X">723373° 34&apos; 34.920&quot; E</SimpleData>
+				<SimpleData name="Y">3177171° 10&apos; 27.738&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2865189,28.7025358,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SHASTRI PARK</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH EAST</SimpleData>
+				<SimpleData name="FID">199</SimpleData>
+				<SimpleData name="NAME">PS SHASTRI PARK</SimpleData>
+				<SimpleData name="X">721011° 40&apos; 0.137&quot; E</SimpleData>
+				<SimpleData name="Y">3173813° 6&apos; 58.608&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.261706,28.6726547,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS LAXMI NAGAR</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">EAST</SimpleData>
+				<SimpleData name="FID">200</SimpleData>
+				<SimpleData name="NAME">PS LAXMI NAGAR</SimpleData>
+				<SimpleData name="X">721961° 38&apos; 48.381&quot; E</SimpleData>
+				<SimpleData name="Y">3169941° 45&apos; 15.731&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.27066840000001,28.637575,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS PATPARGANJ INDL. AREA</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">EAST</SimpleData>
+				<SimpleData name="FID">201</SimpleData>
+				<SimpleData name="NAME">PS PATPARGANJ INDL. AREA</SimpleData>
+				<SimpleData name="X">726377° 32&apos; 52.775&quot; E</SimpleData>
+				<SimpleData name="Y">3170869° 11&apos; 52.221&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.3159969,28.6451752,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS SHAHEEN BAGH</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH EAST</SimpleData>
+				<SimpleData name="FID">202</SimpleData>
+				<SimpleData name="NAME">PS SHAHEEN BAGH</SimpleData>
+				<SimpleData name="X">724651° 16&apos; 18.002&quot; E</SimpleData>
+				<SimpleData name="Y">3160201° 22&apos; 40.055&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.29625420000001,28.5492605,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS KALINDI KUNJ</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH EAST</SimpleData>
+				<SimpleData name="FID">203</SimpleData>
+				<SimpleData name="NAME">PS KALINDI KUNJ</SimpleData>
+				<SimpleData name="X">726894° 46&apos; 1.633&quot; E</SimpleData>
+				<SimpleData name="Y">3158172° 9&apos; 26.667&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.3187696,28.5305689,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS RAJ PARK</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">OUTER</SimpleData>
+				<SimpleData name="FID">204</SimpleData>
+				<SimpleData name="NAME">PS RAJ PARK</SimpleData>
+				<SimpleData name="X">703432° 20&apos; 2.894&quot; E</SimpleData>
+				<SimpleData name="Y">3175889° 44&apos; 36.275&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.0822819,28.6942721,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS MAIDAN GARHI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH</SimpleData>
+				<SimpleData name="FID">205</SimpleData>
+				<SimpleData name="NAME">PS MAIDAN GARHI</SimpleData>
+				<SimpleData name="X">713327° 28&apos; 53.897&quot; E</SimpleData>
+				<SimpleData name="Y">3156952° 59&apos; 40.162&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.17997630000001,28.521868,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS TIGRI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH</SimpleData>
+				<SimpleData name="FID">206</SimpleData>
+				<SimpleData name="NAME">PS TIGRI</SimpleData>
+				<SimpleData name="X">716672° 25&apos; 24.293&quot; E</SimpleData>
+				<SimpleData name="Y">3154471° 3&apos; 24.757&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.21366949999999,28.4989286,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS WAZIRABAD</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH</SimpleData>
+				<SimpleData name="FID">207</SimpleData>
+				<SimpleData name="NAME">PS WAZIRABAD</SimpleData>
+				<SimpleData name="X">717270° 7&apos; 16.603&quot; E</SimpleData>
+				<SimpleData name="Y">3177488° 28&apos; 1.977&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.22414190000001,28.7064389,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS MOHAN GARDEN</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">DWARKA</SimpleData>
+				<SimpleData name="FID">208</SimpleData>
+				<SimpleData name="NAME">PS MOHAN GARDEN</SimpleData>
+				<SimpleData name="X">698877° 52&apos; 37.572&quot; E</SimpleData>
+				<SimpleData name="Y">3168627° 21&apos; 5.349&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.03442219999999,28.6294694,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS CYBER CRIME ROHINI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">ROHINI</SimpleData>
+				<SimpleData name="FID">209</SimpleData>
+				<SimpleData name="NAME">PS CYBER CRIME ROHINI</SimpleData>
+				<SimpleData name="X">702459° 31&apos; 9.847&quot; E</SimpleData>
+				<SimpleData name="Y">3178921° 50&apos; 21.876&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.072869,28.7217757,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS CYBER CRIM SOUTH</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH</SimpleData>
+				<SimpleData name="FID">210</SimpleData>
+				<SimpleData name="NAME">PS CYBER CRIM SOUTH</SimpleData>
+				<SimpleData name="X">716111° 37&apos; 11.366&quot; E</SimpleData>
+				<SimpleData name="Y">3160014° 36&apos; 11.456&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2089861,28.54902390000001,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS CYBER CRIME SOUTH EAST</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH EAST</SimpleData>
+				<SimpleData name="FID">211</SimpleData>
+				<SimpleData name="NAME">PS CYBER CRIME SOUTH EAST</SimpleData>
+				<SimpleData name="X">723240° 51&apos; 41.381&quot; E</SimpleData>
+				<SimpleData name="Y">3159143° 53&apos; 50.889&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2816416,28.5399657,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS CYBER CRIME SOUTH WEST</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SOUTH WEST</SimpleData>
+				<SimpleData name="FID">212</SimpleData>
+				<SimpleData name="NAME">PS CYBER CRIME SOUTH WEST</SimpleData>
+				<SimpleData name="X">712162° 19&apos; 51.349&quot; E</SimpleData>
+				<SimpleData name="Y">3160955° 39&apos; 43.737&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1688164,28.558163,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS CYBER CRIME EAST</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">EAST</SimpleData>
+				<SimpleData name="FID">213</SimpleData>
+				<SimpleData name="NAME">PS CYBER CRIME EAST</SimpleData>
+				<SimpleData name="X">726340° 36&apos; 43.992&quot; E</SimpleData>
+				<SimpleData name="Y">3169026° 39&apos; 49.767&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.3152542,28.6285638,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS CYBER CRIME SHAHDARA</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">SHAHDARA</SimpleData>
+				<SimpleData name="FID">214</SimpleData>
+				<SimpleData name="NAME">PS CYBER CRIME SHAHDARA</SimpleData>
+				<SimpleData name="X">723473° 46&apos; 38.306&quot; E</SimpleData>
+				<SimpleData name="Y">3172998° 29&apos; 57.965&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2867258,28.6648844,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS CYBER CRIME NORTH EAST</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH EAST</SimpleData>
+				<SimpleData name="FID">215</SimpleData>
+				<SimpleData name="NAME">PS CYBER CRIME NORTH EAST</SimpleData>
+				<SimpleData name="X">721923° 40&apos; 21.851&quot; E</SimpleData>
+				<SimpleData name="Y">3173788° 25&apos; 36.361&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2710281,28.6722758,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS CYBER CRIME NORTH</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH</SimpleData>
+				<SimpleData name="FID">216</SimpleData>
+				<SimpleData name="NAME">PS CYBER CRIME NORTH</SimpleData>
+				<SimpleData name="X">717192° 44&apos; 50.259&quot; E</SimpleData>
+				<SimpleData name="Y">3175522° 10&apos; 14.733&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2229754,28.6887168,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS CYBER CRIME CENTRAL</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">CENTRAL</SimpleData>
+				<SimpleData name="FID">217</SimpleData>
+				<SimpleData name="NAME">PS CYBER CRIME CENTRAL</SimpleData>
+				<SimpleData name="X">719047° 38&apos; 30.475&quot; E</SimpleData>
+				<SimpleData name="Y">3170334° 42&apos; 21.678&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2409524,28.6416154,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS CYBER CRIME NORTH WEST</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NORTH WEST</SimpleData>
+				<SimpleData name="FID">218</SimpleData>
+				<SimpleData name="NAME">PS CYBER CRIME NORTH WEST</SimpleData>
+				<SimpleData name="X">712373° 28&apos; 42.507&quot; E</SimpleData>
+				<SimpleData name="Y">3175819° 23&apos; 59.848&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.17373499999999,28.6921988,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS CYBER CRIME OUTER NORTH</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">OUTER NORTH</SimpleData>
+				<SimpleData name="FID">219</SimpleData>
+				<SimpleData name="NAME">PS CYBER CRIME OUTER NORTH</SimpleData>
+				<SimpleData name="X">709146° 58&apos; 36.250&quot; E</SimpleData>
+				<SimpleData name="Y">3179423° 16&apos; 10.143&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.14139160000001,28.7252321,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS CYBER CRIME OUTER</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">OUTER</SimpleData>
+				<SimpleData name="FID">220</SimpleData>
+				<SimpleData name="NAME">PS CYBER CRIME OUTER</SimpleData>
+				<SimpleData name="X">706049° 42&apos; 2.101&quot; E</SimpleData>
+				<SimpleData name="Y">3175367° 54&apos; 1.793&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1089633,28.6891501,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS CYBER CRIME DWARKA</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">DWARKA</SimpleData>
+				<SimpleData name="FID">221</SimpleData>
+				<SimpleData name="NAME">PS CYBER CRIME DWARKA</SimpleData>
+				<SimpleData name="X">700989° 22&apos; 25.807&quot; E</SimpleData>
+				<SimpleData name="Y">3162962° 5&apos; 21.096&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.05501529999999,28.578039,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS CYBER CRIME WEST</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">WEST</SimpleData>
+				<SimpleData name="FID">222</SimpleData>
+				<SimpleData name="NAME">PS CYBER CRIME WEST</SimpleData>
+				<SimpleData name="X">707192° 7&apos; 27.225&quot; E</SimpleData>
+				<SimpleData name="Y">3171234° 29&apos; 53.611&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.1198988,28.6516833,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>PS CYBER CRIME NEW DELHI</name>
+		<styleUrl>#delhi_police_station_locs_style</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#J_delhi_police_station_locs_SISSS">
+				<SimpleData name="DISTRICT">NEW DELHI</SimpleData>
+				<SimpleData name="FID">223</SimpleData>
+				<SimpleData name="NAME">PS CYBER CRIME NEW DELHI</SimpleData>
+				<SimpleData name="X">716339° 36&apos; 10.319&quot; E</SimpleData>
+				<SimpleData name="Y">3168410° 31&apos; 14.076&quot; N</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Point>
+			<coordinates>77.2129008,28.6247152,0</coordinates>
+		</Point>
+	</Placemark>
+</Document>
+</kml>
